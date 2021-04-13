@@ -1,2 +1,0 @@
-10mb.psd filter=lfs diff=lfs merge=lfs -text
-1 filter=lfs diff=lfs merge=lfs -text

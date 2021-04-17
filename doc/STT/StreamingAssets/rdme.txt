@@ -1,0 +1,4 @@
+STT's key
+usage : 
+drag it into assets foldier
+and dont rename anythings

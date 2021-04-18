@@ -1,0 +1,15 @@
+https://github.com/oshoham/UnityGoogleStreamingSpeechToText
+https://cjames1.medium.com/how-to-add-google-speech-to-text-in-unity-2019-61c4920c4145
+https://cloud.google.com/speech-to-text/docs/samples/speech-transcribe-async-gcs?hl=zh-tw
+
+rember to install node.js to activate npm install
+use npm to install and manage the packge
+set StreamingAssets to assests
+
+In stt packge:
+English test => original
+Chinese test => not try yet
+ change country code to zh-tw => not try yet
+
+	
+ 

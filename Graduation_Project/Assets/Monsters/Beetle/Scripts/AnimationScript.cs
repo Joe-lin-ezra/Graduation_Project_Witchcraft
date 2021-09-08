@@ -8,7 +8,8 @@ public class AnimationScript : MonoBehaviour
     private UnityEngine.AI.NavMeshAgent nma;//儲存導航網格代理元件
 
     private GameObject target = null;
-
+    public GameObject attackCollider;    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,24 +29,24 @@ public class AnimationScript : MonoBehaviour
             // get the distance between self and target object
             double distance = Vector3.Distance(transform.position, target.transform.position);
             nma.SetDestination(target.transform.position);
+            
             // 
-            if (distance < 2.5)
+            if (distance < 1.8f)
             {
-                nma.SetDestination(transform.position);
+                
                 GetComponent<Animation>().Play("Stab Attack");
+                nma.SetDestination(transform.position);
+                Instantiate(attackCollider, transform.position, Quaternion.identity);
             }
             else 
             {
                 // run to close target object
                 GetComponent<Animation>().Play("Run Forward In Place");
             }
-            Debug.Log("target position: " + target.transform.position + "\ndistance: " + distance);
         }
         else
         {
             GetComponent<Animation>().Play("Idle");
         }
-        
-        
     }
 }

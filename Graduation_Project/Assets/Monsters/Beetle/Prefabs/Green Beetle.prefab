@@ -1188,10 +1188,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7577878312505849973}
   - component: {fileID: 7718039172597481435}
-  - component: {fileID: 7718039172597481433}
   - component: {fileID: 7718039172597481434}
   m_Layer: 0
-  m_Name: RockBeetle 1
+  m_Name: Green Beetle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1249,18 +1248,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &7718039172597481433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7575798074386036415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 157f95f59db484d43a60080b06537c63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!195 &7718039172597481434
 NavMeshAgent:
   m_ObjectHideFlags: 0

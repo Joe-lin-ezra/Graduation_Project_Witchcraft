@@ -20,7 +20,7 @@ public class MonsterAttackedDetector : MonoBehaviour
     {
         if (c.tag.Equals("magic ball")) 
         {
-            Destroy(gameObject.transform.parent.gameObject, 0);
+            transform.parent.gameObject.GetComponent<BeetleAnimationScript>().getHit();
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationScript : MonoBehaviour
+public class BeetleAnimationScript : MonoBehaviour
 {
     private Vector3 origin;//儲存導航網格代理的初始位置
     private UnityEngine.AI.NavMeshAgent nma;//儲存導航網格代理元件
@@ -11,6 +11,7 @@ public class AnimationScript : MonoBehaviour
     public GameObject attackCollider;    
     
     private Quaternion rotationRecord;
+    public bool died = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,12 @@ public class AnimationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (died) 
+        {
+            GetComponent<Animation>().Play("Die");
+            Destroy(gameObject, 35 * Time.deltaTime);
+            return; 
+        }
         // get enemy or idle in place
         target = GameObject.Find("Cube");
         if (target == null) 
@@ -63,5 +70,10 @@ public class AnimationScript : MonoBehaviour
         Instantiate(attackCollider, 
         transform.position + 3.3f * vec,
          Quaternion.identity);
+    }
+
+    public void getHit()
+    {
+        died = true;
     }
 }

@@ -11,7 +11,7 @@ public class BeetleAnimationScript : MonoBehaviour
     public GameObject attackCollider;    
     
     private Quaternion rotationRecord;
-    public bool died = false;
+    bool died = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,13 +63,9 @@ public class BeetleAnimationScript : MonoBehaviour
 
     void spawnAttackObject()
     {
-        Vector3 ribcageGizmoPos = gameObject.transform.GetChild(9).transform.position;
-        Vector3 pelvisGizmoPos = gameObject.transform.GetChild(8).transform.position;
-        Vector3 vec = ribcageGizmoPos - pelvisGizmoPos;
-        vec[1] = 0;
         Instantiate(attackCollider, 
-        transform.position + 3.3f * vec,
-         Quaternion.identity);
+        transform.position + transform.TransformDirection(Vector3.forward) + new Vector3(0, 0.2f, 0),
+        Quaternion.identity);
     }
 
     public void getHit()

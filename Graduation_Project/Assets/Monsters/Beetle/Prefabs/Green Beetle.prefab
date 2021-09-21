@@ -1190,9 +1190,10 @@ GameObject:
   - component: {fileID: 7718039172597481435}
   - component: {fileID: 7718039172597481434}
   - component: {fileID: 417957749}
+  - component: {fileID: 887835433}
   m_Layer: 0
   m_Name: Green Beetle
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1284,6 +1285,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157f95f59db484d43a60080b06537c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &887835433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7575798074386036415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3bc29245ee882148ab4f39cf953f58f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  hp: 1
+  atk: 1
+  enemy: {fileID: 0}
   attackCollider: {fileID: 6628766272811603300, guid: 8693c0018e2abbc4f99ac16ff38aa290,
     type: 3}
 --- !u!1 &7575850603817144305
@@ -1606,6 +1623,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mesh Collider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2075445284941252764, guid: 26a430da7237a964faddd9abaddf52c0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Monster
       objectReference: {fileID: 0}
     - target: {fileID: 2075445284941252765, guid: 26a430da7237a964faddd9abaddf52c0,
         type: 3}

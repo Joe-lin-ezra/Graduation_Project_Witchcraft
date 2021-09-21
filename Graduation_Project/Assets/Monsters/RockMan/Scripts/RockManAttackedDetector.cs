@@ -2,25 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterAttackedDetector : MonoBehaviour
+public class RockManAttackedDetector : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.tag = "Player";
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
-    
-    void OnTriggerStay(Collider c)
+
+    public void TakeDamage(GameObject other)
     {
-        if (c.tag.Equals("magic ball")) 
+        if (other.tag == ("MagicBall")) 
         {
-            transform.parent.gameObject.GetComponent<BeetleAnimationScript>().getHit();
+            transform.parent.gameObject.GetComponent<Monster>().TakeDamage(other);
         }
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 199257899}
   m_Layer: 0
   m_Name: Attacked Detector
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 14
   m_CollisionDetection: 0
@@ -179,9 +179,10 @@ GameObject:
   - component: {fileID: 7811941477855199679}
   - component: {fileID: 824659183}
   - component: {fileID: 824659184}
+  - component: {fileID: 7742304108234437568}
   m_Layer: 0
   m_Name: PBR_Golem 1
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -256,6 +257,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a6ad033cdf2754aa02617218aad01f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7742304108234437568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7812157828964508902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3bc29245ee882148ab4f39cf953f58f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  hp: 3
+  atk: 2
+  enemy: {fileID: 0}
   attackCollider: {fileID: 6628766272811603300, guid: 81342de24a321a14e867985167bb73b9,
     type: 3}
 --- !u!1 &7812172720698664548

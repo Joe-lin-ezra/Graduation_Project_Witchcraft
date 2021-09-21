@@ -8,10 +8,8 @@ public class BeetleAnimationScript : MonoBehaviour
     private UnityEngine.AI.NavMeshAgent nma;//儲存導航網格代理元件
 
     private GameObject target = null;
-    public GameObject attackCollider;    
-    
     private Quaternion rotationRecord;
-    bool died = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,14 +21,14 @@ public class BeetleAnimationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (died) 
+        if (gameObject.GetComponent<Monster>().hp <= 0) 
         {
             GetComponent<Animation>().Play("Die");
             Destroy(gameObject, 35 * Time.deltaTime);
             return; 
         }
         // get enemy or idle in place
-        target = GameObject.Find("Cube");
+        target = transform.parent.GetComponent<Monster>().enemy;
         if (target == null) 
         {
             GetComponent<Animation>().Play("Idle");
@@ -58,18 +56,6 @@ public class BeetleAnimationScript : MonoBehaviour
         // spawn object to surpport
         GetComponent<Animation>().Play("Stab Attack");
         nma.SetDestination(transform.position);
-        spawnAttackObject();
-    }
-
-    void spawnAttackObject()
-    {
-        Instantiate(attackCollider, 
-        transform.position + transform.TransformDirection(Vector3.forward) + new Vector3(0, 0.2f, 0),
-        Quaternion.identity);
-    }
-
-    public void getHit()
-    {
-        died = true;
+        gameObject.GetComponent<Monster>().Attack();
     }
 }

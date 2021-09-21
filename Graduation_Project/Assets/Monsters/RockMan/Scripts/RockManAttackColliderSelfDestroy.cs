@@ -13,6 +13,13 @@ public class RockManAttackColliderSelfDestroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject, 0);
+        Destroy(gameObject, 2 * Time.deltaTime);
+    }
+
+    void OnTriggerEnter(Collider other) 
+    {
+        if(other.tag == "Player"){
+            other.gameObject.GetComponent<Player>().TakeDamage(transform.parent.gameObject);
+        }
     }
 }

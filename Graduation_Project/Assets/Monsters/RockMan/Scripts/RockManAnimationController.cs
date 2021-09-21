@@ -8,7 +8,6 @@ public class RockManAnimationController : MonoBehaviour
     private UnityEngine.AI.NavMeshAgent nma;//儲存導航網格代理元件
 
     private GameObject target = null;
-    public GameObject attackCollider;    
     
     private Quaternion rotationRecord;
 
@@ -30,17 +29,16 @@ public class RockManAnimationController : MonoBehaviour
     {
         animator.SetInteger("state", (int)state);
 
-        if (state == RockManStateEnum.die)
+        if (transform.parent.GetComponent<Monster>().hp <= 0)
         {
-            // need 40 frame to play die-animation
-            nma.SetDestination(transform.position);
+            state = RockManStateEnum.die;
+            nma.SetDestination(transform.position);  // need 40 frame to play die-animation
             Destroy(gameObject, 5);
             return; 
         }
 
         // get enemy or idle in place
-        target = GameObject.Find("Cube");
-        Debug.Log(target);
+        target = transform.parent.GetComponent<Monster>().enemy;
         if (target == null) 
         {
             state = RockManStateEnum.idle;
@@ -68,18 +66,6 @@ public class RockManAnimationController : MonoBehaviour
         // spawn object to surpport
         state = RockManStateEnum.attack1;
         nma.SetDestination(transform.position);
-        spawnAttackObject();
-    }
-
-    void spawnAttackObject()
-    {
-        Instantiate(attackCollider, 
-        transform.position + 1.5f * transform.TransformDirection(Vector3.forward) + new Vector3(0, 0.7f, 0),
-         Quaternion.identity);
-    }
-
-    public void getHit()
-    {
-        state = RockManStateEnum.die;
+        transform.parent.GetComponent<Monster>().Attack();
     }
 }

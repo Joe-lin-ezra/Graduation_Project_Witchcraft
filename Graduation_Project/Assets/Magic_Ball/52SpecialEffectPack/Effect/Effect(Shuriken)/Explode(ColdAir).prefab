@@ -18667,7 +18667,7 @@ GameObject:
   - component: {fileID: 400008}
   - component: {fileID: 114000013611600836}
   m_Layer: 0
-  m_Name: Explode10
+  m_Name: Explode(ColdAir)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

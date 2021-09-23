@@ -1,0 +1,75 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Valve.VR;
+using Valve.VR.InteractionSystem;
+using Valve.VR.Extras;
+
+public class VRRightHand: MonoBehaviour
+{
+    // Start is called before the first frame update
+    SteamVR_LaserPointer slp;   //射线对象
+    private GameObject something = null;//被抓取物
+    private GameObject PointerSomething = null;//被指物
+    public GameObject bullet;//被發射物
+
+    void Start()
+    {
+        slp = GetComponent<SteamVR_LaserPointer>();
+        slp.PointerIn += OnpointerIn;
+        slp.PointerOut += OnpointerOut;    //響應設線離開事件
+        GetComponent<SteamVR_LaserPointer>().enabled = true;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        ClickTrigger();
+    }
+
+    void ClickTrigger(){
+         // teleport
+        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && something == null)//抓放物件
+        {
+            // teleport effect start
+            something.transform.SetParent(this.transform);
+            something.GetComponent<Rigidbody>().isKinematic = true;   
+        }
+        else if(SteamVR_Actions.default_GrabPinch.GetStateUp(SteamVR_Input_Sources.RightHand) && something == null){
+            // do teleport
+            something.transform.SetParent(null);
+            something.GetComponent<Rigidbody>().isKinematic = false;
+        }
+
+        // shoot out magic ball
+        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && something != null){//發射
+            Instantiate(bullet,this.transform.position,this.transform.rotation);
+        }
+    }
+
+    void OnpointerIn(object sender, PointerEventArgs e) //射线进入事件
+    {
+        GameObject obj = e.target.gameObject;//得到指向的物体
+        if (obj.tag.Equals("CanPointer")) //如果我们选择的物体他的标签是CanPointer
+        {
+            PointerSomething = obj;  //用全局变量记录这个物体
+        }
+    }
+    void OnpointerOut(object sender, PointerEventArgs e)//射线离开事件
+    {
+        if (PointerSomething != null)  //如果是在能拾取的物体上离开
+        {
+            PointerSomething = null;  //不再记录这个物体了
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        something = other.gameObject;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        something = null;
+    }
+}

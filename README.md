@@ -1,16 +1,23 @@
 # Graduation_Project
-the Graduation_Project for feng-chia iecs
+
+## Introduction  
+the Graduation_Project for feng-chia iecs  
+<br>
+
+## Remove \"Version Control\" package
+If there is an error about that the project contains duplicated, "newtonsoft.json", files, it is caused by \"Google Speech to Text\" package and \"Version Control\" package.
+
+Remove \"Version Control\" package to ensure \"Google Speech to Text\" works.  
+<br>
 
 
-
-## if the object lost its scripts, try to use "lfs" special instruction.
-
-### whenever pull the file, also do this to pull the large file storage down
+## Too Large File > 20kb
+### whenever pull the file
 ```cmd
 > git lfs pull
 ```
-### whenever upload the file, also do this to push the large file storage up
+### whenever upload the file
 ```cmd
-> git lfs track __(file name)__
+> git lfs track __<file name>__
 ```
 extension: https://haway.30cm.gg/git-lfs/

@@ -14,7 +14,7 @@ public class MagicControl: MonoBehaviour
     public GameObject RightController;
     [Header("Google Speech Recognizer")]
     public GameObject GoogleSpeechRecognizer;
-
+    public string testString; 
 
     public void Start()
     {
@@ -27,8 +27,9 @@ public class MagicControl: MonoBehaviour
 
     void Update()
     {
-        string magicName = GoogleSpeechRecognizer.GetComponent<StreamingRecognizer>().GetMagicName();
-        if (magicName == null || magicName.Length <= 0)
+        //string magicName = GoogleSpeechRecognizer.GetComponent<StreamingRecognizer>().GetMagicName();
+        
+        /*if (magicName == null || magicName.Length <= 0)
         {
             return;
         }
@@ -45,6 +46,22 @@ public class MagicControl: MonoBehaviour
             {
 
             }
+        }*/
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            Debug.Log("get f");
+            
+            try
+            {
+                Instantiate(MagicDict[testString], RightController.transform.position, RightController.transform.rotation, RightController.transform);
+                RightController.GetComponent<VRRightHand>().something = testString;
+                RightController.GetComponent<VRRightHand>().bullet = MagicDict[testString];
+            }
+            catch (KeyNotFoundException e)
+            {
+
+            }
         }
+        
     }
 }

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8523391516377526957}
   - component: {fileID: 8523391516377526959}
   - component: {fileID: 8523391516377526958}
-  - component: {fileID: 5493268547046929026}
+  - component: {fileID: -9149712226856563768}
   m_Layer: 0
-  m_Name: Body
+  m_Name: SphereBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5493268547046929026
+--- !u!114 &-9149712226856563768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76,4 +76,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magicEffect: {fileID: 0}
   body: {fileID: 0}
-  atk: 10
+  destoryTime: 15
+  speed: 0.05
+  atk: 20

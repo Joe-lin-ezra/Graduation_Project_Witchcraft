@@ -9,9 +9,9 @@ public class VRRightHand: MonoBehaviour
 {
     // Start is called before the first frame update
     SteamVR_LaserPointer slp;   //射线对象
-    private GameObject something = null;//被抓取物
     private GameObject PointerSomething = null;//被指物
-    public GameObject bullet;//被發射物
+    public GameObject bullet = null;//被發射物
+    public string something = null;
 
     void Start()
     {
@@ -29,21 +29,23 @@ public class VRRightHand: MonoBehaviour
 
     void ClickTrigger(){
          // teleport
-        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && something == null)//抓放物件
+        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && something == null)
         {
             // teleport effect start
-            something.transform.SetParent(this.transform);
-            something.GetComponent<Rigidbody>().isKinematic = true;   
+            
         }
-        else if(SteamVR_Actions.default_GrabPinch.GetStateUp(SteamVR_Input_Sources.RightHand) && something == null){
+        else if(SteamVR_Actions.default_GrabPinch.GetStateUp(SteamVR_Input_Sources.RightHand) && something == null)
+        {
             // do teleport
-            something.transform.SetParent(null);
-            something.GetComponent<Rigidbody>().isKinematic = false;
+            
         }
 
         // shoot out magic ball
-        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && something != null){//發射
-            Instantiate(bullet,this.transform.position,this.transform.rotation);
+        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && something != null)
+        {
+            // give velocity
+            //gameObject.GetComponent<Rigidbody>().velocity = gameObject.transform.forward * speed * Time.deltaTime;
+            something = null;
         }
     }
 
@@ -65,11 +67,11 @@ public class VRRightHand: MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        something = other.gameObject;
+        bullet = other.gameObject;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        something = null;
+        bullet = null;
     }
 }

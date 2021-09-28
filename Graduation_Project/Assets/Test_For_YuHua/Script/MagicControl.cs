@@ -54,7 +54,7 @@ public class MagicControl: MonoBehaviour
             
             try
             {
-                GameObject magicBall = Instantiate(MagicDict[testString], RightController.transform.position, RightController.transform.rotation);
+                GameObject magicBall = Instantiate(MagicDict[testString], RightController.transform.position, RightController.transform.rotation, RightController.transform);
                 RightController.GetComponent<VRRightHand>().something = testString;
                 RightController.GetComponent<VRRightHand>().bullet = magicBall;
             }

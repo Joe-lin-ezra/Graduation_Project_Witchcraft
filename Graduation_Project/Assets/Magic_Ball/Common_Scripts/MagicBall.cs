@@ -23,7 +23,7 @@ public class MagicBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject, destoryTime);
+        //Destroy(gameObject, destoryTime);
     }
 
     void OnTriggerEnter(Collider other) // triger to destory

@@ -19,7 +19,7 @@ public class MagicControl: MonoBehaviour
     public void Start()
     {
         MagicDict = new Dictionary<string, GameObject>();
-        for (int i = 0; i<8; i++)
+        for (int i = 0; i<10; i++)
         {
             MagicDict.Add(MagicStr[i], MagicsOBJ[i]);
         }
@@ -27,9 +27,10 @@ public class MagicControl: MonoBehaviour
 
     void Update()
     {
-        //string magicName = GoogleSpeechRecognizer.GetComponent<StreamingRecognizer>().GetMagicName();
+        /*
+        string magicName = GoogleSpeechRecognizer.GetComponent<StreamingRecognizer>().GetMagicName();
         
-        /*if (magicName == null || magicName.Length <= 0)
+        if (magicName == null || magicName.Length <= 0)
         {
             return;
         }
@@ -38,24 +39,24 @@ public class MagicControl: MonoBehaviour
         {
             try
             {
-                Instantiate(MagicDict[magicName], RightController.transform.position, RightController.transform.rotation, RightController.transform);
-                RightController.GetComponent<VRRightHand>().something = magicName;
-                RightController.GetComponent<VRRightHand>().bullet = MagicDict[magicName];
+                GameObject magicBall = Instantiate(MagicDict[testString], RightController.transform.position, RightController.transform.rotation, RightController.transform);
+                RightController.GetComponent<VRRightHand>().something = testString;
+                RightController.GetComponent<VRRightHand>().bullet = magicBall;
             }
             catch (KeyNotFoundException e)
             {
 
             }
         }*/
-        if(Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            Debug.Log("get f");
+            Debug.Log("get Z");
             
             try
             {
-                Instantiate(MagicDict[testString], RightController.transform.position, RightController.transform.rotation, RightController.transform);
+                GameObject magicBall = Instantiate(MagicDict[testString], RightController.transform.position, RightController.transform.rotation, RightController.transform);
                 RightController.GetComponent<VRRightHand>().something = testString;
-                RightController.GetComponent<VRRightHand>().bullet = MagicDict[testString];
+                RightController.GetComponent<VRRightHand>().bullet = magicBall;
             }
             catch (KeyNotFoundException e)
             {

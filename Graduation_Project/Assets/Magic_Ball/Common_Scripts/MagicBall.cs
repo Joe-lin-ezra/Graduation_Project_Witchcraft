@@ -14,11 +14,10 @@ public class MagicBall : MonoBehaviour
     public int atk;
     private int hitDestoryTime = 2;
 
-    private Transform thetr;
     // Start is called before the first frame update
     void Start()
     {
-        thetr = gameObject.GetComponent<Transform>();
+        gameObject.tag = "MagicBall";
     }
 
     // Update is called once per frame
@@ -30,16 +29,15 @@ public class MagicBall : MonoBehaviour
     void OnTriggerEnter(Collider other) // triger to destory
     {
         if(other.tag == "Player"){
-           // other.gameObject.GetComponent<Player>().TakeDamage(other.gameObject);
+            other.gameObject.GetComponent<Player>().TakeDamage(other.gameObject);
         }
         else if(other.tag == "Monster"){
-           // other.gameObject.GetComponent<Monster>().TakeDamage(other.gameObject);
+            other.gameObject.GetComponent<Monster>().TakeDamage(other.gameObject);
         }
         if(other.tag == "Player" || other.tag == "Monster"){
-            GameObject mge = Instantiate(explodeEffect, this.transform.position , this.transform.rotation);
+            Instantiate(explodeEffect, transform.position , transform.rotation, transform);
             bulletEffect.SetActive(false);
-            mge.transform.SetParent(this.gameObject.transform);
-            Destroy(this.gameObject, hitDestoryTime);
+            Destroy(gameObject, hitDestoryTime);
         }
     }
 }

@@ -41,7 +41,7 @@ public class VRRightHand: MonoBehaviour
         }
 
         // shoot out magic ball
-        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand))
+        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && something != null && bullet != null)
         {
             try
             {
@@ -49,8 +49,8 @@ public class VRRightHand: MonoBehaviour
                 //bullet.GetComponent<Rigidbody>().AddForce(
                 //    gameObject.transform.forward * bullet.GetComponent<MagicBall>().speed * Time.deltaTime);
                 bullet.GetComponent<Rigidbody>().velocity =
-                    gameObject.transform.forward * bullet.GetComponent<MagicBall>().speed * Time.deltaTime;
-                Debug.Log(bullet.GetComponent<Rigidbody>().velocity);
+                    gameObject.transform.forward * 1;//bullet.GetComponent<MagicBall>().speed;
+                bullet = null;
                 something = null;
 
             } catch

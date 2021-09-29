@@ -13,6 +13,8 @@ public class VRRightHand: MonoBehaviour
     public GameObject bullet = null;//被發射物
     public string something = null;
 
+    public int force;
+
     void Start()
     {
         slp = GetComponent<SteamVR_LaserPointer>();
@@ -49,7 +51,8 @@ public class VRRightHand: MonoBehaviour
                 //bullet.GetComponent<Rigidbody>().AddForce(
                 //    gameObject.transform.forward * bullet.GetComponent<MagicBall>().speed * Time.deltaTime);
                 bullet.GetComponent<Rigidbody>().velocity =
-                    gameObject.transform.forward * 1;//bullet.GetComponent<MagicBall>().speed;
+                    gameObject.transform.forward * force;//bullet.GetComponent<MagicBall>().speed;
+                bullet.GetComponent<MagicBall>().BulletDestory();
                 bullet.transform.SetParent(null);
                 bullet = null;
                 something = null;

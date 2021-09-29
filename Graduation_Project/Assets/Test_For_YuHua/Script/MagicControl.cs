@@ -14,7 +14,9 @@ public class MagicControl: MonoBehaviour
     public GameObject RightController;
     [Header("Google Speech Recognizer")]
     public GameObject GoogleSpeechRecognizer;
-    public string testString; 
+    public string testString;
+
+    public bool debug = false;
 
     public void Start()
     {
@@ -27,28 +29,32 @@ public class MagicControl: MonoBehaviour
 
     void Update()
     {
-        /*
-        string magicName = GoogleSpeechRecognizer.GetComponent<StreamingRecognizer>().GetMagicName();
+        if(!debug)
+        {
+            string magicName = GoogleSpeechRecognizer.GetComponent<StreamingRecognizer>().GetMagicName();
         
-        if (magicName == null || magicName.Length <= 0)
-        {
-            return;
-        }
-        magicName = magicName.ToLower();
-        if (RightController.GetComponent<VRRightHand>().something != magicName)
-        {
-            try
+            if (magicName == null || magicName.Length <= 0)
             {
-                GameObject magicBall = Instantiate(MagicDict[testString], RightController.transform.position, RightController.transform.rotation, RightController.transform);
-                RightController.GetComponent<VRRightHand>().something = testString;
-                RightController.GetComponent<VRRightHand>().bullet = magicBall;
+                return;
             }
-            catch (KeyNotFoundException e)
+            magicName = magicName.ToLower();
+            if (RightController.GetComponent<VRRightHand>().something != magicName)
             {
+                try
+                {
+                    GameObject magicBall = Instantiate(MagicDict[magicName], RightController.transform.position, RightController.transform.rotation, RightController.transform);
+                    RightController.GetComponent<VRRightHand>().something = magicName;
+                    RightController.GetComponent<VRRightHand>().bullet = magicBall;
+                }
+                catch (KeyNotFoundException e)
+                {
 
+                }
             }
-        }*/
-        if (Input.GetKeyDown(KeyCode.Z))
+        }
+        if (debug)
+        { 
+            if (Input.GetKeyDown(KeyCode.Z))
         {
             Debug.Log("get Z");
             
@@ -63,6 +69,6 @@ public class MagicControl: MonoBehaviour
 
             }
         }
-        
+        }
     }
 }

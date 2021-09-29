@@ -15,17 +15,21 @@ public class MagicBall : MonoBehaviour
     private int hitDestoryTime = 2;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         gameObject.tag = "MagicBall";
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Destroy(gameObject, destoryTime);
+        
     }
-
+    public void BulletDestory()
+    {
+        Destroy(gameObject, destoryTime);
+    }
     void OnTriggerEnter(Collider other) // triger to destory
     {
         if(other.tag == "Player"){

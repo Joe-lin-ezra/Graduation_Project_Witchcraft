@@ -21,7 +21,7 @@ public class MagicControl: MonoBehaviour
     public void Start()
     {
         MagicDict = new Dictionary<string, GameObject>();
-        for (int i = 0; i<10; i++)
+        for (int i = 0; i< MagicsOBJ.Length; i++)
         {
             MagicDict.Add(MagicStr[i], MagicsOBJ[i]);
         }
@@ -29,7 +29,8 @@ public class MagicControl: MonoBehaviour
 
     void Update()
     {
-        if(!debug)
+        
+        if (!debug)
         {
             string magicName = GoogleSpeechRecognizer.GetComponent<StreamingRecognizer>().GetMagicName();
         
@@ -38,12 +39,30 @@ public class MagicControl: MonoBehaviour
                 return;
             }
             magicName = magicName.ToLower();
+            
             if (RightController.GetComponent<VRRightHand>().something != magicName)
             {
                 try
                 {
-                    GameObject magicBall = Instantiate(MagicDict[magicName], RightController.transform.position, RightController.transform.rotation, RightController.transform);
+                    RightController.GetComponent<VRRightHand>().bullet = Instantiate(MagicDict[magicName], RightController.transform.position, RightController.transform.rotation, RightController.transform);
                     RightController.GetComponent<VRRightHand>().something = magicName;
+                }
+                catch (KeyNotFoundException e)
+                {
+                    Debug.LogWarning(e);
+                }
+            }
+        }
+        if (debug)
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                Debug.Log("get Z");
+            
+                try
+                {
+                    GameObject magicBall = Instantiate(MagicDict[testString], RightController.transform.position, RightController.transform.rotation, RightController.transform);
+                    RightController.GetComponent<VRRightHand>().something = testString;
                     RightController.GetComponent<VRRightHand>().bullet = magicBall;
                 }
                 catch (KeyNotFoundException e)
@@ -51,24 +70,6 @@ public class MagicControl: MonoBehaviour
 
                 }
             }
-        }
-        if (debug)
-        { 
-            if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Debug.Log("get Z");
-            
-            try
-            {
-                GameObject magicBall = Instantiate(MagicDict[testString], RightController.transform.position, RightController.transform.rotation, RightController.transform);
-                RightController.GetComponent<VRRightHand>().something = testString;
-                RightController.GetComponent<VRRightHand>().bullet = magicBall;
-            }
-            catch (KeyNotFoundException e)
-            {
-
-            }
-        }
         }
     }
 }

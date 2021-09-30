@@ -48,8 +48,6 @@ public class VRRightHand: MonoBehaviour
             try
             {
                 // give velocity
-                //bullet.GetComponent<Rigidbody>().AddForce(
-                //    gameObject.transform.forward * bullet.GetComponent<MagicBall>().speed * Time.deltaTime);
                 bullet.GetComponent<Rigidbody>().velocity =
                     gameObject.transform.forward * force;//bullet.GetComponent<MagicBall>().speed;
                 bullet.GetComponent<MagicBall>().BulletDestory();

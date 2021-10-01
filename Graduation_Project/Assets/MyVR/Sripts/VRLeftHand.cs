@@ -10,7 +10,7 @@ public class VRLeftHand : MonoBehaviour
     // Start is called before the first frame update
     SteamVR_LaserPointer slp;   //射线对象
     private GameObject PointerSomething = null;//被指物
-    public GameObject CircleUI;
+    public GameObject CircleMenu;
 
     [Header("debug")]
     public bool debug;
@@ -37,20 +37,22 @@ public class VRLeftHand : MonoBehaviour
     }
     void MenuTrigger()
     {
-        if (SteamVR_Actions.default_PadOnTouch.state)
+        if (SteamVR_Actions.default_PadOnTouch_Left.state)
         {
-            CircleUI.SetActive(true);
+            //CircleMenu.SetActive(true);
             //get ui posi
             if(debug)
             {
-                Debug.Log(string.Format("Touchpad : X {0:0.00} ,Y {0:0.00}", SteamVR_Actions.default_PadPosition.axis.x, SteamVR_Actions.default_PadPosition.axis.y));
+
+                Debug.Log(string.Format("Touchpad : X {0:0.00} ,Y {0:0.00}", SteamVR_Actions.default_PadPosition_Left.axis.x, SteamVR_Actions.default_PadPosition_Left.axis.y));
+                CircleMenu.GetComponent<CircularControl>().pointPos = SteamVR_Actions.default_PadPosition_Left.axis;
             }
             
         }
-        if (!SteamVR_Actions.default_PadOnTouch.state)
+        /*if (!SteamVR_Actions.default_PadOnTouch.state)
         {
-            CircleUI.SetActive(false);
-        }
+            CircleMenu.SetActive(false);
+        }*/
     }
 
 

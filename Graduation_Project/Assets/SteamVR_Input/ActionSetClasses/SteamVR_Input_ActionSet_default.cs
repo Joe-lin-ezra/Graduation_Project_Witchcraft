@@ -105,6 +105,38 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean PadOnTouch_Left
+        {
+            get
+            {
+                return SteamVR_Actions.default_PadOnTouch_Left;
+            }
+        }
+        
+        public virtual SteamVR_Action_Vector2 PadPosition_Left
+        {
+            get
+            {
+                return SteamVR_Actions.default_PadPosition_Left;
+            }
+        }
+        
+        public virtual SteamVR_Action_Vector2 PadPosition_Right
+        {
+            get
+            {
+                return SteamVR_Actions.default_PadPosition_Right;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean PadOnTouch_Right
+        {
+            get
+            {
+                return SteamVR_Actions.default_PadOnTouch_Right;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptic
         {
             get

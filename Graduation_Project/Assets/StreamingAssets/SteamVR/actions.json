@@ -50,6 +50,23 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/default/in/PadOnTouch_Left",
+      "type": "boolean",
+      "requirement": "optional"
+    },
+    {
+      "name": "/actions/default/in/PadPosition_Left",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/default/in/PadPosition_Right",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/default/in/PadOnTouch_Right",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },

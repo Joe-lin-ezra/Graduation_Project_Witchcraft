@@ -13,6 +13,8 @@ public class VRRightHand: MonoBehaviour
     public GameObject bullet = null;//被發射物
     public string something = null;
 
+    public int force;
+
     void Start()
     {
         slp = GetComponent<SteamVR_LaserPointer>();
@@ -41,11 +43,22 @@ public class VRRightHand: MonoBehaviour
         }
 
         // shoot out magic ball
-        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && something != null)
+        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && something != null && bullet != null)
         {
-            // give velocity
-            //gameObject.GetComponent<Rigidbody>().velocity = gameObject.transform.forward * speed * Time.deltaTime;
-            something = null;
+            try
+            {
+                // give velocity
+                bullet.GetComponent<Rigidbody>().velocity =
+                    gameObject.transform.forward * force;//bullet.GetComponent<MagicBall>().speed;
+                bullet.GetComponent<MagicBall>().BulletDestory();
+                bullet.transform.SetParent(null);
+                bullet = null;
+                something = null;
+
+            } catch
+            {
+                Debug.LogWarning(">> you have no magic");
+            }
         }
     }
 

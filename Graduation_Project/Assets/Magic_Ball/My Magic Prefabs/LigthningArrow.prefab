@@ -9658,8 +9658,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3925636352342320263}
-  m_LocalRotation: {x: 0.0000025248153, y: -0.000009804963, z: 0.0000017508862, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.3}
+  m_LocalRotation: {x: 0.0000030826777, y: -0.000010967255, z: 0.000001899898, w: 1}
+  m_LocalPosition: {x: -0.0000020861626, y: -0.00001206249, z: 0.30006856}
   m_LocalScale: {x: 0.11256339, y: 0.11256339, z: 0.11256339}
   m_Children:
   - {fileID: 7650691798345907143}
@@ -9707,8 +9707,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9a3fa8877978e46a19d4cdccd11af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeEffect: {fileID: 0}
-  bulletEffect: {fileID: 0}
+  explodeEffect: {fileID: 3692378109169598266, guid: 8d1327f3d1019a7449a47af3cc442c7e,
+    type: 3}
+  bulletEffect: {fileID: 6819402449663525030}
   destoryTime: 15
   speed: 0.05
   atk: 20
@@ -19352,7 +19353,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6819402449663525030}
   m_LocalRotation: {x: 1, y: 0.000008504838, z: 0.00000074505806, w: 0.0000015031546}
-  m_LocalPosition: {x: 0.000017679647, y: -0.000044986795, z: 0.2535099}
+  m_LocalPosition: {x: -0.000021031494, y: -0.00017290925, z: 0.25428352}
   m_LocalScale: {x: 1.1580656, y: 1.1580656, z: 1.1580656}
   m_Children:
   - {fileID: 6704901278218689201}

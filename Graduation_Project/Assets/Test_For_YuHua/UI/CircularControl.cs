@@ -27,7 +27,7 @@ public class CircularControl : MonoBehaviour
         float trX = pointPos.x * scalex;
         float trY = pointPos.y * scaley;
         pointer.transform.localPosition = new Vector3(trX, trY, gameObject.transform.localPosition.z);
-        Debug.Log(string.Format("Local: X {0:0.00} ,Y {0:0.00}  Globe: X {0:0.00} ,Y {0:0.00}", pointer.transform.localPosition.x, pointer.transform.localPosition.y));
+        //Debug.Log(string.Format("Local: X {0:0.00} ,Y {0:0.00}  Globe: X {0:0.00} ,Y {0:0.00}", pointer.transform.localPosition.x, pointer.transform.localPosition.y));
         
     }
 }

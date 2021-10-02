@@ -12,8 +12,8 @@ public class MagicControl: MonoBehaviour
 
     [Header("VR Controller")]
     public GameObject RightController;
-    [Header("Google Speech Recognizer")]
-    public GameObject GoogleSpeechRecognizer;
+    [Header("Speech Recognizer")]
+    public GameObject SpeechRecognizer;
     public string testString;
 
     public bool debug = false;
@@ -29,28 +29,21 @@ public class MagicControl: MonoBehaviour
 
     void Update()
     {
-        
+
         if (!debug)
         {
-            string magicName = GoogleSpeechRecognizer.GetComponent<StreamingRecognizer>().GetMagicName();
-        
-            if (magicName == null || magicName.Length <= 0)
+            string magicName = keywordExtraction(SpeechRecognizer.GetComponent<SpeechRecognizer>().getText());
+            if (string.IsNullOrEmpty(magicName))
             {
+                Debug.LogWarning("Magic name not found!!");
                 return;
             }
             magicName = magicName.ToLower();
-            
-            if (RightController.GetComponent<VRRightHand>().something != magicName)
+
+            if (string.IsNullOrEmpty(RightController.GetComponent<VRRightHand>().something))
             {
-                try
-                {
-                    RightController.GetComponent<VRRightHand>().bullet = Instantiate(MagicDict[magicName], RightController.transform.position, RightController.transform.rotation, RightController.transform);
-                    RightController.GetComponent<VRRightHand>().something = magicName;
-                }
-                catch (KeyNotFoundException e)
-                {
-                    Debug.LogWarning(e);
-                }
+                RightController.GetComponent<VRRightHand>().bullet = Instantiate(MagicDict[magicName], RightController.transform.position, RightController.transform.rotation, RightController.transform);
+                RightController.GetComponent<VRRightHand>().something = magicName;
             }
         }
         if (debug)
@@ -58,7 +51,7 @@ public class MagicControl: MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 Debug.Log("get Z");
-            
+
                 try
                 {
                     GameObject magicBall = Instantiate(MagicDict[testString], RightController.transform.position, RightController.transform.rotation, RightController.transform);
@@ -71,5 +64,23 @@ public class MagicControl: MonoBehaviour
                 }
             }
         }
+    }
+
+    private string keywordExtraction(string text)
+    {
+        int minIndex = 0;
+        string magicName = "";
+        foreach(string s in MagicStr)
+        {
+            int i = text.IndexOf(s);
+            if (i < minIndex && i != -1)
+            {
+                minIndex = i;
+                magicName = s;
+            }
+        }
+        
+
+        return magicName;
     }
 }

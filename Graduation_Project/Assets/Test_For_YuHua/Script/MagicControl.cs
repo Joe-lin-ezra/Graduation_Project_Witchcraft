@@ -79,8 +79,6 @@ public class MagicControl: MonoBehaviour
                 magicName = s;
             }
         }
-        
-
         return magicName;
     }
 }

@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2495660978965396675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3695076414533126608}
+  - component: {fileID: 6701594271277292783}
+  m_Layer: 0
+  m_Name: MagicController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3695076414533126608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2495660978965396675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.365654, y: -17.838398, z: -0.24020195}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6701594271277292783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2495660978965396675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ca5a9a859d40344b274166b2a876d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MagicsOBJ:
+  - {fileID: 3370675836347692252, guid: 472766bb5380b63419114443f4ed6c04, type: 3}
+  - {fileID: 8614629058738693132, guid: 0d8d568de8a6d374e9846881bac1883c, type: 3}
+  - {fileID: 6155106646468732341, guid: 76cb466c877a3904fa3c2856960a0e70, type: 3}
+  - {fileID: 5657706294088045217, guid: aa70602289a594d4ba88031b31a10008, type: 3}
+  - {fileID: 2018538585775956742, guid: 164fa13df7af2964d8f9dfac7595b955, type: 3}
+  - {fileID: 5552033482738986697, guid: 53b31b11344d38843a37f101b2577f8a, type: 3}
+  - {fileID: 965274931641923950, guid: eed1b5b984bee4043a20972f7c20c31b, type: 3}
+  - {fileID: 3225542782265644505, guid: 742df1e6ae2a66544b4a463cd24ab64e, type: 3}
+  - {fileID: 8790524677730685825, guid: 2f2393b6575610a4689d8e5bddbdef5e, type: 3}
+  - {fileID: 8518930488669567725, guid: 01fd1aa911b14a447934343b18236d8a, type: 3}
+  - {fileID: 6869092798968910472, guid: 0642f0633de58de41a3573f811deb49a, type: 3}
+  - {fileID: 5436858948712824330, guid: 06046dc34df25b74c9602025d696ff6b, type: 3}
+  - {fileID: 8708670061502292333, guid: 0f5445238fc9a8842a641c360c15678a, type: 3}
+  - {fileID: 3925636352342320263, guid: 9c0dad7a102187f49a72b601f5335853, type: 3}
+  - {fileID: 4877176678123108152, guid: 0c471857f5f0a8645bbb5855c330c82e, type: 3}
+  MagicStr:
+  - blue
+  - ground
+  - arrow
+  - banana
+  - ball
+  - bit
+  - bite
+  - light
+  - sheild
+  - fireball
+  - iceball
+  - okay
+  - lightning
+  - lighten
+  - spark
+  RightController: {fileID: 0}
+  debug: 0
+  testString: fireball

@@ -11,23 +11,21 @@ public class VRRightHand: MonoBehaviour
     // Start is called before the first frame update
     SteamVR_LaserPointer slp;   //射线对象
     private GameObject PointerSomething = null;//被指物
-    public GameObject bullet = null;//被發射物
-    public string something = null;
-    public GameObject googleSpeach;
-    private AudioSource googleAudioSource;
-    private StreamingRecognizer sr;
+    
+    public GameObject speechRecognizer;
 
     public int force;
+
+    [HideInInspector]
+    public GameObject bullet = null;//被發射物
+    [HideInInspector]
+    public string magicName = null;
 
     void Start()
     {
         slp = GetComponent<SteamVR_LaserPointer>();
         slp.PointerIn += OnpointerIn;
         slp.PointerOut += OnpointerOut;    //響應設線離開事件
-        GetComponent<SteamVR_LaserPointer>().enabled = true;
-        googleAudioSource = googleSpeach.GetComponent<AudioSource>();
-        googleAudioSource.mute = true;
-        sr = googleSpeach.GetComponent<StreamingRecognizer>();
         //sr.StopListening();
     }
 
@@ -39,19 +37,19 @@ public class VRRightHand: MonoBehaviour
 
     void ClickTrigger(){
          // teleport
-        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && something == null)
+        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && magicName == null)
         {
             // teleport effect start
             
         }
-        else if(SteamVR_Actions.default_GrabPinch.GetStateUp(SteamVR_Input_Sources.RightHand) && something == null)
+        else if(SteamVR_Actions.default_GrabPinch.GetStateUp(SteamVR_Input_Sources.RightHand) && magicName == null)
         {
             // do teleport
             
         }
 
         // shoot out magic ball
-        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && something != null && bullet != null)
+        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && magicName != null && bullet != null)
         {
             try
             {
@@ -61,22 +59,20 @@ public class VRRightHand: MonoBehaviour
                 bullet.GetComponent<MagicBall>().BulletDestory();
                 bullet.transform.SetParent(null);
                 bullet = null;
-                something = null;
+                magicName = null;
 
             } catch
             {
                 Debug.LogWarning(">> you have no magic");
             }
         }
-        if (SteamVR_Actions.default_GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet == null && string.IsNullOrEmpty(something))//關mute
+        if (SteamVR_Actions.default_GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet == null && string.IsNullOrEmpty(magicName))//關mute
         {
-            googleAudioSource.mute = false;
-            sr.StartListening();
+            speechRecognizer.GetComponent<SpeechRecognizer>().startListening();
         }
         else if (SteamVR_Actions.default_GrabGrip.GetStateUp(SteamVR_Input_Sources.RightHand))//開mute
         {
-            googleAudioSource.mute = true;
-            //sr.StopListening();
+            speechRecognizer.GetComponent<SpeechRecognizer>().stopListening();
         }
     }
 

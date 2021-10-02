@@ -12,11 +12,10 @@ public class MagicControl: MonoBehaviour
 
     [Header("VR Controller")]
     public GameObject RightController;
-    [Header("Speech Recognizer")]
-    public GameObject SpeechRecognizer;
-    public string testString;
 
+    [Header("For Test")]
     public bool debug = false;
+    public string testString;
 
     public void Start()
     {
@@ -27,12 +26,10 @@ public class MagicControl: MonoBehaviour
         }
     }
 
-    void Update()
+    private void magicInstantiate(string magicName)
     {
-
         if (!debug)
         {
-            string magicName = keywordExtraction(SpeechRecognizer.GetComponent<SpeechRecognizer>().getText());
             if (string.IsNullOrEmpty(magicName))
             {
                 Debug.LogWarning("Magic name not found!!");
@@ -40,10 +37,10 @@ public class MagicControl: MonoBehaviour
             }
             magicName = magicName.ToLower();
 
-            if (string.IsNullOrEmpty(RightController.GetComponent<VRRightHand>().something))
+            if (string.IsNullOrEmpty(RightController.GetComponent<VRRightHand>().magicName))
             {
                 RightController.GetComponent<VRRightHand>().bullet = Instantiate(MagicDict[magicName], RightController.transform.position, RightController.transform.rotation, RightController.transform);
-                RightController.GetComponent<VRRightHand>().something = magicName;
+                RightController.GetComponent<VRRightHand>().magicName = magicName;
             }
         }
         if (debug)
@@ -55,7 +52,7 @@ public class MagicControl: MonoBehaviour
                 try
                 {
                     GameObject magicBall = Instantiate(MagicDict[testString], RightController.transform.position, RightController.transform.rotation, RightController.transform);
-                    RightController.GetComponent<VRRightHand>().something = testString;
+                    RightController.GetComponent<VRRightHand>().magicName = testString;
                     RightController.GetComponent<VRRightHand>().bullet = magicBall;
                 }
                 catch (KeyNotFoundException e)
@@ -66,9 +63,9 @@ public class MagicControl: MonoBehaviour
         }
     }
 
-    private string keywordExtraction(string text)
+    public string keywordExtraction(string text)
     {
-        int minIndex = 0;
+        int minIndex =text.Length;
         string magicName = "";
         foreach(string s in MagicStr)
         {
@@ -79,6 +76,13 @@ public class MagicControl: MonoBehaviour
                 magicName = s;
             }
         }
-        return magicName;
+        
+        if (string.IsNullOrEmpty(magicName))
+            return text;
+        else
+        {
+            magicInstantiate(magicName);
+            return "";
+        }
     }
 }

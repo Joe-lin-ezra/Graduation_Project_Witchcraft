@@ -59,6 +59,4 @@ sysinfo.txt
 crashlytics-build.properties
 
 #APIKEY
-gcp_credentials.json	
-
-/Graduation_Project/Assets/Mirror
+gcp_credentials.json

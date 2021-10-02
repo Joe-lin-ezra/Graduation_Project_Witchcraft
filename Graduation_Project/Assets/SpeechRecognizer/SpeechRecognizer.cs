@@ -8,6 +8,7 @@ public class SpeechRecognizer : MonoBehaviour
 
     DictationRecognizer dictationRecognizer;
 
+    [HideInInspector]
     public string text;
 
     public string getText()

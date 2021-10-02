@@ -32,7 +32,7 @@ public class CircularControl : MonoBehaviour
         pointer.transform.localPosition = new Vector3(trX, trY, gameObject.transform.localPosition.z);
         //Debug.Log(string.Format("Local: X {0:0.00} ,Y {0:0.00}  Globe: X {0:0.00} ,Y {0:0.00}", pointer.transform.localPosition.x, pointer.transform.localPosition.y));
         selection = Locate(new Vector2(pointer.transform.localPosition.x,pointer.transform.localPosition.y));
-        Debug.Log(selection);
+        //Debug.Log(selection);
     }
     private void createIMG()
     {

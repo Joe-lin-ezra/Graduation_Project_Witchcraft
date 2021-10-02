@@ -4,6 +4,7 @@ using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 using Valve.VR.Extras;
+using GoogleCloudStreamingSpeechToText;
 
 public class VRRightHand: MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class VRRightHand: MonoBehaviour
     private GameObject PointerSomething = null;//被指物
     public GameObject bullet = null;//被發射物
     public string something = null;
+    public GameObject googleSpeach;
+    private AudioSource googleAudioSource;
+    private StreamingRecognizer sr;
 
     public int force;
 
@@ -21,6 +25,10 @@ public class VRRightHand: MonoBehaviour
         slp.PointerIn += OnpointerIn;
         slp.PointerOut += OnpointerOut;    //響應設線離開事件
         GetComponent<SteamVR_LaserPointer>().enabled = true;
+        googleAudioSource = googleSpeach.GetComponent<AudioSource>();
+        googleAudioSource.mute = true;
+        sr = googleSpeach.GetComponent<StreamingRecognizer>();
+        //sr.StopListening();
     }
 
     // Update is called once per frame
@@ -59,6 +67,16 @@ public class VRRightHand: MonoBehaviour
             {
                 Debug.LogWarning(">> you have no magic");
             }
+        }
+        if (SteamVR_Actions.default_GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet == null && string.IsNullOrEmpty(something))//關mute
+        {
+            googleAudioSource.mute = false;
+            sr.StartListening();
+        }
+        else if (SteamVR_Actions.default_GrabGrip.GetStateUp(SteamVR_Input_Sources.RightHand))//開mute
+        {
+            googleAudioSource.mute = true;
+            //sr.StopListening();
         }
     }
 

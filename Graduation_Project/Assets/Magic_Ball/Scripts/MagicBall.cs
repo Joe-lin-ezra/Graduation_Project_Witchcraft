@@ -32,15 +32,16 @@ public class MagicBall : MonoBehaviour
     }
     void OnTriggerEnter(Collider other) // triger to destory
     {
-        Debug.Log("enter");
-        if(other.tag == "Player"){
+        GameObject ex = Instantiate(explodeEffect, transform.position, transform.rotation);
+        //Debug.Log("enter");
+        if (other.tag == "Player"){
             other.gameObject.GetComponent<Player>().TakeDamage(other.gameObject);
         }
         else if(other.tag == "Monster"){
             other.gameObject.GetComponent<Monster>().TakeDamage(other.gameObject);
         }
         
-        GameObject ex = Instantiate(explodeEffect, transform.position , transform.rotation);
+
         bulletEffect.SetActive(false);
         Destroy(ex, hitDestoryTime);
     }

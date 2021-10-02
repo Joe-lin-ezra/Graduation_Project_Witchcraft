@@ -4,18 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CircularControl : MonoBehaviour
-{
+{   //Data
     public GameObject[] dataArr;
     public string[] dataString;
 
+    //posision
     public Vector2 pointPos;
     public Image pointer;
     private float scalex = 0.5f;
     private float scaley = 0.5f;
     public int selection;
 
-    // Start is called before the first frame update
-    
+    //elements
+    public GameObject element;
+
+
     void Start()
     {
         

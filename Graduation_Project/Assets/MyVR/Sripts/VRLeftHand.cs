@@ -44,7 +44,7 @@ public class VRLeftHand : MonoBehaviour
             if(debug)
             {
 
-                Debug.Log(string.Format("Touchpad : X {0:0.00} ,Y {0:0.00}", SteamVR_Actions.default_PadPosition_Left.axis.x, SteamVR_Actions.default_PadPosition_Left.axis.y));
+                //Debug.Log(string.Format("Touchpad : X {0:0.00} ,Y {0:0.00}", SteamVR_Actions.default_PadPosition_Left.axis.x, SteamVR_Actions.default_PadPosition_Left.axis.y));
                 CircleMenu.GetComponent<CircularControl>().pointPos = SteamVR_Actions.default_PadPosition_Left.axis;
             }
             

@@ -1,10 +1,4 @@
-using UnityEngine;
-using UnityEngine.UI;
-
-public class Element : MonoBehaviour
-{
-    public Sprite bg;
-    public Texture comp;
+@@ -8,11 +8,23 @@ public class Element : MonoBehaviour
 
     private Image image;
     private RawImage rawImage;
@@ -15,6 +9,8 @@ public class Element : MonoBehaviour
     {
         image = gameObject.GetComponent<Image>();
         rawImage = gameObject.GetComponent<RawImage>();
+        image.sprite = bg;
+        rawImage.texture = comp;
         collider = gameObject.GetComponent<Collider>();
         //image.sprite = bg;
         //rawImage.texture = comp;

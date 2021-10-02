@@ -17,11 +17,15 @@ public class CircularControl : MonoBehaviour
 
     //elements
     public GameObject element;
-
-
+    public int amount;
+    public GameObject Cnav;
+    public Canvas canv;
+    
     void Start()
     {
-        
+        amount = 4;
+        canv = gameObject.GetComponent<Canvas>();
+        createIMG(amount);
     }
 
     // Update is called once per frame
@@ -34,9 +38,20 @@ public class CircularControl : MonoBehaviour
         selection = Locate(new Vector2(pointer.transform.localPosition.x,pointer.transform.localPosition.y));
         //Debug.Log(selection);
     }
-    private void createIMG()
+    private void createIMG(int selection)
     {
-        
+        Vector3 loc = new Vector3(0.5f,0.5f,0);
+        Quaternion qua = new Quaternion(0,0,0,0);
+        Instantiate(element,loc,qua);
+        loc = new Vector3(-0.5f, 0.5f, 0);
+        qua = new Quaternion(0, 0, 0, 0);
+        Instantiate(element, loc, qua);
+        loc = new Vector3(-0.5f, -0.5f, 0);
+        qua = new Quaternion(0, 0, 0, 0);
+        Instantiate(element, loc, qua);
+        loc = new Vector3(0.5f, -0.5f, 0);
+        qua = new Quaternion(0, 0, 0, 0);
+        Instantiate(element, loc, qua);
     }
     private int findPos(double pt1,double pt2,double x1,double x2,double y1,double y2)
     {

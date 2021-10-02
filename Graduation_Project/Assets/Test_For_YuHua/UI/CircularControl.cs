@@ -31,6 +31,43 @@ public class CircularControl : MonoBehaviour
         float trY = pointPos.y * scaley;
         pointer.transform.localPosition = new Vector3(trX, trY, gameObject.transform.localPosition.z);
         //Debug.Log(string.Format("Local: X {0:0.00} ,Y {0:0.00}  Globe: X {0:0.00} ,Y {0:0.00}", pointer.transform.localPosition.x, pointer.transform.localPosition.y));
-        
+        selection = Locate(new Vector2(pointer.transform.localPosition.x,pointer.transform.localPosition.y));
+        Debug.Log(selection);
+    }
+    private createIMG()
+    {
+
+    }
+    private int findPos(double pt,double x1,double x2,double y1,double y2)
+    {
+        double tmp = (y1 – y2) * x + (x2 – x1) * y + x1 * y2 – x2 * y1;
+        if(tmp > pt) return 1;
+        if(tmp < pt) return -1;
+        return 0;
+    }
+    private int Locate(Vector2 now)
+    {
+        // 8 selection 
+        if(now.x >= 0 && now.y > 0) //section1
+        {
+            if(findPos < 0)return 0;
+            return 1;
+        }
+        else if (now.x < 0 && now.y >= 0)//section2
+        {
+            if(findPos < 0)return 2;
+            return 3;
+        }
+        else if (now.x <= 0 && now.y < 0)//section3
+        {
+            if(findPos < 0)return 4;
+            return 5;
+
+        }
+        else if (now.x > 0 && now.y <= 0)//section4
+        {
+            if(findPos < 0)return 6;
+            return 7;
+        }        
     }
 }

@@ -27,7 +27,7 @@ public class MagicControl: MonoBehaviour
         }
     }
 
-    void Update()
+    /*void Update()
     {
         
         if (!debug)
@@ -71,5 +71,5 @@ public class MagicControl: MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 }

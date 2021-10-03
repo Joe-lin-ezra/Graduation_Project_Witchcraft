@@ -5,7 +5,8 @@ using Mirror;
 
 public class Player : NetworkBehaviour
 {
-    private GameObject vrPlayer;
+    public GameObject vrPlayer;
+    public GameObject playerModel;
 
     public int hp = 100;
 
@@ -13,12 +14,11 @@ public class Player : NetworkBehaviour
     // Start is called before the first frame update
     public override void OnStartLocalPlayer()
     {
-        vrPlayer = GameObject.Find("Player");
         if (!isLocalPlayer)
             vrPlayer.SetActive(false);
         else
         {
-            this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            playerModel.GetComponent<MeshRenderer>().enabled = false;
         }
     }
 

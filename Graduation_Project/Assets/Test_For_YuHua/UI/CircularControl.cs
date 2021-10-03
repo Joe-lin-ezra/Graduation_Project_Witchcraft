@@ -18,14 +18,15 @@ public class CircularControl : MonoBehaviour
     //elements
     public GameObject element;
     public int amount;
-    public GameObject Cnav;
+    public GameObject Canvas_DrawElement;
     public Canvas canv;
     
     void Start()
     {
-        amount = 4;
+        amount = 5;
         canv = gameObject.GetComponent<Canvas>();
-        createIMG(amount);
+        createIMG();
+
     }
 
     // Update is called once per frame
@@ -33,57 +34,72 @@ public class CircularControl : MonoBehaviour
     {
         float trX = pointPos.x * scalex;
         float trY = pointPos.y * scaley;
-        pointer.transform.localPosition = new Vector3(trX, trY, gameObject.transform.localPosition.z);
+        pointer.transform.localPosition = new Vector3(trX, trY);
         //Debug.Log(string.Format("Local: X {0:0.00} ,Y {0:0.00}  Globe: X {0:0.00} ,Y {0:0.00}", pointer.transform.localPosition.x, pointer.transform.localPosition.y));
-        selection = Locate(new Vector2(pointer.transform.localPosition.x,pointer.transform.localPosition.y));
         //Debug.Log(selection);
     }
-    private void createIMG(int selection)
+    private void createIMG()
     {
-        Vector3 loc = new Vector3(0.5f,0.5f,0);
-        Quaternion qua = new Quaternion(0,0,0,0);
-        Instantiate(element,loc,qua);
-        loc = new Vector3(-0.5f, 0.5f, 0);
-        qua = new Quaternion(0, 0, 0, 0);
-        Instantiate(element, loc, qua);
-        loc = new Vector3(-0.5f, -0.5f, 0);
-        qua = new Quaternion(0, 0, 0, 0);
-        Instantiate(element, loc, qua);
-        loc = new Vector3(0.5f, -0.5f, 0);
-        qua = new Quaternion(0, 0, 0, 0);
-        Instantiate(element, loc, qua);
-    }
-    private int findPos(double pt1,double pt2,double x1,double x2,double y1,double y2)
-    {
-        double tmp = (y1 - y2) * pt1 + (x2 - x1) * pt2 + x1 * y2 - x2 * y1;
-        if(tmp > 0) return 1;
-        if(tmp < 0) return -1;
-        return 0;
-    }
-    private int Locate(Vector2 now)
-    {
-        // 8 selection with one error
-        if(now.x >= 0 && now.y > 0) //section1
+        float angle = 360/amount;
+        Debug.Log(angle);
+        for (int i = 0; i < amount; i++)
         {
-            if(findPos(now.x,now.y,0,1,0,1) < 0)return 0;
-            return 1;
+            Vector3 loc = RotateRound(new Vector3(1,0), new Vector3(0,0),new Vector3(0,1,0),angle * i);
+            Debug.Log(loc);
+            Debug.Log(angle);
+            Quaternion qua = new Quaternion(-45, 0, 0, 0);
+            GameObject a =  Instantiate(element, loc, qua);
+            a.GetComponent<Element>().selection = i;
+            //Create
+            a.transform.rotation = Quaternion.Euler(90, 0, 0);
+            //Rotate
+            
+            //Scle
+            a.transform.SetParent(Canvas_DrawElement.GetComponentInChildren<Transform>());
         }
-        else if (now.x < 0 && now.y >= 0)//section2
-        {
-            if(findPos(now.x, now.y, 0, 1, 0, 1) < 0)return 2;
-            return 3;
-        }
-        else if (now.x <= 0 && now.y < 0)//section3
-        {
-            if(findPos(now.x, now.y, 0, 1, 0, 1) < 0)return 4;
-            return 5;
+       
+    }
+    public static Vector3 RotateRound(Vector3 position, Vector3 center, Vector3 axis, float angle)
+    {
+        Vector3 point = Quaternion.AngleAxis(angle, axis) * (position - center);
+        Vector3 resultVec3 = center + point;
+        return resultVec3;
+    }
+    private void scaleElement(GameObject g)
+    {
 
-        }
-        else if (now.x > 0 && now.y <= 0)//section4
-        {
-            if(findPos(now.x, now.y, 0, 1, 0, 1) < 0)return 6;
-            return 7;
-        }
-        return 8;
     }
+    //private int findPos(double pt1,double pt2,double x1,double x2,double y1,double y2)
+    //{
+    //    double tmp = (y1 - y2) * pt1 + (x2 - x1) * pt2 + x1 * y2 - x2 * y1;
+    //    if(tmp > 0) return 1;
+    //    if(tmp < 0) return -1;
+    //    return 0;
+    //}
+    //private int Locate(Vector2 now)
+    //{
+    //    // 8 selection with one error
+    //    if(now.x >= 0 && now.y > 0) //section1
+    //    {
+    //        if(findPos(now.x,now.y,0,1,0,1) < 0)return 0;
+    //        return 1;
+    //    }
+    //    else if (now.x < 0 && now.y >= 0)//section2
+    //    {
+    //        if(findPos(now.x, now.y, 0, 1, 0, 1) < 0)return 2;
+    //        return 3;
+    //    }
+    //    else if (now.x <= 0 && now.y < 0)//section3
+    //    {
+    //        if(findPos(now.x, now.y, 0, 1, 0, 1) < 0)return 4;
+    //        return 5;
+
+    //    }
+    //    else if (now.x > 0 && now.y <= 0)//section4
+    //    {
+    //        if(findPos(now.x, now.y, 0, 1, 0, 1) < 0)return 6;
+    //        return 7;
+    //    }
+    //    return 8;
+    //}
 }

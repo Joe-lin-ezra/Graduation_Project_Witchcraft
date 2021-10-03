@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 7229155551292959731}
   m_Layer: 0
   m_Name: Pointer
-  m_TagString: Untagged
+  m_TagString: Pointer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,7 +81,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2895038136248614908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0078589}
+  m_LocalPosition: {x: 0, y: 0, z: -0.008}
   m_LocalScale: {x: 0.20763081, y: 0.20763081, z: 0.20763081}
   m_Children: []
   m_Father: {fileID: 1413228487206316386}
@@ -89,7 +89,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0018971, y: -0.0047858}
+  m_AnchoredPosition: {x: 0.002, y: 0.009}
   m_SizeDelta: {x: 0.1, y: 0.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1407772184350786949
@@ -138,7 +138,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2895038136248614908}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.15818714, y: 0.111774944, z: 0.07745473}
@@ -284,8 +284,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8984572406880112882}
-  m_LocalRotation: {x: 0.53222173, y: 0.45955262, z: -0.43467897, w: 0.56267715}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0068367454}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9048622156258954531}
@@ -295,10 +295,10 @@ RectTransform:
   - {fileID: 1412176441093681918}
   m_Father: {fileID: 7473448836102667201}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 446.813, y: 14118.479, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0053768456, y: -0.0069024563}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5666366379484690709
@@ -930,6 +930,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: element
+      objectReference: {fileID: 0}
+    - target: {fileID: 7043758927010354924, guid: 718c6eaba68079946a8ad69062b0e1f5,
+        type: 3}
+      propertyPath: selection
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 718c6eaba68079946a8ad69062b0e1f5, type: 3}

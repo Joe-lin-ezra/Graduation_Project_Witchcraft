@@ -19403,6 +19403,7 @@ MonoBehaviour:
   explodeEffect: {fileID: 140737184129100753, guid: 9586ff61dc1ea79498939f2493b82161,
     type: 3}
   bulletEffect: {fileID: 1472108195351778335}
-  destoryTime: 15
-  speed: 0.01
+  magicName: fireball
   atk: 20
+  speed: 35
+  destoryTime: 15

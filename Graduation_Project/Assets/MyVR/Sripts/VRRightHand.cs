@@ -14,12 +14,8 @@ public class VRRightHand: MonoBehaviour
     
     public GameObject speechRecognizer;
 
-    public int force;
-
     [HideInInspector]
     public GameObject bullet = null;//被發射物
-    [HideInInspector]
-    public string magicName = null;
 
     void Start()
     {
@@ -37,40 +33,39 @@ public class VRRightHand: MonoBehaviour
 
     void ClickTrigger(){
          // teleport
-        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && magicName == null)
+        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet == null)
         {
             // teleport effect start
             
         }
-        else if(SteamVR_Actions.default_GrabPinch.GetStateUp(SteamVR_Input_Sources.RightHand) && magicName == null)
+        else if(SteamVR_Actions.default_GrabPinch.GetStateUp(SteamVR_Input_Sources.RightHand) && bullet == null)
         {
             // do teleport
             
         }
 
         // shoot out magic ball
-        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && magicName != null && bullet != null)
+        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet != null)
         {
             try
             {
                 // give velocity
                 bullet.GetComponent<Rigidbody>().velocity =
-                    gameObject.transform.forward * force;//bullet.GetComponent<MagicBall>().speed;
+                    gameObject.transform.forward * bullet.GetComponent<MagicBall>().speed;
                 bullet.GetComponent<MagicBall>().BulletDestory();
                 bullet.transform.SetParent(null);
                 bullet = null;
-                magicName = null;
-
-            } catch
+            } 
+            catch
             {
                 Debug.LogWarning(">> you have no magic");
             }
         }
-        if (SteamVR_Actions.default_GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet == null && string.IsNullOrEmpty(magicName))//關mute
+        if (SteamVR_Actions.default_GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet == null) // start listening
         {
             speechRecognizer.GetComponent<SpeechRecognizer>().startListening();
         }
-        else if (SteamVR_Actions.default_GrabGrip.GetStateUp(SteamVR_Input_Sources.RightHand))//開mute
+        else if (SteamVR_Actions.default_GrabGrip.GetStateUp(SteamVR_Input_Sources.RightHand)) // stop listening
         {
             speechRecognizer.GetComponent<SpeechRecognizer>().stopListening();
         }

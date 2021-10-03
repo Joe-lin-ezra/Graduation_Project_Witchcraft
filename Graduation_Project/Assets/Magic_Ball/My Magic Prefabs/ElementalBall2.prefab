@@ -9707,11 +9707,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9a3fa8877978e46a19d4cdccd11af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeEffect: {fileID: 0}
+  explodeEffect: {fileID: 3452822048397104037, guid: bf75a265f0967a146be9317ad23a30bb,
+    type: 3}
   bulletEffect: {fileID: 6991810164267021685}
-  destoryTime: 15
-  speed: 0.05
+  magicName: bit
   atk: 20
+  speed: 30
+  destoryTime: 15
 --- !u!1 &6991810164267021685
 GameObject:
   m_ObjectHideFlags: 0

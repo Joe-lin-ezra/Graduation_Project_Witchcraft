@@ -75,11 +75,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9a3fa8877978e46a19d4cdccd11af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeEffect: {fileID: 0}
+  explodeEffect: {fileID: 739067210382930684, guid: 6ee2b3ecfc65c62428187cebc12c589e,
+    type: 3}
   bulletEffect: {fileID: 4894892390798701516}
-  destoryTime: 15
-  speed: 0.05
+  magicName: ice
   atk: 20
+  speed: 35
+  destoryTime: 15
 --- !u!1 &868106585933556802
 GameObject:
   m_ObjectHideFlags: 0

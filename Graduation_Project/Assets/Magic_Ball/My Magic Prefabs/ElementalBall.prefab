@@ -75,11 +75,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9a3fa8877978e46a19d4cdccd11af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeEffect: {fileID: 0}
+  explodeEffect: {fileID: 9101076873645126014, guid: 8c9a5db855adc7b4fba7f1290429acbe,
+    type: 3}
   bulletEffect: {fileID: 2307844606016996899}
-  destoryTime: 15
-  speed: 0.05
+  magicName: ball
   atk: 20
+  speed: 19
+  destoryTime: 15
 --- !u!1 &2307844606016996899
 GameObject:
   m_ObjectHideFlags: 0

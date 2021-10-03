@@ -14488,11 +14488,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9a3fa8877978e46a19d4cdccd11af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeEffect: {fileID: 0}
+  explodeEffect: {fileID: 4747954562615677986, guid: ad0a65b4326769e46bccf41031fa73c2,
+    type: 3}
   bulletEffect: {fileID: 7112863643061954207}
-  destoryTime: 15
-  speed: 0.05
+  magicName: banana
   atk: 20
+  speed: 12
+  destoryTime: 15
 --- !u!1 &7112863643061954207
 GameObject:
   m_ObjectHideFlags: 0

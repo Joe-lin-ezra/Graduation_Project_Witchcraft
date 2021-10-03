@@ -6,6 +6,10 @@ using Mirror;
 public class Player : NetworkBehaviour
 {
     private GameObject vrPlayer;
+
+    public int hp = 100;
+
+
     // Start is called before the first frame update
     public override void OnStartLocalPlayer()
     {

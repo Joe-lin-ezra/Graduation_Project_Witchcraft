@@ -9752,8 +9752,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9a3fa8877978e46a19d4cdccd11af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeEffect: {fileID: 0}
+  explodeEffect: {fileID: 193028550110189096, guid: 69218c00af035d7458fd8da91f050a60,
+    type: 3}
   bulletEffect: {fileID: 2366073687226928168}
-  destoryTime: 15
-  speed: 0.05
+  magicName: arrow
   atk: 20
+  speed: 15
+  destoryTime: 15

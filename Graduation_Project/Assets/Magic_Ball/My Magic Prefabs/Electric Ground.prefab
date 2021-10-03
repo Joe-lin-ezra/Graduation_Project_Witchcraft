@@ -9669,9 +9669,10 @@ MonoBehaviour:
   explodeEffect: {fileID: 3692378109169598266, guid: 8d1327f3d1019a7449a47af3cc442c7e,
     type: 3}
   bulletEffect: {fileID: 8720492130367589906}
-  destoryTime: 15
-  speed: 0.05
+  magicName: ground
   atk: 20
+  speed: 10
+  destoryTime: 15
 --- !u!1 &8618313870341197767
 GameObject:
   m_ObjectHideFlags: 0

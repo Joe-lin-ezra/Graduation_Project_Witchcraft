@@ -7,8 +7,6 @@ public class MagicControl: MonoBehaviour
 {
     // Start is called before the first frame update
     public  GameObject[] MagicsOBJ ;
-    public  string[] MagicStr;
-    private Dictionary<string, GameObject> MagicDict;
 
     [Header("VR Controller")]
     public GameObject RightController;
@@ -19,29 +17,14 @@ public class MagicControl: MonoBehaviour
 
     public void Start()
     {
-        MagicDict = new Dictionary<string, GameObject>();
-        for (int i = 0; i< MagicsOBJ.Length; i++)
-        {
-            MagicDict.Add(MagicStr[i], MagicsOBJ[i]);
-        }
+
     }
 
-    private void magicInstantiate(string magicName)
+    private void magicInstantiate(GameObject magic)
     {
         if (!debug)
         {
-            if (string.IsNullOrEmpty(magicName))
-            {
-                Debug.LogWarning("Magic name not found!!");
-                return;
-            }
-            magicName = magicName.ToLower();
-
-            if (string.IsNullOrEmpty(RightController.GetComponent<VRRightHand>().magicName))
-            {
-                RightController.GetComponent<VRRightHand>().bullet = Instantiate(MagicDict[magicName], RightController.transform.position, RightController.transform.rotation, RightController.transform);
-                RightController.GetComponent<VRRightHand>().magicName = magicName;
-            }
+            RightController.GetComponent<VRRightHand>().bullet = Instantiate(magic, RightController.transform.position, RightController.transform.rotation, RightController.transform);
         }
         if (debug)
         {
@@ -51,8 +34,7 @@ public class MagicControl: MonoBehaviour
 
                 try
                 {
-                    GameObject magicBall = Instantiate(MagicDict[testString], RightController.transform.position, RightController.transform.rotation, RightController.transform);
-                    RightController.GetComponent<VRRightHand>().magicName = testString;
+                    GameObject magicBall = Instantiate(magic, RightController.transform.position, RightController.transform.rotation, RightController.transform);
                     RightController.GetComponent<VRRightHand>().bullet = magicBall;
                 }
                 catch (KeyNotFoundException e)
@@ -63,25 +45,28 @@ public class MagicControl: MonoBehaviour
         }
     }
 
-    public string keywordExtraction(string text)
+    public string keywordExtractionAndInstantiate(string text)
     {
         int minIndex =text.Length;
-        string magicName = "";
-        foreach(string s in MagicStr)
+        GameObject g = null;
+        foreach(GameObject m in MagicsOBJ)
         {
-            int i = text.IndexOf(s);
+            int i = text.IndexOf(m.GetComponent<MagicBall>().magicName);
             if (i < minIndex && i != -1)
             {
                 minIndex = i;
-                magicName = s;
+                g = m;
             }
         }
-        
-        if (string.IsNullOrEmpty(magicName))
+
+        if (minIndex == -1)
+        {
+            Debug.LogWarning("Magic name not found!!");
             return text;
+        }
         else
         {
-            magicInstantiate(magicName);
+            magicInstantiate(g);
             return "";
         }
     }

@@ -32,14 +32,14 @@ public class SpeechRecognizer : MonoBehaviour
     {
         // write your logic here
         Debug.LogFormat("Dictation result: " + text);
-        magicController.GetComponent<MagicControl>().keywordExtraction(text);
+        magicController.GetComponent<MagicControl>().keywordExtractionAndInstantiate(text);
     }
 
     void onDictationHypothesis(string text)
     {
         // write your logic here
         Debug.LogFormat("Dictation hypothesis: {0}", text);
-        text = magicController.GetComponent<MagicControl>().keywordExtraction(text);
+        text = magicController.GetComponent<MagicControl>().keywordExtractionAndInstantiate(text);
     }
 
     void onDictationComplete(DictationCompletionCause cause)

@@ -19385,6 +19385,7 @@ MonoBehaviour:
   explodeEffect: {fileID: 3692378109169598266, guid: 8d1327f3d1019a7449a47af3cc442c7e,
     type: 3}
   bulletEffect: {fileID: 3210543505498772757}
-  destoryTime: 15
-  speed: 0.05
+  magicName: lightning
   atk: 20
+  speed: 30
+  destoryTime: 15

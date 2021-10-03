@@ -9,10 +9,14 @@ public class MagicBall : MonoBehaviour
     public GameObject bulletEffect;
 
     [Header("Magic ball setting")]
-    public int destoryTime;
-    public float speed;
+    public string magicName;
     public int atk;
+    public float speed;
+    public int destoryTime;
+
+
     private int hitDestoryTime = 2;
+
 
     // Start is called before the first frame update
     void Awake()

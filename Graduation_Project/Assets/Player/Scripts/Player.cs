@@ -14,12 +14,12 @@ public class Player : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!isLocalPlayer)
-            vrPlayer.SetActive(false);
-        else
-        {
-            playerModel.GetComponent<MeshRenderer>().enabled = false;
-        }
+        //if (!isLocalPlayer)
+        //    vrPlayer.SetActive(false);
+        //else
+        //{
+        //    playerModel.GetComponent<MeshRenderer>().enabled = false;
+        //}
     }
 
     // Update is called once per frame

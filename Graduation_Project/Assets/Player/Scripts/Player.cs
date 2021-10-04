@@ -5,9 +5,9 @@ using Mirror;
 
 public class Player : NetworkBehaviour
 {
-    public GameObject vrPlayer;
     public GameObject playerModel;
-
+    public GameObject vrPlayer;
+    
     public int hp = 100;
 
 

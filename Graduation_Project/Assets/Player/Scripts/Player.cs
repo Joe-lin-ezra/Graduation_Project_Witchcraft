@@ -12,7 +12,7 @@ public class Player : NetworkBehaviour
 
 
     // Start is called before the first frame update
-    public override void OnStartLocalPlayer()
+    void Start()
     {
         if (!isLocalPlayer)
             vrPlayer.SetActive(false);
@@ -27,6 +27,11 @@ public class Player : NetworkBehaviour
     {
         if (!isLocalPlayer)
             return;
+
+        var sqrlen = (gameObject.transform.position - vrPlayer.transform.position).sqrMagnitude; //計算玩家模型與VR玩家的距離，如果差距瞬移模型過去
+        if(sqrlen > 0.1f){
+            gameObject.transform.position = vrPlayer.transform.position;
+        }
     }
 
     public void TakeDamage(GameObject g)

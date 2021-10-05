@@ -5,6 +5,7 @@ using Mirror;
 
 public class Player : NetworkBehaviour
 {
+    [SyncVar]
     public GameObject playerModel;
     public GameObject vrPlayer;
     public GameObject vrCame;
@@ -51,8 +52,7 @@ public class Player : NetworkBehaviour
     [ClientRpc]
     void RpcPlayerMove()
     {
-        playerModel.gameObject.transform.position = vrCame.transform.position;
-        print("MOVE");
+        playerModel.gameObject.transform.position = new Vector3(10, 10, 10);
     }
 
     public void TakeDamage(GameObject g)

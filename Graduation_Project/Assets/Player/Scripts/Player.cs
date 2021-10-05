@@ -52,6 +52,7 @@ public class Player : NetworkBehaviour
     void RpcPlayerMove()
     {
         playerModel.gameObject.transform.position = vrCame.transform.position;
+        print("MOVE");
     }
 
     public void TakeDamage(GameObject g)

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7076071707623488364}
   - component: {fileID: -7596810695587160150}
   - component: {fileID: -1052194830641998926}
+  - component: {fileID: 7563541401900214318}
   m_Layer: 0
   m_Name: PlayerModel
   m_TagString: Untagged
@@ -129,3 +130,21 @@ MonoBehaviour:
   showGizmos: 0
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+--- !u!114 &7563541401900214318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5200988044924625667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a6ad0b570422147b8d2c9a3690fd11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  player: {fileID: 4930358578682757120, guid: ec21bef6e6ddcc746b4b1a7dbe4d8407, type: 3}
+  teleprot: {fileID: 153878, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
+  terrain: {fileID: 689365201757880868, guid: 1280f3be0d053714dab7b00f500053a2, type: 3}
+  hp: 100

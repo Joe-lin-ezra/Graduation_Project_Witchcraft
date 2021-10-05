@@ -5,39 +5,25 @@ using Mirror;
 
 public class Player : NetworkBehaviour
 {
-    public GameObject playerModel;
-    private GameObject pm;
-    public GameObject vrPlayer;
-    public GameObject vrCame;
+
+    public GameObject vrCamera;
     public GameObject teleprot;
     public GameObject terrain;
 
     public int hp = 100;
 
 
+    private void Awake()
+    {
+        vrCamera = GameObject.Find("Player/SteamVRObjects/VRCamera");
+    }
     // Start is called before the first frame update
-    void Start()
+    public override void OnStartLocalPlayer()
     {
-        //CmdCreatPlayerModel();
-        if (!isLocalPlayer)
-        {
-           // vrPlayer.SetActive(false);
-        }
-        else
-        {
-            Instantiate(teleprot, new Vector3(3, 0, 0), new Quaternion(0, 0, 0, 0));
-            Instantiate(terrain, this.gameObject.transform.position, new Quaternion(0, 0, 0, 0));
-            //playerModel.GetComponent<MeshRenderer>().enabled = false;
-        }
-    }
-    [Command] void CmdCreatPlayerModel()
-    {
-        RPCplayerCreater();
-    }
-
-    [ClientRpc] void RPCplayerCreater()
-    {
-        pm = Instantiate(playerModel, vrCame.transform.position, vrCame.transform.rotation);
+        this.gameObject.transform.position = vrCamera.transform.position;
+        this.gameObject.transform.rotation = vrCamera.transform.rotation;
+        Instantiate(teleprot, new Vector3(3, 0, 0), new Quaternion(0, 0, 0, 0));
+        Instantiate(terrain, this.gameObject.transform.position, new Quaternion(0, 0, 0, 0));
     }
 
     // Update is called once per frame
@@ -45,21 +31,8 @@ public class Player : NetworkBehaviour
     {
         if (!isLocalPlayer)
             return;
-
-        var sqrlen = (gameObject.transform.position - vrPlayer.transform.position).sqrMagnitude; //計算玩家模型與VR玩家的距離，如果差距瞬移模型過去
-        if(sqrlen > 0.1f){
-            //CmdPlayerMove();
-        }
-    }
-
-    [Command] void CmdPlayerMove()
-    {
-        RpcPlayerMove();
-    }
-
-    [ClientRpc] void RpcPlayerMove()
-    {
-        pm.gameObject.transform.position = vrCame.transform.position;
+        this.gameObject.transform.position = vrCamera.transform.position;
+        this.gameObject.transform.rotation = vrCamera.transform.rotation;
     }
 
     public void TakeDamage(GameObject g)

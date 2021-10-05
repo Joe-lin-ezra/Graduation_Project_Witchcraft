@@ -11,20 +11,19 @@ public class CircularControl : MonoBehaviour
     //posision
     public Vector2 pointPos;
     public Image pointer;
-    private float scalex = 0.5f;
-    private float scaley = 0.5f;
+    private float scalex = 0.2f;
+    private float scaley = 0.2f;
     public int selection;
 
     //elements
     public GameObject element;
     public int amount;
     public GameObject Canvas_DrawElement;
-    public Canvas canv;
+    public GameObject panel;
     
     void Start()
     {
         amount = 5;
-        canv = gameObject.GetComponent<Canvas>();
         createIMG();
 
     }
@@ -44,16 +43,19 @@ public class CircularControl : MonoBehaviour
         Debug.Log(angle);
         for (int i = 0; i < amount; i++)
         {
-            Vector3 loc = RotateRound(new Vector3(1,0), new Vector3(0,0),new Vector3(0,1,0),angle * i);
-            Debug.Log(loc);
-            Debug.Log(angle);
+            Vector3 loc = RotateRound(new Vector3(0.2f,0,0), new Vector3(0,0),new Vector3(0,1,0),angle * i);
             Quaternion qua = new Quaternion(-45, 0, 0, 0);
-            GameObject a =  Instantiate(element, loc, qua);
+            GameObject a =  Instantiate(element, pointer.transform.localPosition + loc, qua);
             a.GetComponent<Element>().selection = i;
-            //Create
-            a.transform.rotation = Quaternion.Euler(90, 0, 0);
-            //Rotate
             
+            //Create
+
+            a.transform.rotation = Quaternion.Euler(90, 0, 0);
+
+            //Rotate
+
+            a.transform.localScale = new Vector3(a.transform.localScale.x * scalex, a.transform.localScale.y * scaley, a.transform.localScale.z);
+
             //Scle
             a.transform.SetParent(Canvas_DrawElement.GetComponentInChildren<Transform>());
         }

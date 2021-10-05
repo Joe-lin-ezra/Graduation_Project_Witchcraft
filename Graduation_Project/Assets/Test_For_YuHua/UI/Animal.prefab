@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1146916437973001833}
   - component: {fileID: 7109021904091010613}
   m_Layer: 5
-  m_Name: Quad 1
+  m_Name: Animal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

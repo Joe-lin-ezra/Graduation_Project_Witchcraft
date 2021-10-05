@@ -138,7 +138,11 @@ namespace Valve.VR.InteractionSystem
             }
             showArc = false;
         }
-
+        
+        public bool GetArc()
+        {
+            return this.showArc;
+        }
 
         //-------------------------------------------------
         // Draws each segment of the arc individually

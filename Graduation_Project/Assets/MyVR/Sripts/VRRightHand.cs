@@ -4,7 +4,6 @@ using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 using Valve.VR.Extras;
-using GoogleCloudStreamingSpeechToText;
 
 public class VRRightHand: MonoBehaviour
 {
@@ -17,12 +16,15 @@ public class VRRightHand: MonoBehaviour
     [HideInInspector]
     public GameObject bullet = null;//被發射物
 
+    private GameObject teleporting = null;
+
     void Start()
     {
         slp = GetComponent<SteamVR_LaserPointer>();
         slp.PointerIn += OnpointerIn;
         slp.PointerOut += OnpointerOut;    //響應設線離開事件
-        //sr.StopListening();
+
+        speechRecognizer = GameObject.Find("SpeechRecognizer");
     }
 
     // Update is called once per frame
@@ -33,15 +35,15 @@ public class VRRightHand: MonoBehaviour
 
     void ClickTrigger(){
          // teleport
-        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet == null)
+        if(teleporting != null && teleporting.GetComponent<TeleportArc>().GetArc())
         {
-            // teleport effect start
-            
+            // hide the raser line
+            transform.GetChild(1).gameObject.SetActive(false);
         }
-        else if(SteamVR_Actions.default_GrabPinch.GetStateUp(SteamVR_Input_Sources.RightHand) && bullet == null)
+        else if(teleporting != null)
         {
-            // do teleport
-            
+            // show the raser line
+            transform.GetChild(1).gameObject.SetActive(true);
         }
 
         // shoot out magic ball
@@ -86,14 +88,9 @@ public class VRRightHand: MonoBehaviour
             PointerSomething = null;  //不再记录这个物体了
         }
     }
-
-    private void OnTriggerEnter(Collider other)
+    
+    public void setTeleporting(GameObject t)
     {
-        bullet = other.gameObject;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        bullet = null;
+        this.teleporting = t;
     }
 }

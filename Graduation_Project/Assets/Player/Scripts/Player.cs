@@ -4,10 +4,9 @@ using UnityEngine;
 using Mirror;
 
 public class Player : NetworkBehaviour
-{
-
+{ 
     public GameObject vrCamera;
-    public GameObject teleprot;
+    public GameObject teleport;
     public GameObject terrain;
 
     public int hp = 100;
@@ -22,7 +21,9 @@ public class Player : NetworkBehaviour
     {
         this.gameObject.transform.position = vrCamera.transform.position;
         this.gameObject.transform.rotation = vrCamera.transform.rotation;
-        Instantiate(teleprot, new Vector3(3, 0, 0), new Quaternion(0, 0, 0, 0));
+        GameObject t = Instantiate(teleport, new Vector3(3, 0, 0), new Quaternion(0, 0, 0, 0));
+        GameObject RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
+        RightController.GetComponent<VRRightHand>().setTeleporting(t);
         Instantiate(terrain, this.gameObject.transform.position, new Quaternion(0, 0, 0, 0));
     }
 

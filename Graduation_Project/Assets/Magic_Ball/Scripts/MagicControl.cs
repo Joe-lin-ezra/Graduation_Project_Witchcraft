@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GoogleCloudStreamingSpeechToText;
 
 public class MagicControl: MonoBehaviour
 {
@@ -17,7 +16,8 @@ public class MagicControl: MonoBehaviour
 
     public void Start()
     {
-
+        RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
+        Debug.Log(RightController);
     }
 
     private void magicInstantiate(GameObject magic)

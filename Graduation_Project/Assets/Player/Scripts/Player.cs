@@ -7,19 +7,26 @@ public class Player : NetworkBehaviour
 {
     public GameObject playerModel;
     public GameObject vrPlayer;
-    
+    public GameObject vrCame;
+    public GameObject teleprot;
+    public GameObject terrain;
+
     public int hp = 100;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //if (!isLocalPlayer)
-        //    vrPlayer.SetActive(false);
-        //else
-        //{
-        //    playerModel.GetComponent<MeshRenderer>().enabled = false;
-        //}
+        if (!isLocalPlayer)
+        {
+            vrPlayer.SetActive(false);
+        }
+        else
+        {
+            Instantiate(teleprot, new Vector3(3, 0, 0), new Quaternion(0, 0, 0, 0));
+            Instantiate(terrain, this.gameObject.transform.position, new Quaternion(0, 0, 0, 0));
+            playerModel.GetComponent<MeshRenderer>().enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -30,7 +37,7 @@ public class Player : NetworkBehaviour
 
         var sqrlen = (gameObject.transform.position - vrPlayer.transform.position).sqrMagnitude; //計算玩家模型與VR玩家的距離，如果差距瞬移模型過去
         if(sqrlen > 0.1f){
-            gameObject.transform.position = vrPlayer.transform.position;
+            playerModel.gameObject.transform.position = vrCame.transform.position;
         }
     }
 

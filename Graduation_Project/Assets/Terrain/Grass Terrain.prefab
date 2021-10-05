@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 689365201757880875}
   - component: {fileID: 689365201757880874}
   - component: {fileID: 689365201757880869}
-  - component: {fileID: 4407621332459987155}
   m_Layer: 0
   m_Name: Grass Terrain
   m_TagString: Untagged
@@ -78,18 +77,6 @@ TerrainCollider:
   m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: b58d5cad064caac4195003c5b8014bf0, type: 2}
   m_EnableTreeColliders: 1
---- !u!114 &4407621332459987155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 689365201757880868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a8a2325e727c144a95f186415e6be38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8894336504318010863
 GameObject:
   m_ObjectHideFlags: 0

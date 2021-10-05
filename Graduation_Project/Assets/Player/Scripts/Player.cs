@@ -45,9 +45,14 @@ public class Player : NetworkBehaviour
     [Command]
     void CmdPlayerMove()
     {
-        playerModel.gameObject.transform.position = vrCame.transform.position;
+        RpcPlayerMove();
     }
 
+    [ClientRpc]
+    void RpcPlayerMove()
+    {
+        playerModel.gameObject.transform.position = vrCame.transform.position;
+    }
 
     public void TakeDamage(GameObject g)
     {

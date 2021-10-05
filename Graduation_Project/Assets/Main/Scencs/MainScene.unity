@@ -378,7 +378,7 @@ MonoBehaviour:
   offlineScene: Assets/Main/Scencs/MainScene.unity
   onlineScene: Assets/Main/Scencs/MainScene.unity
   transport: {fileID: 1010879274}
-  networkAddress: localhost
+  networkAddress: 140.134.208.53
   maxConnections: 100
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60

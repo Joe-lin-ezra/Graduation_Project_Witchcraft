@@ -53,7 +53,7 @@ MonoBehaviour:
   element: {fileID: 5803803522354158364, guid: 718c6eaba68079946a8ad69062b0e1f5, type: 3}
   amount: 4
   Canvas_DrawElement: {fileID: 7757084482836658203}
-  canv: {fileID: 0}
+  panel: {fileID: 0}
 --- !u!1 &1626173488165398433
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 4240794705387843051}
   - component: {fileID: 4405234445058721680}
   - component: {fileID: 8527112227492617709}
+  - component: {fileID: 2389721817158247191}
   m_Layer: 5
   m_Name: Pointer
   m_TagString: Pointer
@@ -236,6 +237,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &2389721817158247191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4190669894238652898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83479fe2da706c4cb1134eecac5a0e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5938681014992475655
 GameObject:
   m_ObjectHideFlags: 0

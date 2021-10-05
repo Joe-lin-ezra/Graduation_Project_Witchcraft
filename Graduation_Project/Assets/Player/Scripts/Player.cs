@@ -5,7 +5,7 @@ using Mirror;
 
 public class Player : NetworkBehaviour
 {
-    [SyncVar] public GameObject playerModel;
+    public GameObject playerModel;
     private GameObject pm;
     public GameObject vrPlayer;
     public GameObject vrCame;
@@ -18,10 +18,10 @@ public class Player : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CmdCreatPlayerModel();
+        //CmdCreatPlayerModel();
         if (!isLocalPlayer)
         {
-            vrPlayer.SetActive(false);
+           // vrPlayer.SetActive(false);
         }
         else
         {
@@ -48,7 +48,7 @@ public class Player : NetworkBehaviour
 
         var sqrlen = (gameObject.transform.position - vrPlayer.transform.position).sqrMagnitude; //計算玩家模型與VR玩家的距離，如果差距瞬移模型過去
         if(sqrlen > 0.1f){
-            CmdPlayerMove();
+            //CmdPlayerMove();
         }
     }
 

@@ -9,13 +9,11 @@ public class Element : MonoBehaviour
     private Image image;
     private RawImage rawImage;
 
-    private Collider collider;
     public int selection;
-    void Start()
+    void Awake()
     {
         image = gameObject.GetComponent<Image>();
         rawImage = gameObject.GetComponent<RawImage>();
-        collider = gameObject.GetComponent<Collider>();
         //image.sprite = bg;
         //rawImage.texture = comp;
     }
@@ -24,7 +22,10 @@ public class Element : MonoBehaviour
         if(other.tag == "Pointer")
         {
             Debug.Log(selection);
-        }
-        
+        }   
+    }
+    public int get_selection()
+    {
+        return this.selection;
     }
 }

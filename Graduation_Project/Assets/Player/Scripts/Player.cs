@@ -25,7 +25,8 @@ public class Player : NetworkBehaviour
         {
             Instantiate(teleprot, new Vector3(3, 0, 0), new Quaternion(0, 0, 0, 0));
             Instantiate(terrain, this.gameObject.transform.position, new Quaternion(0, 0, 0, 0));
-            playerModel.GetComponent<MeshRenderer>().enabled = false;
+            //playerModel.GetComponent<MeshRenderer>().enabled = false;
+            playerModel.gameObject.transform.position = vrCame.transform.position;
         }
     }
 
@@ -37,12 +38,20 @@ public class Player : NetworkBehaviour
 
         var sqrlen = (gameObject.transform.position - vrPlayer.transform.position).sqrMagnitude; //計算玩家模型與VR玩家的距離，如果差距瞬移模型過去
         if(sqrlen > 0.1f){
-            playerModel.gameObject.transform.position = vrCame.transform.position;
+            CmdPlayerMove();
         }
     }
+
+    [Command]
+    void CmdPlayerMove()
+    {
+        playerModel.gameObject.transform.position = vrCame.transform.position;
+    }
+
 
     public void TakeDamage(GameObject g)
     {
         
     }
+
 }

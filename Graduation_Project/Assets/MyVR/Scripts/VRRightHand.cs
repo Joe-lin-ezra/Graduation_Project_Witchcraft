@@ -31,7 +31,6 @@ public class VRRightHand: MonoBehaviour
         slp.PointerOut += OnpointerOut;    //響應設線離開事件
 
         speechRecognizer = GameObject.Find("SpeechRecognizer");
-        //sr.StopListening();
 
 
         magicActive = MagicUI.GetComponentInChildren<Image>();

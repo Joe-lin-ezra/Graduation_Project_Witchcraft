@@ -1,0 +1,7 @@
+我更改了Playaer的結構
+場景中會個原本就存在的Player物件，那就是VR player
+之後開始連線會自動創建一個player model(PM)
+本地的PM一開始就會創造出terrain和teleporting
+使Player可以順利瞬移
+之後PM所做的事情就只有讀取複製VR camera的位置和旋轉
+PM也是充當同步用的玩家物件

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 using Valve.VR.Extras;
@@ -17,12 +18,22 @@ public class VRRightHand: MonoBehaviour
     [HideInInspector]
     public GameObject bullet = null;//被發射物
 
+    //UI Componenet
+    public GameObject MagicUI;
+    public Image magicActive;
+    public 
+
+
     void Start()
     {
         slp = GetComponent<SteamVR_LaserPointer>();
         slp.PointerIn += OnpointerIn;
         slp.PointerOut += OnpointerOut;    //響應設線離開事件
         //sr.StopListening();
+
+
+        magicActive = MagicUI.GetComponentInChildren<Image>();
+        //UI
     }
 
     // Update is called once per frame
@@ -63,10 +74,12 @@ public class VRRightHand: MonoBehaviour
         }
         if (SteamVR_Actions.default_GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet == null) // start listening
         {
+            magicActive.color = Color.red;
             speechRecognizer.GetComponent<SpeechRecognizer>().startListening();
         }
         else if (SteamVR_Actions.default_GrabGrip.GetStateUp(SteamVR_Input_Sources.RightHand)) // stop listening
         {
+            magicActive.color = Color.white;
             speechRecognizer.GetComponent<SpeechRecognizer>().stopListening();
         }
     }

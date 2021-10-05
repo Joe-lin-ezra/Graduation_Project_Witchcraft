@@ -5,8 +5,8 @@ using Mirror;
 
 public class Player : NetworkBehaviour
 {
-    [SyncVar]
-    public GameObject playerModel;
+    [SyncVar] public GameObject playerModel;
+    private GameObject pm;
     public GameObject vrPlayer;
     public GameObject vrCame;
     public GameObject teleprot;
@@ -18,6 +18,7 @@ public class Player : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CmdCreatPlayerModel();
         if (!isLocalPlayer)
         {
             vrPlayer.SetActive(false);
@@ -27,8 +28,16 @@ public class Player : NetworkBehaviour
             Instantiate(teleprot, new Vector3(3, 0, 0), new Quaternion(0, 0, 0, 0));
             Instantiate(terrain, this.gameObject.transform.position, new Quaternion(0, 0, 0, 0));
             //playerModel.GetComponent<MeshRenderer>().enabled = false;
-            playerModel.gameObject.transform.position = vrCame.transform.position;
         }
+    }
+    [Command] void CmdCreatPlayerModel()
+    {
+        RPCplayerCreater();
+    }
+
+    [ClientRpc] void RPCplayerCreater()
+    {
+        pm = Instantiate(playerModel, vrCame.transform.position, vrCame.transform.rotation);
     }
 
     // Update is called once per frame
@@ -43,16 +52,14 @@ public class Player : NetworkBehaviour
         }
     }
 
-    [Command]
-    void CmdPlayerMove()
+    [Command] void CmdPlayerMove()
     {
         RpcPlayerMove();
     }
 
-    [ClientRpc]
-    void RpcPlayerMove()
+    [ClientRpc] void RpcPlayerMove()
     {
-        playerModel.gameObject.transform.position = new Vector3(10, 10, 10);
+        pm.gameObject.transform.position = vrCame.transform.position;
     }
 
     public void TakeDamage(GameObject g)

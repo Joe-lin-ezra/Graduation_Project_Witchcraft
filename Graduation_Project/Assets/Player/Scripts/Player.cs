@@ -24,7 +24,7 @@ public class Player : NetworkBehaviour
         GameObject t = Instantiate(teleport, new Vector3(3, 0, 0), new Quaternion(0, 0, 0, 0));
         GameObject RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
         RightController.GetComponent<VRRightHand>().setTeleporting(t);
-        Instantiate(terrain, this.gameObject.transform.position, new Quaternion(0, 0, 0, 0));
+        Instantiate(terrain, this.gameObject.transform.position - new Vector3(0,2,0), new Quaternion(0, 0, 0, 0));
     }
 
     // Update is called once per frame

@@ -230,12 +230,12 @@ MonoBehaviour:
   - {fileID: 3225542782265644505, guid: 742df1e6ae2a66544b4a463cd24ab64e, type: 3}
   - {fileID: 8790524677730685825, guid: 2f2393b6575610a4689d8e5bddbdef5e, type: 3}
   - {fileID: 8518930488669567725, guid: 01fd1aa911b14a447934343b18236d8a, type: 3}
-  - {fileID: 6869092798968910472, guid: 0642f0633de58de41a3573f811deb49a, type: 3}
+  - {fileID: 451596709242057349, guid: 6aaf8fe4161cb6f4f924416f83f5271a, type: 3}
   - {fileID: 5436858948712824330, guid: 06046dc34df25b74c9602025d696ff6b, type: 3}
   - {fileID: 8708670061502292333, guid: 0f5445238fc9a8842a641c360c15678a, type: 3}
   - {fileID: 3925636352342320263, guid: 9c0dad7a102187f49a72b601f5335853, type: 3}
   - {fileID: 4877176678123108152, guid: 0c471857f5f0a8645bbb5855c330c82e, type: 3}
-  RightController: {fileID: 8345578659303344849}
+  RightController: {fileID: 0}
   debug: 0
   testString: fireball
 --- !u!1 &84457089776014202
@@ -21691,8 +21691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda844ec34a014a47a2afdd05cb6a4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speechRecognizer: {fileID: 7035941741954977893, guid: bd28f72f1ebdf9b49b2448af3cc1efca,
-    type: 3}
+  speechRecognizer: {fileID: 0}
   bullet: {fileID: 0}
 --- !u!1 &8366202324822898602
 GameObject:

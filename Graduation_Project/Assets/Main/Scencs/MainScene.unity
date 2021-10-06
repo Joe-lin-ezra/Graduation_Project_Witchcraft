@@ -216,6 +216,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &96371781 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7035941741954977893, guid: bd28f72f1ebdf9b49b2448af3cc1efca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1736334595}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &780574894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -283,6 +289,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8726954925820227149, guid: ec21bef6e6ddcc746b4b1a7dbe4d8407,
+        type: 3}
+      propertyPath: speechRecognizer
+      value: 
+      objectReference: {fileID: 96371781}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec21bef6e6ddcc746b4b1a7dbe4d8407, type: 3}
 --- !u!1 &780743818
@@ -482,6 +493,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpeechRecognizer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7035941741954977894, guid: bd28f72f1ebdf9b49b2448af3cc1efca,
+        type: 3}
+      propertyPath: magicController
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7035941741954977895, guid: bd28f72f1ebdf9b49b2448af3cc1efca,
         type: 3}

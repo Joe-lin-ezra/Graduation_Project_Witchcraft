@@ -26,6 +26,8 @@ public class SpeechRecognizer : MonoBehaviour
         dictationRecognizer.DictationHypothesis += onDictationHypothesis;
         dictationRecognizer.DictationComplete += onDictationComplete;
         dictationRecognizer.DictationError += onDictationError;
+
+        magicController = GameObject.Find("/Player/MagicController");
     }
 
     void onDictationResult(string text, ConfidenceLevel confidence)

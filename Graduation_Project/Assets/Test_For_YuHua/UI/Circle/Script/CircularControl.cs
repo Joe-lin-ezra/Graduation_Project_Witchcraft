@@ -23,32 +23,33 @@ public class CircularControl : MonoBehaviour
     
     void Start()
     {
-        amount = 4;
+        amount = 6;
         createIMG();
 
     }
     // Update is called once per frame
     void Update()
     {
-        float trX = pointPos.x * scalex;
-        float trY = pointPos.y * scaley;
+        float trX = pointPos.x * (scalex + 0.2f);
+        float trY = pointPos.y * (scaley + 0.2f);
         pointer.transform.localPosition = new Vector3(trX, trY);
         //Debug.Log(string.Format("Local: X {0:0.00} ,Y {0:0.00}  Globe: X {0:0.00} ,Y {0:0.00}", pointer.transform.localPosition.x, pointer.transform.localPosition.y));
         //Debug.Log(selection);
     }
+    
     private void createIMG()
     {
         float angle = 360/amount;
         for (int i = 0; i < amount; i++)
         {
             Vector3 loc = RotateRound(new Vector3(0.2f,0,0), new Vector3(0,0),new Vector3(0,1,0),angle * i);
-            Quaternion qua = new Quaternion(-45, 0, 0, 0);
-            GameObject a =  Instantiate(element, pointer.transform.localPosition + loc, qua);
+            Quaternion qua = new Quaternion(0, 0, 90, 0);
+            GameObject a =  Instantiate(element, panel.transform.position + (loc * 0.4f), qua);
             a.GetComponent<Element>().selection = i;
             
             //Create
 
-            a.transform.rotation = Quaternion.Euler(90, 0, 0);
+            a.transform.rotation = Quaternion.Euler(75, 0, 0);
 
             //Rotate
 
@@ -59,6 +60,7 @@ public class CircularControl : MonoBehaviour
         }
        
     }
+    
     //round place elements
     public static Vector3 RotateRound(Vector3 position, Vector3 center, Vector3 axis, float angle)
     {
@@ -70,4 +72,5 @@ public class CircularControl : MonoBehaviour
     {
 
     }
+    
 }

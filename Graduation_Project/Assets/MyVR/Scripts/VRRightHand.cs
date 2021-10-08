@@ -19,9 +19,9 @@ public class VRRightHand: MonoBehaviour
 
     private GameObject teleporting = null;
     //UI Componenet
-    public GameObject MagicUI;
-    public Image magicActive;
-    public 
+    //public GameObject MagicUI;
+    //public Image magicActive;
+    //public 
 
 
     void Start()
@@ -33,7 +33,7 @@ public class VRRightHand: MonoBehaviour
         speechRecognizer = GameObject.Find("SpeechRecognizer");
 
 
-        magicActive = MagicUI.GetComponentInChildren<Image>();
+        //magicActive = MagicUI.GetComponentInChildren<Image>();
         //UI
     }
 
@@ -64,7 +64,7 @@ public class VRRightHand: MonoBehaviour
                 // give velocity
                 bullet.GetComponent<Rigidbody>().velocity =
                     gameObject.transform.forward * bullet.GetComponent<MagicBall>().speed;
-                bullet.GetComponent<MagicBall>().BulletDestory();
+                bullet.GetComponent<MagicBall>().magicBallDestory();
                 bullet.transform.SetParent(null);
                 bullet = null;
             } 
@@ -73,15 +73,17 @@ public class VRRightHand: MonoBehaviour
                 Debug.LogWarning(">> you have no magic");
             }
         }
-        if (SteamVR_Actions.default_GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet == null) // start listening
+
+        // Speech Recognizer listening setting
+        if (SteamVR_Actions.default_GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet == null) 
         {
-            magicActive.color = Color.red;
+            //magicActive.color = Color.red;
             speechRecognizer.GetComponent<SpeechRecognizer>().startListening();
         }
-        else if (SteamVR_Actions.default_GrabGrip.GetStateUp(SteamVR_Input_Sources.RightHand)) // stop listening
+        else if (SteamVR_Actions.default_GrabGrip.GetStateUp(SteamVR_Input_Sources.RightHand))
         {
-            magicActive.color = Color.white;
-            speechRecognizer.GetComponent<SpeechRecognizer>().stopListening();
+            //magicActive.color = Color.white;
+            // stop listening when sub-system get the return string
         }
     }
 

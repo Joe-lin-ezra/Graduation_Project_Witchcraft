@@ -24,7 +24,14 @@ public class MagicControl: MonoBehaviour
     {
         if (!debug)
         {
-            RightController.GetComponent<VRRightHand>().bullet = Instantiate(magic, RightController.transform.position, RightController.transform.rotation, RightController.transform);
+            if (RightController.GetComponent<VRRightHand>().bullet == null)
+                RightController.GetComponent<VRRightHand>().bullet =
+                    Instantiate(magic,
+                    RightController.transform.position - 0.2f * Vector3.down + 0.2f * RightController.transform.forward,
+                    RightController.transform.rotation,
+                    RightController.transform);
+            else
+                Debug.LogWarning("There has be a magic ball on your hand.");
         }
         if (debug)
         {
@@ -48,25 +55,25 @@ public class MagicControl: MonoBehaviour
     public string keywordExtractionAndInstantiate(string text)
     {
         int minIndex =text.Length;
-        GameObject g = null;
+        GameObject magic = null;
         foreach(GameObject m in MagicsOBJ)
         {
             int i = text.IndexOf(m.GetComponent<MagicBall>().magicName);
             if (i < minIndex && i != -1)
             {
                 minIndex = i;
-                g = m;
+                magic = m;
             }
         }
 
-        if (minIndex == -1)
+        if (minIndex == -1 || magic == null)
         {
             Debug.LogWarning("Magic name not found!!");
             return text;
         }
         else
         {
-            magicInstantiate(g);
+            magicInstantiate(magic);
             return "";
         }
     }

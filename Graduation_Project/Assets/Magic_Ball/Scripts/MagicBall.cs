@@ -12,41 +12,36 @@ public class MagicBall : MonoBehaviour
     public string magicName;
     public int atk;
     public float speed;
-    public int destoryTime;
+    public float destoryTime;
 
 
-    private int hitDestoryTime = 2;
+    private int explosionDestoryTime = 2;
 
 
     // Start is called before the first frame update
     void Awake()
     {
         gameObject.tag = "MagicBall";
+        destoryTime = 10.0f;
         bulletEffect = transform.GetChild(0).gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void BulletDestory()
+    public void magicBallDestory()
     {
         Destroy(gameObject, destoryTime);
     }
-    void OnTriggerEnter(Collider other) // triger to destory
+
+    void OnTriggerEnter(Collider other) // instantiate explosion and set destory time
     {
-        GameObject ex = Instantiate(explodeEffect, transform.position, transform.rotation);
-        //Debug.Log("enter");
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
         if (other.tag == "Player"){
             other.gameObject.GetComponent<Player>().TakeDamage(other.gameObject);
         }
         else if(other.tag == "Monster"){
             other.gameObject.GetComponent<Monster>().TakeDamage(other.gameObject);
         }
-        
-
         bulletEffect.SetActive(false);
-        Destroy(ex, hitDestoryTime);
+        GameObject ex = Instantiate(explodeEffect, transform.position, transform.rotation, transform);
+        Destroy(gameObject, explosionDestoryTime);
     }
 }

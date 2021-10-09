@@ -19,12 +19,12 @@ public class Player : NetworkBehaviour
     // Start is called before the first frame update
     public override void OnStartLocalPlayer()
     {
-        this.gameObject.transform.position = vrCamera.transform.position;
-        this.gameObject.transform.rotation = vrCamera.transform.rotation;
+        transform.position = vrCamera.transform.position;
+        transform.rotation = vrCamera.transform.rotation;
         GameObject t = Instantiate(teleport, new Vector3(3, 0, 0), new Quaternion(0, 0, 0, 0));
         GameObject RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
         RightController.GetComponent<VRRightHand>().setTeleporting(t);
-        Instantiate(terrain, this.gameObject.transform.position - new Vector3(0,2,0), new Quaternion(0, 0, 0, 0));
+        Instantiate(terrain, transform.position - new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
     }
 
     // Update is called once per frame
@@ -32,8 +32,8 @@ public class Player : NetworkBehaviour
     {
         if (!isLocalPlayer)
             return;
-        this.gameObject.transform.position = vrCamera.transform.position;
-        this.gameObject.transform.rotation = vrCamera.transform.rotation;
+        transform.position = vrCamera.transform.position;
+        transform.rotation = vrCamera.transform.rotation;
     }
 
     public void TakeDamage(GameObject g)

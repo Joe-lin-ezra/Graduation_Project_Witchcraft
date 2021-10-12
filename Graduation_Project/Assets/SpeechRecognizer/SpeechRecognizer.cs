@@ -51,13 +51,13 @@ public class SpeechRecognizer : MonoBehaviour
     {
         // write your logic here
         if (cause != DictationCompletionCause.Complete)
-            Debug.LogErrorFormat("Dictation completed unsuccessfully: {0}.", cause);
+            Debug.LogWarningFormat("Dictation completed unsuccessfully: {0}.", cause);
     }
 
     void onDictationError(string error, int hresult)
     {
         // write your logic here
-        Debug.LogErrorFormat("Dictation error: {0}; HResult = {1}.", error, hresult);
+        Debug.LogWarningFormat("Dictation error: {0}; HResult = {1}.", error, hresult);
         dictationRecognizer.Start();
     }
 }

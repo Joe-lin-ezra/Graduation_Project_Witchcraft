@@ -10,10 +10,12 @@ public class SpeechRecognizer : MonoBehaviour
 
     public void startListening()
     {
+        Debug.Log("Speech recognizer starts.");
         dictationRecognizer.Start();
     }
     public void stopListening()
     {
+        Debug.Log("Speech recognizer stops.");
         dictationRecognizer.Stop();
     }
 
@@ -35,6 +37,7 @@ public class SpeechRecognizer : MonoBehaviour
         // write your logic here
         Debug.LogFormat("Dictation result: " + text);
         magicController.GetComponent<MagicControl>().keywordExtractionAndInstantiate(text);
+        stopListening();
     }
 
     void onDictationHypothesis(string text)

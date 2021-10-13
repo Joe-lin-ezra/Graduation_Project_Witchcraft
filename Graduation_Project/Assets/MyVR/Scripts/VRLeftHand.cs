@@ -37,6 +37,7 @@ public class VRLeftHand : MonoBehaviour
     }
     void MenuTrigger()
     {
+
         if (SteamVR_Actions.default_PadOnTouch_Left.state)
         {
             //CircleMenu.SetActive(true);

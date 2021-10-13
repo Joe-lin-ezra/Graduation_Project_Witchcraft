@@ -23,7 +23,7 @@ public class CircularControl : MonoBehaviour
     
     void Start()
     {
-        amount = 6;
+        
         createIMG();
 
     }
@@ -42,7 +42,7 @@ public class CircularControl : MonoBehaviour
         float angle = 360/amount;
         for (int i = 0; i < amount; i++)
         {
-            Vector3 loc = RotateRound(new Vector3(0.2f,0,0), new Vector3(0,0),new Vector3(0,1,0),angle * i);
+            Vector3 loc = RotateRound(new Vector3(0.2f,0,0), new Vector3(0,0),new Vector3(0f,1f,-0.3f),angle * i);
             Quaternion qua = new Quaternion(0, 0, 90, 0);
             GameObject a =  Instantiate(element, panel.transform.position + (loc * 0.4f), qua);
             a.GetComponent<Element>().selection = i;

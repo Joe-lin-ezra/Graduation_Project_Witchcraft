@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Mirror;
 public class MagicControl: MonoBehaviour
 {
     // Start is called before the first frame update
@@ -13,6 +13,9 @@ public class MagicControl: MonoBehaviour
     [Header("For Test")]
     public bool debug = false;
     public string testString;
+    
+    [Header("Mirror")]
+    public GameObject playerModle;
 
     public void Start()
     {
@@ -73,7 +76,15 @@ public class MagicControl: MonoBehaviour
         }
         else
         {
-            magicInstantiate(magic);
+            //我先新增點咚咚喔 By 蛋蛋馬
+            if( playerModle == null ){
+                playerModle = NetworkClient.localPlayer.gameObject;
+                playerModle.GetComponent<Player>().CmdFire(magic);
+            }
+            else{
+                playerModle.GetComponent<Player>().CmdFire(magic);
+            }
+            //magicInstantiate(magic);
             return "";
         }
     }

@@ -33,15 +33,15 @@ namespace Mirror.Examples.Tanks
             animator.SetBool("Moving", agent.velocity != Vector3.zero);
 
             // shoot
-            if (Input.GetKeyDown(shootKey))
+            /*if (Input.GetKeyDown(shootKey))
             {
                 CmdFire();
-            }
+            }*/
         }
 
         // this is called on the server
         [Command]
-        void CmdFire()
+        public void CmdFire()
         {
             GameObject projectile = Instantiate(projectilePrefab, projectileMount.position, transform.rotation);
             NetworkServer.Spawn(projectile);

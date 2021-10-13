@@ -28,6 +28,9 @@ namespace Mirror.Examples.Tanks
                     else
                         tank.GetComponent<Tank>().CmdFire();
                 }
+                if( Input.GetKeyDown(KeyCode.Mouse0) && tank.GetComponent<Tank>().bullet != null){
+                    tank.GetComponent<Tank>().CmdFly();
+                }
         }
     }
 }

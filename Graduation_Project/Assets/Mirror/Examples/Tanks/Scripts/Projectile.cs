@@ -17,8 +17,9 @@ namespace Mirror.Examples.Tanks
         // position, because both the server and the client simulate it.
         void Start()
         {
-            rigidBody.AddForce(transform.forward * force);
+            //rigidBody.AddForce(transform.forward * force);
         }
+
 
         // destroy for everyone on the server
         [Server]

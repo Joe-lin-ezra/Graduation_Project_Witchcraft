@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 using Valve.VR.Extras;
+using Mirror;
 
 public class VRRightHand: MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class VRRightHand: MonoBehaviour
     //public GameObject MagicUI;
     //public Image magicActive;
     //public 
+    [Header("Mirror")]
+    public GameObject playerModle;
 
 
     void Start()
@@ -61,12 +64,16 @@ public class VRRightHand: MonoBehaviour
         {
             try
             {
+                if( playerModle == null ){
+                    playerModle = NetworkClient.localPlayer.gameObject;
+                }
+                playerModle.GetComponent<Player>().CmdFly();
                 // give velocity
-                bullet.GetComponent<Rigidbody>().velocity =
+                /*bullet.GetComponent<Rigidbody>().velocity =
                     gameObject.transform.forward * bullet.GetComponent<MagicBall>().speed;
                 bullet.GetComponent<MagicBall>().magicBallDestory();
                 bullet.transform.SetParent(null);
-                bullet = null;
+                bullet = null;*/
             } 
             catch
             {

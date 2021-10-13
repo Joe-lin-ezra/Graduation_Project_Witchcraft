@@ -9,7 +9,6 @@ public class Player : NetworkBehaviour
     public GameObject RightController;
     public GameObject teleport;
     public GameObject terrain;
-    public GameObject magicBall = null;
 
 
     public int hp = 100;
@@ -49,13 +48,32 @@ public class Player : NetworkBehaviour
     [Command]
     public void CmdFire(GameObject magic)
     {
-        if(magicBall != null){
-            GameObject projectile = Instantiate(magic,
+        if(RightController.GetComponent<VRRightHand>().bullet != null){
+            RpcOnFire(magic);
+        }  
+    }
+
+    [ClientRpc]
+    void RpcOnFire(GameObject magic)
+    {
+        RightController.GetComponent<VRRightHand>().bullet = Instantiate(magic,
                     RightController.transform.position - 0.2f * Vector3.down + 0.2f * RightController.transform.forward,
                     RightController.transform.rotation,
                     RightController.transform);
-            NetworkServer.Spawn(magicBall);
-        }  
+
     }
+    [Command]
+    public void CmdFly(){
+        RpcFly();
+    }
+
+    [ClientRpc]
+    void RpcFly(){
+        RightController.GetComponent<VRRightHand>().bullet.GetComponent<Rigidbody>().AddForce(transform.forward * RightController.GetComponent<VRRightHand>().bullet.GetComponent<MagicBall>().speed);
+        RightController.GetComponent<VRRightHand>().bullet.GetComponent<MagicBall>().magicBallDestory();
+        RightController.GetComponent<VRRightHand>().bullet.transform.SetParent(null);
+        RightController.GetComponent<VRRightHand>().bullet = null;
+    }
+    
 
 }

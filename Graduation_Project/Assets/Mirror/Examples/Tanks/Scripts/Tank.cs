@@ -16,6 +16,12 @@ namespace Mirror.Examples.Tanks
         public KeyCode shootKey = KeyCode.Space;
         public GameObject projectilePrefab;
         public Transform projectileMount;
+        public GameObject bullet = null;
+        //public GameObject fireControllor;
+
+        public override void OnStartLocalPlayer(){
+            //fireControllor = GameObject.Find("FireControllor");
+        }
 
         void Update()
         {
@@ -43,8 +49,7 @@ namespace Mirror.Examples.Tanks
         [Command]
         public void CmdFire()
         {
-            GameObject projectile = Instantiate(projectilePrefab, projectileMount.position, transform.rotation);
-            NetworkServer.Spawn(projectile);
+            //NetworkServer.Spawn(bullet);
             RpcOnFire();
         }
 
@@ -52,7 +57,20 @@ namespace Mirror.Examples.Tanks
         [ClientRpc]
         void RpcOnFire()
         {
+            bullet = Instantiate(projectilePrefab, projectileMount.position, transform.rotation , transform.GetChild(0).GetChild(2));
+            
+            //bullet.GetComponent<Rigidbody>().AddForce(transform.forward * 1000);
             animator.SetTrigger("Shoot");
+        }
+
+        [Command]
+        public void CmdFly(){
+            //bullet.GetComponent<Rigidbody>().AddForce(transform.forward * 1000);
+            RpcFly();
+        }
+        [ClientRpc]
+        void RpcFly(){
+            bullet.GetComponent<Rigidbody>().AddForce(transform.forward * 1000);
         }
     }
 }

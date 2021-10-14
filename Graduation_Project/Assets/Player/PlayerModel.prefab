@@ -91,7 +91,7 @@ BoxCollider:
   m_GameObject: {fileID: 881120399906397570}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: -7596810695587160150}
   - component: {fileID: -1052194830641998926}
   - component: {fileID: 7563541401900214318}
+  - component: {fileID: 4722415849169994520}
   m_Layer: 0
   m_Name: PlayerModel
   m_TagString: Untagged
@@ -261,4 +262,35 @@ MonoBehaviour:
   - {fileID: 8708670061502292333, guid: 0f5445238fc9a8842a641c360c15678a, type: 3}
   - {fileID: 3925636352342320263, guid: 9c0dad7a102187f49a72b601f5335853, type: 3}
   - {fileID: 4877176678123108152, guid: 0c471857f5f0a8645bbb5855c330c82e, type: 3}
+  bullet: {fileID: 0}
   hp: 100
+--- !u!114 &4722415849169994520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5200988044924625667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  sendInterval: 0.05
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  bufferTimeMultiplier: 3
+  bufferSizeLimit: 64
+  catchupThreshold: 6
+  catchupMultiplier: 0.1
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  target: {fileID: 5696595452632256942}

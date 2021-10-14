@@ -59,6 +59,7 @@ public class MagicControl: MonoBehaviour
     {
         int minIndex =text.Length;
         GameObject magic = null;
+ 
         foreach(GameObject m in MagicsOBJ)
         {
             int i = text.IndexOf(m.GetComponent<MagicBall>().magicName);
@@ -79,10 +80,12 @@ public class MagicControl: MonoBehaviour
             //我先新增點咚咚喔 By 蛋蛋馬
             if( playerModle == null ){
                 playerModle = NetworkClient.localPlayer.gameObject;
-                playerModle.GetComponent<Player>().CmdFire();
+                //playerModle.GetComponent<Player>().CmdFire(magic);
+                playerModle.GetComponent<Player>().sellectMagicBall(text);
             }
             else{
-                playerModle.GetComponent<Player>().CmdFire();
+                //playerModle.GetComponent<Player>().CmdFire(magic);
+                playerModle.GetComponent<Player>().sellectMagicBall(text);
             }
             //magicInstantiate(magic);
             return "";

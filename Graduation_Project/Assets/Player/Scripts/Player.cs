@@ -12,7 +12,8 @@ public class Player : NetworkBehaviour
     public GameObject teleport;
     public GameObject terrain;
     //public GameObject magicBallObj;
-    public GameObject[] MagicsOBJ; 
+    public GameObject[] MagicsOBJ;
+    public GameObject bullet;
 
 
     public int hp = 100;
@@ -22,7 +23,7 @@ public class Player : NetworkBehaviour
     {
         vrCamera = GameObject.Find("Player/SteamVRObjects/VRCamera");
         RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
-        playerRightHandModle = Instantiate(playerRightHandModle);
+        //playerRightHandModle = Instantiate(playerRightHandModle);
     }
     // Start is called before the first frame update
     public override void OnStartLocalPlayer()
@@ -47,7 +48,7 @@ public class Player : NetworkBehaviour
 
         if (SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand))
         {
-            if (playerRightHandModle.GetComponent<PlayerRightHandModle>().bullet != null)
+            if (bullet != null)
             {
                 CmdFly();
             }
@@ -84,7 +85,7 @@ public class Player : NetworkBehaviour
     [Command]
     public void CmdFire(int ans)
     {
-        if (playerRightHandModle.GetComponent<PlayerRightHandModle>().bullet == null && MagicsOBJ[ans] != null){
+        if (bullet == null && MagicsOBJ[ans] != null){
             RpcFire(ans);
         }
     }
@@ -94,7 +95,7 @@ public class Player : NetworkBehaviour
     {
         if (!isLocalPlayer)
             return;
-        playerRightHandModle.GetComponent<PlayerRightHandModle>().bullet = Instantiate(MagicsOBJ[ans],
+        bullet = Instantiate(MagicsOBJ[ans],
                     playerRightHandModle.transform.position - 0.1f * Vector3.down + 0.1f * playerRightHandModle.transform.forward,
                     playerRightHandModle.transform.rotation,
                     playerRightHandModle.transform);
@@ -108,10 +109,10 @@ public class Player : NetworkBehaviour
 
     [ClientRpc]
     void RpcFly(){
-        playerRightHandModle.GetComponent<PlayerRightHandModle>().bullet.GetComponent<Rigidbody>().velocity = playerRightHandModle.transform.forward * playerRightHandModle.GetComponent<PlayerRightHandModle>().bullet.GetComponent<MagicBall>().speed;
-        playerRightHandModle.GetComponent<PlayerRightHandModle>().bullet.GetComponent<MagicBall>().magicBallDestory();
-        playerRightHandModle.GetComponent<PlayerRightHandModle>().bullet.transform.SetParent(null);
-        playerRightHandModle.GetComponent<PlayerRightHandModle>().bullet = null;
+       bullet.GetComponent<Rigidbody>().velocity = playerRightHandModle.transform.forward *bullet.GetComponent<MagicBall>().speed;
+       bullet.GetComponent<MagicBall>().magicBallDestory();
+       bullet.transform.SetParent(null);
+       bullet = null;
     }
     
 

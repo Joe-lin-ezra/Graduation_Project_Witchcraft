@@ -242,8 +242,7 @@ MonoBehaviour:
   syncInterval: 0.1
   vrCamera: {fileID: 0}
   RightController: {fileID: 0}
-  playerRightHandModle: {fileID: 1549163210662369574, guid: 455900b268616b64cac48e49beae261b,
-    type: 3}
+  playerRightHandModle: {fileID: 881120399906397570}
   teleport: {fileID: 153878, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
   terrain: {fileID: 689365201757880868, guid: 1280f3be0d053714dab7b00f500053a2, type: 3}
   MagicsOBJ:

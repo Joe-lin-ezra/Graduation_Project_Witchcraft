@@ -60,7 +60,7 @@ public class VRRightHand: MonoBehaviour
         }
 
         // shoot out magic ball
-        if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet != null)
+        /*if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet != null)
         {
             try
             {
@@ -75,12 +75,12 @@ public class VRRightHand: MonoBehaviour
                 bullet.GetComponent<MagicBall>().magicBallDestory();
                 bullet.transform.SetParent(null);
                 bullet = null;*/
-            } 
+        /*    } 
             catch
             {
                 Debug.LogWarning(">> you have no magic");
             }
-        }
+        }*/
 
         // Speech Recognizer listening setting
         if (SteamVR_Actions.default_GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet == null) 

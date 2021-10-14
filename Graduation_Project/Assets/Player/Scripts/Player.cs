@@ -22,6 +22,7 @@ public class Player : NetworkBehaviour
     {
         vrCamera = GameObject.Find("Player/SteamVRObjects/VRCamera");
         RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
+        playerRightHandModle = Instantiate(playerRightHandModle);
     }
     // Start is called before the first frame update
     public override void OnStartLocalPlayer()
@@ -32,7 +33,6 @@ public class Player : NetworkBehaviour
         GameObject RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
         RightController.GetComponent<VRRightHand>().setTeleporting(t);
         Instantiate(terrain, transform.position - new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
-        playerRightHandModle = Instantiate(playerRightHandModle);
     }
 
     // Update is called once per frame

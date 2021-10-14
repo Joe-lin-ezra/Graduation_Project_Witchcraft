@@ -90,8 +90,6 @@ public class Player : NetworkBehaviour
     [ClientRpc]
     void RpcFire(int ans)
     {
-        if (!isLocalPlayer)
-            return;
         bullet = Instantiate(MagicsOBJ[ans],
                     playerRightHandModle.transform.position - 0.1f * Vector3.down + 0.1f * playerRightHandModle.transform.forward,
                     playerRightHandModle.transform.rotation,

@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
 
-public class MagicBall : NetworkBehaviour
+public class MagicBall : MonoBehaviour
 {
     public GameObject explodeEffect;
     public GameObject bulletEffect;

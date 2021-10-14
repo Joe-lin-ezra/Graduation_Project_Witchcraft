@@ -145,6 +145,9 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   vrCamera: {fileID: 0}
+  RightController: {fileID: 0}
   teleport: {fileID: 153878, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
   terrain: {fileID: 689365201757880868, guid: 1280f3be0d053714dab7b00f500053a2, type: 3}
+  magicBallObj: {fileID: 8518930488669567725, guid: 01fd1aa911b14a447934343b18236d8a,
+    type: 3}
   hp: 100

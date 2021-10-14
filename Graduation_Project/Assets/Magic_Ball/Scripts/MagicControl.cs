@@ -74,17 +74,21 @@ public class MagicControl: MonoBehaviour
             Debug.LogWarning("Magic name not found!!");
             return text;
         }
-        else
+        else if( magic != null)
         {
             //我先新增點咚咚喔 By 蛋蛋馬
             if( playerModle == null ){
                 playerModle = NetworkClient.localPlayer.gameObject;
-                playerModle.GetComponent<Player>().CmdFire(magic);
+                playerModle.GetComponent<Player>().CmdFire();
             }
             else{
-                playerModle.GetComponent<Player>().CmdFire(magic);
+                playerModle.GetComponent<Player>().CmdFire();
             }
             //magicInstantiate(magic);
+            return "";
+        }
+        else
+        {
             return "";
         }
     }

@@ -9,6 +9,7 @@ public class Player : NetworkBehaviour
     public GameObject RightController;
     public GameObject teleport;
     public GameObject terrain;
+    public GameObject magicBallObj;
 
 
     public int hp = 100;
@@ -46,17 +47,17 @@ public class Player : NetworkBehaviour
 
             // this is called on the server
     [Command]
-    public void CmdFire(GameObject magic)
+    public void CmdFire()
     {
-        if(RightController.GetComponent<VRRightHand>().bullet != null){
-            RpcOnFire(magic);
-        }  
+        if(RightController.GetComponent<VRRightHand>().bullet == null && magicBallObj != null){
+            RpcOnFire();
+        }
     }
 
     [ClientRpc]
-    void RpcOnFire(GameObject magic)
+    void RpcOnFire()
     {
-        RightController.GetComponent<VRRightHand>().bullet = Instantiate(magic,
+        RightController.GetComponent<VRRightHand>().bullet = Instantiate(magicBallObj,
                     RightController.transform.position - 0.2f * Vector3.down + 0.2f * RightController.transform.forward,
                     RightController.transform.rotation,
                     RightController.transform);

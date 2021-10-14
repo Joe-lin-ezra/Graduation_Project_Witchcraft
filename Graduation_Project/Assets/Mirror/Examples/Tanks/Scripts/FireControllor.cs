@@ -20,13 +20,15 @@ namespace Mirror.Examples.Tanks
                         // shoot
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    if(tank == null){
-                        tank = NetworkClient.localPlayer.gameObject;
-                        tank.GetComponent<Tank>().CmdFire();                       
-                    }
+                    tank = NetworkClient.localPlayer.gameObject;
+                    tank.GetComponent<Tank>().CmdFire();
+                    /*if (tank == null){
+                            tank = NetworkClient.localPlayer.gameObject;
+                            tank.GetComponent<Tank>().CmdFire();                       
+                        }
 
                     else
-                        tank.GetComponent<Tank>().CmdFire();
+                        tank.GetComponent<Tank>().CmdFire();*/
                 }
                 if( Input.GetKeyDown(KeyCode.Mouse0) && tank.GetComponent<Tank>().bullet != null){
                     tank.GetComponent<Tank>().CmdFly();

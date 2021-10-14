@@ -78,6 +78,8 @@ public class Player : NetworkBehaviour
     [ClientRpc]
     void RpcFire(int ans)
     {
+        if (!isLocalPlayer)
+            return;
         RightController.GetComponent<VRRightHand>().bullet = Instantiate(MagicsOBJ[ans],
                     RightController.transform.position - 0.2f * Vector3.down + 0.2f * RightController.transform.forward,
                     RightController.transform.rotation,

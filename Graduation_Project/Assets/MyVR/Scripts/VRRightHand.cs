@@ -68,6 +68,7 @@ public class VRRightHand: MonoBehaviour
                     playerModle = NetworkClient.localPlayer.gameObject;
                 }
                 playerModle.GetComponent<Player>().CmdFly();
+                print("發射");
                 // give velocity
                 /*bullet.GetComponent<Rigidbody>().velocity =
                     gameObject.transform.forward * bullet.GetComponent<MagicBall>().speed;

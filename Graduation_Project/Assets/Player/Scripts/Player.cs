@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
 using Mirror;
 
 public class Player : NetworkBehaviour
 { 
     public GameObject vrCamera;
     public GameObject RightController;
+    public GameObject playerRightHandModle;
     public GameObject teleport;
     public GameObject terrain;
     //public GameObject magicBallObj;
-    public GameObject[] MagicsOBJ;
+    public GameObject[] MagicsOBJ; 
 
 
     public int hp = 100;
@@ -30,6 +32,7 @@ public class Player : NetworkBehaviour
         GameObject RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
         RightController.GetComponent<VRRightHand>().setTeleporting(t);
         Instantiate(terrain, transform.position - new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
+        playerRightHandModle = Instantiate(playerRightHandModle);
     }
 
     // Update is called once per frame
@@ -39,6 +42,17 @@ public class Player : NetworkBehaviour
             return;
         transform.position = vrCamera.transform.position;
         transform.rotation = vrCamera.transform.rotation;
+        playerRightHandModle.transform.position = RightController.transform.position;
+        playerRightHandModle.transform.rotation = RightController.transform.rotation;
+
+        if (SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand))
+        {
+            if (playerRightHandModle.GetComponent<PlayerRightHandModle>().bullet != null)
+            {
+                CmdFly();
+            }
+
+        }
     }
 
     public void TakeDamage(GameObject g)
@@ -70,7 +84,7 @@ public class Player : NetworkBehaviour
     [Command]
     public void CmdFire(int ans)
     {
-        if (RightController.GetComponent<VRRightHand>().bullet == null && MagicsOBJ[ans] != null){
+        if (playerRightHandModle.GetComponent<PlayerRightHandModle>().bullet == null && MagicsOBJ[ans] != null){
             RpcFire(ans);
         }
     }
@@ -80,10 +94,10 @@ public class Player : NetworkBehaviour
     {
         if (!isLocalPlayer)
             return;
-        RightController.GetComponent<VRRightHand>().bullet = Instantiate(MagicsOBJ[ans],
-                    RightController.transform.position - 0.2f * Vector3.down + 0.2f * RightController.transform.forward,
-                    RightController.transform.rotation,
-                    RightController.transform);
+        playerRightHandModle.GetComponent<PlayerRightHandModle>().bullet = Instantiate(MagicsOBJ[ans],
+                    playerRightHandModle.transform.position - 0.1f * Vector3.down + 0.1f * playerRightHandModle.transform.forward,
+                    playerRightHandModle.transform.rotation,
+                    playerRightHandModle.transform);
 
     }
 
@@ -94,10 +108,10 @@ public class Player : NetworkBehaviour
 
     [ClientRpc]
     void RpcFly(){
-        RightController.GetComponent<VRRightHand>().bullet.GetComponent<Rigidbody>().velocity = RightController.transform.forward * RightController.GetComponent<VRRightHand>().bullet.GetComponent<MagicBall>().speed;
-        RightController.GetComponent<VRRightHand>().bullet.GetComponent<MagicBall>().magicBallDestory();
-        RightController.GetComponent<VRRightHand>().bullet.transform.SetParent(null);
-        RightController.GetComponent<VRRightHand>().bullet = null;
+        playerRightHandModle.GetComponent<PlayerRightHandModle>().bullet.GetComponent<Rigidbody>().velocity = playerRightHandModle.transform.forward * playerRightHandModle.GetComponent<PlayerRightHandModle>().bullet.GetComponent<MagicBall>().speed;
+        playerRightHandModle.GetComponent<PlayerRightHandModle>().bullet.GetComponent<MagicBall>().magicBallDestory();
+        playerRightHandModle.GetComponent<PlayerRightHandModle>().bullet.transform.SetParent(null);
+        playerRightHandModle.GetComponent<PlayerRightHandModle>().bullet = null;
     }
     
 

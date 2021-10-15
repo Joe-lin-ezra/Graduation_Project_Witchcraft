@@ -43,6 +43,9 @@ public class Player : NetworkBehaviour
             return;
         transform.position = vrCamera.transform.position;
         transform.rotation = vrCamera.transform.rotation;
+        
+        playerRightHandModle.transform.position = RightController.transform.position;
+        playerRightHandModle.transform.rotation = RightController.transform.rotation;
 
         if ( Input.GetKeyDown(KeyCode.Space))//SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand)) 右手手把開搶鍵有bug ,會導致遊戲崩潰，請有空的隊友幫忙debug
         {

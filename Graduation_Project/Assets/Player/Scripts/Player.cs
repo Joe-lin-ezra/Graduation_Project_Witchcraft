@@ -91,7 +91,7 @@ public class Player : NetworkBehaviour
     void RpcFire(int ans)
     {
         bullet = Instantiate(MagicsOBJ[ans],
-                    playerRightHandModle.transform.position - 0.1f * Vector3.down + 0.1f * playerRightHandModle.transform.forward,
+                    playerRightHandModle.transform.position - 0.2f * Vector3.down + 0.2f * playerRightHandModle.transform.forward,
                     playerRightHandModle.transform.rotation,
                     playerRightHandModle.transform);
 

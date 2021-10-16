@@ -1,21 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 using Valve.VR.Extras;
 
+
+
 public class VRLeftHand : MonoBehaviour
 {
     // Start is called before the first frame update
-    SteamVR_LaserPointer slp;   //射线对象
+    //SteamVR_LaserPointer slp;   //射线对象
     private GameObject PointerSomething = null;//被指物
     public GameObject CircleMenu;
+    public GameObject SummonControler;
 
-    [Header("debug")]
+    public int selected;
+    Summon sumo;
+
+    public GameObject Pointer;
+    private Pointer pt;  
     public bool debug;
+
+    
     void Start()
     {
+        selected = 0;
+        pt = Pointer.GetComponent<Pointer>();
+        sumo = SummonControler.GetComponent<Summon>();
         //slp = getcomponent<steamvr_laserpointer>();
         //slp.pointerin += onpointerin;
         //slp.pointerout += onpointerout;    //響應設線離開事件
@@ -29,33 +42,31 @@ public class VRLeftHand : MonoBehaviour
 
 
     }
-
-    void ClickTrigger()
-    {
-
-        
-    }
     void MenuTrigger()
     {
 
         if (SteamVR_Actions.default_PadOnTouch_Left.state)
         {
-            //CircleMenu.SetActive(true);
+            //If touched 
             //get ui posi
             if(debug)
             {
 
                 //Debug.Log(string.Format("Touchpad : X {0:0.00} ,Y {0:0.00}", SteamVR_Actions.default_PadPosition_Left.axis.x, SteamVR_Actions.default_PadPosition_Left.axis.y));
-                CircleMenu.GetComponent<CircularControl>().pointPos = SteamVR_Actions.default_PadPosition_Left.axis;
+               
             }
+            CircleMenu.GetComponent<CircularControl>().pointPos = SteamVR_Actions.default_PadPosition_Left.axis;
+
+        }
+        sumo.CheckMonster(pt);//另一格判斷
+        if (!SteamVR_Actions.default_PadOnTouch_Left.onchange)
+        {
+            int a = pt.setSelection(pt.getSelection() +1);
+            pt.GetComponent<Image>().Color = Color.red;
+            Debug.Log("selection change");
             
         }
-        /*if (!SteamVR_Actions.default_PadOnTouch.state)
-        {
-            CircleMenu.SetActive(false);
-        }*/
     }
-
 
     /*void OnpointerIn(object sender, PointerEventArgs e) //射线进入事件
     {

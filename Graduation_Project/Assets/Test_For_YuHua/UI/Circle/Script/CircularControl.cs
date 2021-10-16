@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CircularControl : MonoBehaviour
-{   //Data
-    public GameObject[] dataArr;
-    public string[] dataString;
+{   
 
     //posision
     public Vector2 pointPos;
@@ -68,9 +66,6 @@ public class CircularControl : MonoBehaviour
         Vector3 resultVec3 = center + point;
         return resultVec3;
     }
-    private void scaleElement(GameObject g)
-    {
-
-    }
+ 
     
 }

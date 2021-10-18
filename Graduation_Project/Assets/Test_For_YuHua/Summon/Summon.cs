@@ -17,7 +17,7 @@ public class Summon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-          
+        drawCircle();
     }
 
     // Update is called once per frame

@@ -45,7 +45,7 @@ public class VRLeftHand : MonoBehaviour
     void MenuTrigger()
     {
 
-        if (SteamVR_Actions.default_PadOnTouch_Left.state)
+        if (SteamVR_Actions.default_PadOnTouch_Left.stateDown)
         {
             //If touched 
             //get ui posi
@@ -59,10 +59,10 @@ public class VRLeftHand : MonoBehaviour
 
         }
         sumo.CheckMonster(pt);//另一格判斷
-        if (!SteamVR_Actions.default_PadOnTouch_Left.onchange)
+        if (!SteamVR_Actions.default_PadOnTouch_Left.stateUp)
         {
             int a = pt.setSelection(pt.getSelection() +1);
-            pt.GetComponent<Image>().Color = Color.red;
+            pt.GetComponent<Image>().color = Color.red;
             Debug.Log("selection change");
             
         }

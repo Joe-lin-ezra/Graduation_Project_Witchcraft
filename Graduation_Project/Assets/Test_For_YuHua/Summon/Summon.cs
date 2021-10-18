@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //relation with monster things
 public class Summon : MonoBehaviour
@@ -8,6 +9,7 @@ public class Summon : MonoBehaviour
     public GameObject leftHand;
     public GameObject pointer;
     public GameObject player;
+    public GameObject CircleControl;
 
     public List<GameObject> monsterList;
 
@@ -15,7 +17,7 @@ public class Summon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        monsterList = new List<GameObject>();        
+          
     }
 
     // Update is called once per frame
@@ -23,20 +25,16 @@ public class Summon : MonoBehaviour
     {
         
         pt = pointer.GetComponent<Pointer>();
-        
+        CheckMonster(pt);
+
+
     }
     public void CheckMonster(Pointer pt)
     {
-        int[] select = pt.getSelect();
-        if(select[0] != -1)
+        if(pt.getSelection() == 2)
         {
-            if(select[1] != -1)
-            {
-                Debug.Log(string.Format("A = {0}, B = {1}", select[0], select[1]));
-                //create(select[0], select[1]);
-                select[0] = -1;
-                select[1] = -1;
-            }
+            create(pt.getSelect(0),pt.getSelect(1));
+            pt.setSelection(0);
         }
         
     }
@@ -44,5 +42,20 @@ public class Summon : MonoBehaviour
     {
         int select = a + b;//somealgo
         Instantiate(monsterList[select]);
+        initSelect();
+    }
+    public void chnage()
+    {
+        int a = pt.setSelection(pt.getSelection() + 1);
+        pt.GetComponent<Image>().color = Color.red;
+    }
+    public void initSelect()
+    {
+        pt.setSelect(0, 0);
+        pt.setSelect(0, 1);
+    }
+    void drawCircle()
+    {
+        CircleControl.GetComponent<CircularControl>().amount = monsterList.Count;
     }
 }

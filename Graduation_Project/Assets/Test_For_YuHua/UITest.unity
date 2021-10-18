@@ -435,7 +435,7 @@ PrefabInstance:
     - target: {fileID: 7109021904091010613, guid: a21d93a0f49974f4d8eb5ef83230a16a,
         type: 3}
       propertyPath: amount
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21d93a0f49974f4d8eb5ef83230a16a, type: 3}
@@ -5688,7 +5688,7 @@ PrefabInstance:
     - target: {fileID: 9046995251743989814, guid: cfc37348feda6bb4ea0a9dba7907118b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9046995251743989814, guid: cfc37348feda6bb4ea0a9dba7907118b,
         type: 3}
@@ -5755,6 +5755,11 @@ PrefabInstance:
       propertyPath: leftHand
       value: 
       objectReference: {fileID: 1042434471}
+    - target: {fileID: 9046995251743989815, guid: cfc37348feda6bb4ea0a9dba7907118b,
+        type: 3}
+      propertyPath: CircleControl
+      value: 
+      objectReference: {fileID: 1631412986}
     - target: {fileID: 9046995251743989815, guid: cfc37348feda6bb4ea0a9dba7907118b,
         type: 3}
       propertyPath: monsterList.Array.size

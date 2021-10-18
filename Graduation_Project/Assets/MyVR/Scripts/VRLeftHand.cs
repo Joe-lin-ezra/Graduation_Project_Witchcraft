@@ -45,7 +45,7 @@ public class VRLeftHand : MonoBehaviour
     void MenuTrigger()
     {
 
-        if (SteamVR_Actions.default_PadOnTouch_Left.stateDown)
+        if (SteamVR_Actions.default_PadOnTouch_Left.state)
         {
             //If touched 
             //get ui posi
@@ -53,18 +53,15 @@ public class VRLeftHand : MonoBehaviour
             {
 
                 //Debug.Log(string.Format("Touchpad : X {0:0.00} ,Y {0:0.00}", SteamVR_Actions.default_PadPosition_Left.axis.x, SteamVR_Actions.default_PadPosition_Left.axis.y));
-               
             }
             CircleMenu.GetComponent<CircularControl>().pointPos = SteamVR_Actions.default_PadPosition_Left.axis;
 
         }
         sumo.CheckMonster(pt);//另一格判斷
-        if (!SteamVR_Actions.default_PadOnTouch_Left.stateUp)
+        if (SteamVR_Actions.default_PadOnTouch_Left.stateUp)
         {
-            int a = pt.setSelection(pt.getSelection() +1);
-            pt.GetComponent<Image>().color = Color.red;
-            Debug.Log("selection change");
-            
+            Debug.Log("select");
+            sumo.chnage();
         }
     }
 

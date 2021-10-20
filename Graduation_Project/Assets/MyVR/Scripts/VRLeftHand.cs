@@ -61,7 +61,7 @@ public class VRLeftHand : MonoBehaviour
         if (SteamVR_Actions.default_PadOnTouch_Left.stateUp)
         {
             Debug.Log("select");
-            sumo.chnage();
+            sumo.Chnage();
         }
     }
 
@@ -80,14 +80,4 @@ public class VRLeftHand : MonoBehaviour
             PointerSomething = null;  //不再记录这个物体了
         }
     }*/
-
-    private void OnTriggerEnter(Collider other)
-    {
-       
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        
-    }
 }

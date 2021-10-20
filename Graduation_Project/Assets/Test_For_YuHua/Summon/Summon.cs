@@ -12,12 +12,15 @@ public class Summon : MonoBehaviour
     public GameObject CircleControl;
 
     public List<GameObject> monsterList;
+    public Dictionary<int, GameObject> combineDict;
 
     private Pointer pt;
     // Start is called before the first frame update
     void Start()
     {
-        drawCircle();
+        
+        FillDict();
+        DrawCircle();
     }
 
     // Update is called once per frame
@@ -33,29 +36,40 @@ public class Summon : MonoBehaviour
     {
         if(pt.getSelection() == 2)
         {
-            create(pt.getSelect(0),pt.getSelect(1));
+            Create(pt.getSelect(0),pt.getSelect(1));
             pt.setSelection(0);
         }
         
     }
-    public void create(int a, int b)
+    public void Create(int a, int b)
     {
         int select = a + b;//somealgo
         Instantiate(monsterList[select]);
-        initSelect();
+        InitSelect();
     }
-    public void chnage()
+    public void Chnage()
     {
         int a = pt.setSelection(pt.getSelection() + 1);
         pt.GetComponent<Image>().color = Color.red;
     }
-    public void initSelect()
+    public void InitSelect()
     {
-        pt.setSelect(0, 0);
-        pt.setSelect(0, 1);
+        pt.setSelect(-1, 0);
+        pt.setSelect(-1, 1);
     }
-    void drawCircle()
+    void DrawCircle()
     {
-        CircleControl.GetComponent<CircularControl>().amount = monsterList.Count;
+        CircleControl.GetComponent<CircularControl>().amount = monsterList.Count -1;
+    }
+    void FillDict()
+    {
+        combineDict = new Dictionary<int, GameObject>
+        {
+            { 0, monsterList[0] },
+            { 1, monsterList[1] },
+            { 2, monsterList[2] },
+            { 3, monsterList[3] }
+        };
+
     }
 }

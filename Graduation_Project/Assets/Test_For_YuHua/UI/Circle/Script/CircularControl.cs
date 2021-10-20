@@ -23,7 +23,7 @@ public class CircularControl : MonoBehaviour
     void Start()
     {
         
-        createIMG();
+        CreateIMG();
 
     }
     // Update is called once per frame
@@ -36,7 +36,7 @@ public class CircularControl : MonoBehaviour
         //Debug.Log(selection);
     }
     
-    private void createIMG()
+    private void CreateIMG()
     {
         float angle = 360/amount;
         for (int i = 0; i < amount; i++)

@@ -77,10 +77,17 @@ public class MagicControl: MonoBehaviour
         }
         else if( magic != null)
         {
-            if( playerModle == null )
+            //我先新增點咚咚喔 By 蛋蛋馬
+            if( playerModle == null ){
                 playerModle = NetworkClient.localPlayer.gameObject;
-
-            playerModle.GetComponent<Player>().sellectMagicBall(text);
+                //playerModle.GetComponent<Player>().CmdFire(magic);
+                playerModle.GetComponent<Player>().sellectMagicBall(text);
+            }
+            else{
+                //playerModle.GetComponent<Player>().CmdFire(magic);
+                playerModle.GetComponent<Player>().sellectMagicBall(text);
+            }
+            //magicInstantiate(magic);
             return "";
         }
         else

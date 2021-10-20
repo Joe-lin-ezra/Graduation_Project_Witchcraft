@@ -21,7 +21,7 @@ public class Element : MonoBehaviour
     {
         if(other.tag == "Pointer")
         {
-            Debug.Log(string.Format("get: {0}",selection));
+            Debug.Log(selection);
         }   
     }
     public int get_selection()

@@ -266,18 +266,6 @@
                },
                "mode" : "trackpad",
                "path" : "/user/hand/right/input/trackpad"
-            },
-            {
-               "inputs" : {
-                  "north" : {
-                     "output" : "/actions/default/in/teleport"
-                  }
-               },
-               "mode" : "dpad",
-               "parameters" : {
-                  "sub_mode" : "click"
-               },
-               "path" : "/user/hand/right/input/trackpad"
             }
          ]
       },
@@ -325,7 +313,7 @@
    "category" : "steamvr_input",
    "controller_type" : "vive_controller",
    "description" : "",
-   "name" : "為 Vive Controller 儲存的 [Testing] Graduation_Project 配置",
+   "name" : "WitchCraft",
    "options" : {},
    "simulated_actions" : []
 }

@@ -98,7 +98,6 @@ public class Player : NetworkBehaviour
                     playerRightHandModle.transform.position - 0.2f * Vector3.down + 0.2f * playerRightHandModle.transform.forward,
                     playerRightHandModle.transform.rotation,
                     playerRightHandModle.transform);
-        bullet.transform.localScale = new Vector3(2 , 2, 2);
 
     }
 
@@ -109,7 +108,7 @@ public class Player : NetworkBehaviour
 
     [ClientRpc]
     void RpcFly(){
-       bullet.GetComponent<Rigidbody>().velocity = playerRightHandModle.transform.forward * bullet.GetComponent<MagicBall>().speed;
+       bullet.GetComponent<Rigidbody>().velocity = playerRightHandModle.transform.forward * bullet.GetComponent<MagicBall>().speed * Time.deltaTime;
        bullet.GetComponent<MagicBall>().magicBallDestory();
        bullet.transform.SetParent(null);
        bullet = null;

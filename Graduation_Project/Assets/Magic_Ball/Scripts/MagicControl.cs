@@ -79,6 +79,7 @@ public class MagicControl: MonoBehaviour
         {
             if( playerModle == null )
                 playerModle = NetworkClient.localPlayer.gameObject;
+
             playerModle.GetComponent<Player>().sellectMagicBall(text);
             return "";
         }

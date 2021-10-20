@@ -48,7 +48,7 @@ public class Player : NetworkBehaviour
         playerRightHandModle.transform.rotation = RightController.transform.rotation;
 
 
-        if ( SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand)) //右手手把開搶鍵有bug ,會導致遊戲崩潰，請有空的隊友幫忙debug
+        if ( SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand))// 右手手把開搶鍵有bug ,會導致遊戲崩潰，請有空的隊友幫忙debug
         {
             if (bullet != null)
             {

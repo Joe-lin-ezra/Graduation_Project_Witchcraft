@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CircularControl : MonoBehaviour
-{   //Data
-    public GameObject[] dataArr;
-    public string[] dataString;
+{   
 
     //posision
     public Vector2 pointPos;
@@ -20,7 +18,8 @@ public class CircularControl : MonoBehaviour
     public int amount;
     public GameObject Canvas_DrawElement;
     public GameObject panel;
-    
+
+    public Texture[] monsterTexture;
     void Start()
     {
         
@@ -44,9 +43,7 @@ public class CircularControl : MonoBehaviour
         {
             Vector3 loc = RotateRound(new Vector3(0.2f,0,0), new Vector3(0,0),new Vector3(0f,1f,-0.3f),angle * i);
             Quaternion qua = new Quaternion(0, 0, 90, 0);
-            GameObject a =  Instantiate(element, panel.transform.position + (loc * 0.4f), qua);
-            a.GetComponent<Element>().selection = i;
-            
+            GameObject a =  Instantiate(element, panel.transform.position + (loc * 0.4f), qua);           
             //Create
 
             a.transform.rotation = Quaternion.Euler(75, 0, 0);
@@ -57,6 +54,11 @@ public class CircularControl : MonoBehaviour
 
             //Scle
             a.transform.SetParent(Canvas_DrawElement.GetComponentInChildren<Transform>());
+
+            //Element setting
+            Element tmp = a.GetComponent<Element>();
+            tmp.selection = i;
+            tmp.GetComponentInChildren<RawImage>().texture = monsterTexture[0];
         }
        
     }
@@ -67,10 +69,6 @@ public class CircularControl : MonoBehaviour
         Vector3 point = Quaternion.AngleAxis(angle, axis) * (position - center);
         Vector3 resultVec3 = center + point;
         return resultVec3;
-    }
-    private void scaleElement(GameObject g)
-    {
-
     }
     
 }

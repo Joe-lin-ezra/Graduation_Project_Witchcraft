@@ -74,7 +74,6 @@ public class Player : NetworkBehaviour
             if (i < minIndex && i != -1)
             {
                 minIndex = i;
-                //magic = m;
                 ans = count;
             }
             count++;

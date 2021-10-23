@@ -34,10 +34,10 @@ public class MagicBall : MonoBehaviour
     {
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
         if (other.tag == "Player"){
-            other.gameObject.GetComponent<Player>().TakeDamage(other.gameObject);
+            other.gameObject.GetComponent<Player>().TakeDamage(gameObject);
         }
         else if(other.tag == "Monster"){
-            other.gameObject.GetComponent<Monster>().TakeDamage(other.gameObject);
+            other.gameObject.GetComponent<Monster>().TakeDamage(gameObject);
         }
         bulletEffect.SetActive(false);
         GameObject ex = Instantiate(explodeEffect, transform.position, transform.rotation, transform);

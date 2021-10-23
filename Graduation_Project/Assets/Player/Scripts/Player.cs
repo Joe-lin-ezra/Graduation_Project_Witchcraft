@@ -15,8 +15,8 @@ public class Player : NetworkBehaviour
     public GameObject[] MagicsOBJ;
     public GameObject bullet;
 
-
-    public int hp = 100;
+    [SyncVar(hook = nameof(OnHpChange))]
+    public int hp;
 
 
     private void Awake()
@@ -34,6 +34,9 @@ public class Player : NetworkBehaviour
         GameObject RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
         RightController.GetComponent<VRRightHand>().setTeleporting(t);
         Instantiate(terrain, transform.position - new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
+
+        hp = 100;
+        CmdSetUpPlayer(hp);//在連線上初始化玩家血量
     }
 
     // Update is called once per frame
@@ -57,10 +60,30 @@ public class Player : NetworkBehaviour
 
         }
     }
+    [Command]
+    public void CmdSetUpPlayer(int _hp ){
+        hp = _hp;
+    }
+
+    void OnHpChange(int _Old, int _New)
+    {
+        hp = _New;
+    }
 
     public void TakeDamage(GameObject g)
     {
-        
+        int damage = g.GetComponent<MagicBall>().atk;
+        CMDchangeHp(damage);
+    }
+
+    [Command]
+    void CMDchangeHp(int damage){
+        RpcChangeHp(damage);
+    }
+
+    [ClientRpc]
+    void RpcChangeHp(int damage){
+        hp -= damage;
     }
 
     public void sellectMagicBall(string text)

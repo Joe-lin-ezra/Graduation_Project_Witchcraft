@@ -19,8 +19,9 @@ public class Player : NetworkBehaviour
     [SyncVar(hook = nameof(OnHpChange))]
     public float hp;
     public float max_hp = 100.0f;
-    public GameObject hp_bar;
-    public GameObject hp_vr_text;
+
+    [SerializeField] public GameObject hp_bar;
+    [SerializeField] public GameObject hp_vr_text;
 
 
     private void Awake()

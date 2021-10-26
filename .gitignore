@@ -78,3 +78,5 @@ crashlytics-build.properties
 [Bb]uilds/
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
+*.asset
+*.meta

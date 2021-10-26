@@ -32,8 +32,10 @@ public class MagicBall : MonoBehaviour
 
     void OnTriggerEnter(Collider other) // instantiate explosion and set destory time
     {
+        print(other.name);
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
         if (other.tag == "Player"){
+            print("打到玩家");
             other.gameObject.GetComponent<Player>().TakeDamage(gameObject);
         }
         else if(other.tag == "Monster"){

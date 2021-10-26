@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 using Mirror;
+using UnityEngine.UI;
 
 public class Player : NetworkBehaviour
 { 
@@ -16,7 +17,10 @@ public class Player : NetworkBehaviour
     public GameObject bullet;
 
     [SyncVar(hook = nameof(OnHpChange))]
-    public int hp;
+    public float hp;
+    public float max_hp = 100.0f;
+    public GameObject hp_bar;
+    public GameObject hp_vr_text;
 
 
     private void Awake()
@@ -34,8 +38,9 @@ public class Player : NetworkBehaviour
         GameObject RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
         RightController.GetComponent<VRRightHand>().setTeleporting(t);
         Instantiate(terrain, transform.position - new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
+        hp_vr_text = GameObject.Find("Player/Canvas/Panel/Text");
 
-        hp = 100;
+        hp = 100.0f;
         CmdSetUpPlayer(hp);//在連線上初始化玩家血量
     }
 
@@ -59,15 +64,26 @@ public class Player : NetworkBehaviour
             }
 
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            hp -= 20;
+        }
     }
     [Command]
-    public void CmdSetUpPlayer(int _hp ){
+    public void CmdSetUpPlayer(float _hp ){
         hp = _hp;
     }
 
-    void OnHpChange(int _Old, int _New)
+    void OnHpChange(float _Old, float _New)
     {
         hp = _New;
+        hp_bar.transform.localScale = new Vector3((hp/max_hp) , 1, 1);
+
+        if (isLocalPlayer)
+        {
+            hp_vr_text.GetComponent<Text>().text = hp.ToString();
+        }
     }
 
     public void TakeDamage(GameObject g)

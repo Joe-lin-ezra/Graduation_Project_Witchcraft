@@ -97,11 +97,17 @@ public class Player : NetworkBehaviour
     [Command]
     void CMDchangeHp(int damage){
         RpcChangeHp(damage);
+        hp_bar.transform.localScale = new Vector3((hp / max_hp), 1, 1); //改頭上UI顯示寫廖
+
+        hp_vr_text.GetComponent<Text>().text = hp.ToString(); //改頭盔UI顯示寫廖
     }
 
     [ClientRpc]
     void RpcChangeHp(int damage){
         hp -= damage;
+        hp_bar.transform.localScale = new Vector3((hp / max_hp), 1, 1); //改頭上UI顯示寫廖
+
+        hp_vr_text.GetComponent<Text>().text = hp.ToString(); //改頭盔UI顯示寫廖
     }
 
     public void sellectMagicBall(string text)

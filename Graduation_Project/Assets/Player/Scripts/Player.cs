@@ -28,6 +28,7 @@ public class Player : NetworkBehaviour
     {
         vrCamera = GameObject.Find("Player/SteamVRObjects/VRCamera");
         RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
+        hp_vr_text = GameObject.Find("Player/Canvas/Panel/Text");
         //playerRightHandModle = Instantiate(playerRightHandModle);
     }
     // Start is called before the first frame update
@@ -39,7 +40,7 @@ public class Player : NetworkBehaviour
         GameObject RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
         RightController.GetComponent<VRRightHand>().setTeleporting(t);
         Instantiate(terrain, transform.position - new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
-        hp_vr_text = GameObject.Find("Player/Canvas/Panel/Text");
+        
 
         hp = 100.0f;
         CmdSetUpPlayer(hp);//在連線上初始化玩家血量

@@ -87,7 +87,8 @@ public class Player : NetworkBehaviour
         hp = _New;
         //hp_bar.transform.localScale = new Vector3((hp/max_hp) , 1, 1); //改頭上UI顯示寫廖
 
-        hp_vr_text.GetComponent<Text>().text = hp.ToString(); //改頭盔UI顯示寫廖
+        if(isLocalPlayer)
+            hp_vr_text.GetComponent<Text>().text = hp.ToString(); //改頭盔UI顯示寫廖
     }
 
     public void TakeDamage(GameObject g)
@@ -102,6 +103,7 @@ public class Player : NetworkBehaviour
         RpcChangeHp(damage);
         hp_bar.transform.localScale = new Vector3((hp / max_hp), 1, 1); //改頭上UI顯示寫廖
 
+        
         //hp_vr_text.GetComponent<Text>().text = hp.ToString(); //改頭盔UI顯示寫廖
     }
 

@@ -69,6 +69,11 @@ public class Player : NetworkBehaviour
         {
             hp -= 20;
         }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            hp += 20;
+        }
     }
     [Command]
     public void CmdSetUpPlayer(float _hp ){

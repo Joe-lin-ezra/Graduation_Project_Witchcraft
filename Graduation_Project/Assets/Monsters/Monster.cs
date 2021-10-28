@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 public class Monster: MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class Monster: MonoBehaviour
     public int atk;
 
     public GameObject enemy;
-    public GameObject attackCollider; 
+    public GameObject attackCollider;
+    public GameObject playerModle;
 
     void Start() 
     {
@@ -27,7 +29,9 @@ public class Monster: MonoBehaviour
 
     void SetEnemy()
     {
-        this.enemy = GameObject.Find("PlayerModel").GetComponent<MonsterManager>().enemyPlayer;
+        if (playerModle == null)
+            playerModle = NetworkClient.localPlayer.gameObject;
+        this.enemy = playerModle.GetComponent<MonsterManager>().enemyPlayer;
     }
 
     public void TakeDamage(GameObject g)

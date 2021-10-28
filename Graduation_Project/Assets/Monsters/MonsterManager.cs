@@ -6,7 +6,7 @@ public class MonsterManager : MonoBehaviour
 {
     public GameObject enemyPlayer;
 
-    void SetEnemy(GameObject _enemyPlayer)
+    public void SetEnemy(GameObject _enemyPlayer)
     {
         if (_enemyPlayer.tag == "Player" && this.enemyPlayer == null)
         {

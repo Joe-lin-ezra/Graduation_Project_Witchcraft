@@ -28,7 +28,7 @@ public class BeetleAnimationScript : MonoBehaviour
             return; 
         }
         // get enemy or idle in place
-        target = transform.parent.GetComponent<Monster>().enemy;
+        target = GetComponent<Monster>().enemy;
         if (target == null) 
         {
             GetComponent<Animation>().Play("Idle");
@@ -41,7 +41,11 @@ public class BeetleAnimationScript : MonoBehaviour
             new Vector2(transform.position.x, transform.position.z),
             new Vector2(target.transform.position.x, target.transform.position.z)
         );
-        nma.SetDestination(target.transform.position);
+        if(target != null)
+        {
+            nma.SetDestination(target.transform.position);
+        }
+
         if (distance > 1.8f)
         {
             GetComponent<Animation>().Play("Run Forward In Place");

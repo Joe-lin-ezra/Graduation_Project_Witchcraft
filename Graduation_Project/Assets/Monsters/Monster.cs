@@ -41,7 +41,7 @@ public class Monster: MonoBehaviour
     public void Attack() 
     {
         Instantiate(attackCollider, 
-        1.75f * transform.TransformDirection(Vector3.forward) + new Vector3(0, 0.2f, 0),
+        1.75f * transform.TransformDirection(Vector3.forward),
         Quaternion.identity,
         transform);
     }

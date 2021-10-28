@@ -25,7 +25,11 @@ public class VRRightHand: MonoBehaviour
     //public 
     [Header("Mirror")]
     public GameObject playerModle;
+    public GameObject summon_control;
 
+    [Header("Monster")]
+    //public GameObject mm; //my_monster
+    public GameObject monster_manager;
 
     void Start()
     {
@@ -59,28 +63,6 @@ public class VRRightHand: MonoBehaviour
             transform.GetChild(1).gameObject.SetActive(true);
         }
 
-        // shoot out magic ball
-        /*if(SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet != null)
-        {
-            try
-            {
-                if( playerModle == null ){
-                    playerModle = NetworkClient.localPlayer.gameObject;
-                }
-                playerModle.GetComponent<Player>().CmdFly();
-                print("發射");
-                // give velocity
-                /*bullet.GetComponent<Rigidbody>().velocity =
-                    gameObject.transform.forward * bullet.GetComponent<MagicBall>().speed;
-                bullet.GetComponent<MagicBall>().magicBallDestory();
-                bullet.transform.SetParent(null);
-                bullet = null;*/
-        /*    } 
-            catch
-            {
-                Debug.LogWarning(">> you have no magic");
-            }
-        }*/
 
         // Speech Recognizer listening setting
         if (SteamVR_Actions.default_GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet == null) 
@@ -98,9 +80,24 @@ public class VRRightHand: MonoBehaviour
     void OnpointerIn(object sender, PointerEventArgs e) //射线进入事件
     {
         GameObject obj = e.target.gameObject;//得到指向的物体
-        if (obj.tag.Equals("CanPointer")) //如果我们选择的物体他的标签是CanPointer
+        if (obj.tag.Equals("Player")) //如果我们选择的物体他的标签是 Player
         {
             PointerSomething = obj;  //用全局变量记录这个物体
+            monster_manager.GetComponent<MonsterManager>().SetEnemy(PointerSomething);
+            /*mm = summon_control.GetComponent<Summon>().my_monster;
+            if (mm != null)
+            {
+                try
+                {
+                    mm.GetComponent<MonsterManager>().SetEnemy(obj);
+                }
+                catch
+                {
+                    mm.GetComponent<MonsterManager>().SetEnemy(this.gameObject);
+                    print("設成我自己是自己的敵人");
+                }
+            }*/
+
         }
     }
     void OnpointerOut(object sender, PointerEventArgs e)//射线离开事件

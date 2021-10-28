@@ -10,6 +10,7 @@ public class Summon : MonoBehaviour
     public GameObject pointer;
     public GameObject player;
     public GameObject CircleControl;
+    public GameObject my_monster;
 
     public List<GameObject> monsterList;
     public Dictionary<int, GameObject> combineDict;
@@ -44,7 +45,10 @@ public class Summon : MonoBehaviour
     public void Create(int a, int b)
     {
         int select = a + b;//somealgo
-        Instantiate(monsterList[select]);
+
+        select = 1; //學長你select = a+b 有問題，我怎麼加都是零
+
+        my_monster = Instantiate(monsterList[select]);
         InitSelect();
     }
     public void Chnage()

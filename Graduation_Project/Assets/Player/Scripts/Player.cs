@@ -93,7 +93,20 @@ public class Player : NetworkBehaviour
 
     public void TakeDamage(GameObject g)
     {
-        int damage = g.GetComponent<MagicBall>().atk;
+        int damage;
+        if (g.tag == "MagicBall")
+        {
+            damage = g.GetComponent<MagicBall>().atk;
+        }
+        else if(g.tag == "Monster")
+        {
+            damage = g.GetComponent<Monster>().atk;
+            print("一待");
+        }
+        else
+        {
+            damage = 0;
+        }
         CMDchangeHp(damage);
         print("Take damage");
     }

@@ -19387,5 +19387,5 @@ MonoBehaviour:
   bulletEffect: {fileID: 3210543505498772757}
   magicName: lightning
   atk: 20
-  speed: 30
+  speed: 300
   destoryTime: 15

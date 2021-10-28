@@ -4860,7 +4860,7 @@ MonoBehaviour:
   bulletEffect: {fileID: 4729289143994853374}
   magicName: light
   atk: 20
-  speed: 17
+  speed: 170
   destoryTime: 15
 --- !u!1 &4729289143994853374
 GameObject:

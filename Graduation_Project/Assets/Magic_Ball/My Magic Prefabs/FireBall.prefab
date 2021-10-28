@@ -19406,7 +19406,7 @@ MonoBehaviour:
   bulletEffect: {fileID: 1472108195351778335}
   magicName: fireball
   atk: 20
-  speed: 35
+  speed: 350
   destoryTime: 15
 --- !u!114 &-9069243821493452799
 MonoBehaviour:

@@ -9712,7 +9712,7 @@ MonoBehaviour:
   bulletEffect: {fileID: 6819402449663525030}
   magicName: lighten
   atk: 20
-  speed: 18
+  speed: 180
   destoryTime: 15
 --- !u!1 &4314804318036604180
 GameObject:

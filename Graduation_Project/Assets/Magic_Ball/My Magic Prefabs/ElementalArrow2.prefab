@@ -14493,7 +14493,7 @@ MonoBehaviour:
   bulletEffect: {fileID: 7112863643061954207}
   magicName: banana
   atk: 20
-  speed: 12
+  speed: 120
   destoryTime: 15
 --- !u!1 &7112863643061954207
 GameObject:

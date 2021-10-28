@@ -9651,7 +9651,7 @@ MonoBehaviour:
   bulletEffect: {fileID: 1619774687564741085}
   magicName: rotate
   atk: 20
-  speed: 15
+  speed: 150
   destoryTime: 15
 --- !u!1 &8278854489949792203
 GameObject:

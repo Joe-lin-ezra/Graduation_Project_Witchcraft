@@ -16,7 +16,7 @@ public class BeetleAttackedDetector : MonoBehaviour
 
     }
     
-    void TakeDamage(GameObject other)
+    public void TakeDamage(GameObject other)
     {
         if (other.tag == ("MagicBall")) 
         {

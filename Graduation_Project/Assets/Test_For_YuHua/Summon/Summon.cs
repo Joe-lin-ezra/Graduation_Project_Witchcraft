@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
 //relation with monster things
 public class Summon : MonoBehaviour
@@ -10,12 +11,15 @@ public class Summon : MonoBehaviour
     public GameObject pointer;
     public GameObject player;
     public GameObject CircleControl;
-    public GameObject my_monster;
+    //public GameObject my_monster;
 
     public List<GameObject> monsterList;
     public Dictionary<int, GameObject> combineDict;
 
     private Pointer pt;
+
+    public GameObject playerModel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +52,12 @@ public class Summon : MonoBehaviour
 
         select = 1; //學長你select = a+b 有問題，我怎麼加都是零
 
-        my_monster = Instantiate(monsterList[select]);
+        if (playerModel == null)
+            playerModel = NetworkClient.localPlayer.gameObject;
+
+        playerModel.GetComponent<Player>().selectMonster( select);
+
+        //my_monster = Instantiate(monsterList[select]);
         InitSelect();
     }
     public void Chnage()

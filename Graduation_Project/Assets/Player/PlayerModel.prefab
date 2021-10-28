@@ -455,6 +455,7 @@ GameObject:
   - component: {fileID: 6397414832734569296}
   - component: {fileID: 1904502673947329380}
   - component: {fileID: 8807381307400714320}
+  - component: {fileID: 9097583400636722040}
   m_Layer: 0
   m_Name: PlayerModel
   m_TagString: Player
@@ -609,6 +610,11 @@ MonoBehaviour:
   - {fileID: 3925636352342320263, guid: 9c0dad7a102187f49a72b601f5335853, type: 3}
   - {fileID: 4877176678123108152, guid: 0c471857f5f0a8645bbb5855c330c82e, type: 3}
   bullet: {fileID: 0}
+  monster_prefabs:
+  - {fileID: 0}
+  - {fileID: 7575798074386036415, guid: fdb30e1a13cedcb479fa1ad5b2bb28ca, type: 3}
+  - {fileID: 7812157828964508902, guid: a7052001ea473f346ae9dafffd0b65c6, type: 3}
+  my_monster: {fileID: 0}
   hp: 100
   max_hp: 100
   hp_bar: {fileID: 762441209577718053}
@@ -687,6 +693,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9097583400636722040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5200988044924625667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af95fb586da2ca9419078e93f4f7d7e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPlayer: {fileID: 0}
 --- !u!1001 &4199462402061931538
 PrefabInstance:
   m_ObjectHideFlags: 0

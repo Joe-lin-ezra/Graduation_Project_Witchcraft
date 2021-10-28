@@ -83,7 +83,7 @@ public class VRRightHand: MonoBehaviour
         if (obj.tag.Equals("Player")) //如果我们选择的物体他的标签是 Player
         {
             PointerSomething = obj;  //用全局变量记录这个物体
-            monster_manager.GetComponent<MonsterManager>().SetEnemy(PointerSomething);
+            playerModle.GetComponent<MonsterManager>().SetEnemy(PointerSomething);
             /*mm = summon_control.GetComponent<Summon>().my_monster;
             if (mm != null)
             {

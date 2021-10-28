@@ -16,6 +16,10 @@ public class Player : NetworkBehaviour
     public GameObject[] MagicsOBJ;
     public GameObject bullet;
 
+    [Header("怪物")]
+    public GameObject[] monster_prefabs;
+    public GameObject my_monster;
+
     [SyncVar(hook = nameof(OnHpChange))]
     public float hp;
     public float max_hp = 100.0f;
@@ -67,16 +71,8 @@ public class Player : NetworkBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            hp -= 20;
-        }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            hp += 20;
-        }
     }
+
     [Command]
     public void CmdSetUpPlayer(float _hp ){
         hp = _hp;
@@ -89,6 +85,13 @@ public class Player : NetworkBehaviour
 
         if(isLocalPlayer)
             hp_vr_text.GetComponent<Text>().text = hp.ToString(); //改頭盔UI顯示寫廖
+    } 
+
+    [Command]
+    void CMDchangeHp(int damage){
+        RpcChangeHp(damage);
+        hp_bar.transform.localScale = new Vector3((hp / max_hp), 1, 1); //改頭上UI顯示寫廖
+        //hp_vr_text.GetComponent<Text>().text = hp.ToString(); //改頭盔UI顯示寫廖
     }
 
     public void TakeDamage(GameObject g)
@@ -109,15 +112,6 @@ public class Player : NetworkBehaviour
         }
         CMDchangeHp(damage);
         print("Take damage");
-    }
-
-    [Command]
-    void CMDchangeHp(int damage){
-        RpcChangeHp(damage);
-        hp_bar.transform.localScale = new Vector3((hp / max_hp), 1, 1); //改頭上UI顯示寫廖
-
-        
-        //hp_vr_text.GetComponent<Text>().text = hp.ToString(); //改頭盔UI顯示寫廖
     }
 
     [ClientRpc]
@@ -143,20 +137,20 @@ public class Player : NetworkBehaviour
             }
             count++;
         }
-        CmdFire(ans);
+        CmdCreatMagicBall(ans);
     }
 
             // this is called on the server
     [Command]
-    public void CmdFire(int ans)
+    public void CmdCreatMagicBall(int ans)
     {
         if (bullet == null && MagicsOBJ[ans] != null){
-            RpcFire(ans);
+            RpcCreatMagicBall(ans);
         }
     }
 
     [ClientRpc]
-    void RpcFire(int ans)
+    void RpcCreatMagicBall(int ans)
     {
         bullet = Instantiate(MagicsOBJ[ans],
                     playerRightHandModle.transform.position - 0.2f * Vector3.down + 0.2f * playerRightHandModle.transform.forward,
@@ -177,6 +171,21 @@ public class Player : NetworkBehaviour
        bullet.transform.SetParent(null);
        bullet = null;
     }
-    
+
+    public void selectMonster(int monster_num)
+    {
+        if(monster_prefabs[monster_num] != null)
+            CmdCreatMonster(monster_num);
+    }
+
+    [Command] void CmdCreatMonster(int monster_num)
+    {
+        RpcCreatMonster(monster_num);
+    }
+
+    [ClientRpc]void RpcCreatMonster(int monster_num)
+    {
+        my_monster = Instantiate(monster_prefabs[monster_num]);
+    }
 
 }

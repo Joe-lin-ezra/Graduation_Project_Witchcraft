@@ -27,7 +27,7 @@ public class Monster: MonoBehaviour
 
     void SetEnemy()
     {
-        this.enemy = GameObject.Find("Monster Manager").GetComponent<MonsterManager>().enemyPlayer;
+        this.enemy = GameObject.Find("PlayerModel").GetComponent<MonsterManager>().enemyPlayer;
     }
 
     public void TakeDamage(GameObject g)

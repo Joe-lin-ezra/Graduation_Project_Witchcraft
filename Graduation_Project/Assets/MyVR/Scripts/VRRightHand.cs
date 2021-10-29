@@ -80,24 +80,16 @@ public class VRRightHand: MonoBehaviour
     void OnpointerIn(object sender, PointerEventArgs e) //射线进入事件
     {
         GameObject obj = e.target.gameObject;//得到指向的物体
+
         if (obj.tag.Equals("Player")) //如果我们选择的物体他的标签是 Player
         {
             PointerSomething = obj;  //用全局变量记录这个物体
-            if(playerModle != null)
-                playerModle.GetComponent<MonsterManager>().SetEnemy(PointerSomething);
-            /*mm = summon_control.GetComponent<Summon>().my_monster;
-            if (mm != null)
+            if(playerModle == null)
+                playerModle = NetworkClient.localPlayer.gameObject;
+            if (playerModle != null)
             {
-                try
-                {
-                    mm.GetComponent<MonsterManager>().SetEnemy(obj);
-                }
-                catch
-                {
-                    mm.GetComponent<MonsterManager>().SetEnemy(this.gameObject);
-                    print("設成我自己是自己的敵人");
-                }
-            }*/
+                playerModle.GetComponent<MonsterManager>().SetEnemy(PointerSomething);
+            }
 
         }
     }

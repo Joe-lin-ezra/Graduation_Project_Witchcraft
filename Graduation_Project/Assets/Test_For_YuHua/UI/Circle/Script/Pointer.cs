@@ -37,11 +37,18 @@ public class Pointer : MonoBehaviour
     }
     public void OnTriggerExit(Collider other)
     {
+        try { 
             int a = other.GetComponent<Element>().selection;
             setSelect(a, selection);
             img.color = Color.blue;
-        
-      
+        }
+        catch
+        {
+            print("學長處理一下");
+        }
+
+
+
 
     }
     public void setSelect(int selection, int s)

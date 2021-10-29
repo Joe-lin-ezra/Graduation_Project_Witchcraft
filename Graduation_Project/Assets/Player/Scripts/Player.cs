@@ -86,7 +86,7 @@ public class Player : NetworkBehaviour
 
         if (SteamVR_Actions.default_GrabPinch.GetState(SteamVR_Input_Sources.LeftHand)) // 左手發射設線抓取敵人
         {
-            LeftHanderLaserSwitch();
+            CmdLeftHanderLaserSwitch();
         }
         else{
             pointer.transform.localScale = new Vector3(0 ,0 ,0);
@@ -94,7 +94,11 @@ public class Player : NetworkBehaviour
 
     }
 
-    void LeftHanderLaserSwitch()
+    [Command] void CmdLeftHanderLaserSwitch()
+    {
+        RpcLeftHanderLaserSwitch();
+    }
+    [ClientRpc] void RpcLeftHanderLaserSwitch()
     {
         float dist = 100f;
 

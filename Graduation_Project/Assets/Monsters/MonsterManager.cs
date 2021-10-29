@@ -16,7 +16,7 @@ public class MonsterManager : NetworkBehaviour
 
     public void SetEnemy(GameObject _enemyPlayer)
     {
-        if (_enemyPlayer.tag == "Player" && this.enemyPlayer != this.gameObject)
+        if (_enemyPlayer.tag == "Player" && _enemyPlayer != this.gameObject)
         {
             this.enemyPlayer = _enemyPlayer;
         }

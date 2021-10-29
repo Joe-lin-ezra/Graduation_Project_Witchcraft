@@ -705,6 +705,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af95fb586da2ca9419078e93f4f7d7e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   enemyPlayer: {fileID: 0}
 --- !u!1001 &4199462402061931538
 PrefabInstance:

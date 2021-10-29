@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class MonsterManager : MonoBehaviour
+public class MonsterManager : NetworkBehaviour
 {
+    [SyncVar(hook = nameof(OnEnmyChange))]
     public GameObject enemyPlayer = null;
+
+
+    void OnEnmyChange(GameObject _Old, GameObject _New)
+    {
+        enemyPlayer = _New;
+    }
 
     public void SetEnemy(GameObject _enemyPlayer)
     {
-        print(_enemyPlayer.tag);
-        if (_enemyPlayer.tag == "Player" && this.enemyPlayer == null)
+        if (_enemyPlayer.tag == "Player" && this.enemyPlayer != this.gameObject)
         {
             this.enemyPlayer = _enemyPlayer;
         }

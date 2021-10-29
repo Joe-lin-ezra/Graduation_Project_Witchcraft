@@ -56,7 +56,7 @@ public class Player : NetworkBehaviour
         if (!isLocalPlayer)
             return;
         transform.position = vrCamera.transform.position;
-        transform.rotation = vrCamera.transform.rotation;
+        transform.rotation = Quaternion.Euler( 0 , vrCamera.transform.rotation.y , 0);
         
         playerRightHandModle.transform.position = RightController.transform.position;
         playerRightHandModle.transform.rotation = RightController.transform.rotation;

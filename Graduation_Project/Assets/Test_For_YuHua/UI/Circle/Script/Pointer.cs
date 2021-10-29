@@ -32,7 +32,9 @@ public class Pointer : MonoBehaviour
     }
     public void OnTriggerExit(Collider other)
     {
-            if(selection < 2)
+        try
+        {
+            if (selection < 2)
             {
                 int a = other.GetComponent<Element>().selection;
                 setSelect(a, selection);
@@ -40,7 +42,13 @@ public class Pointer : MonoBehaviour
             }
 
 
-    }
+        }
+        catch
+        {
+            print("§ì¨ìÅo~~");
+        }
+
+     }
     public void setSelect(int selection, int s)
     {
         select[s] = selection;

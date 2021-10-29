@@ -83,7 +83,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &7307209391732561933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,8 +611,10 @@ MonoBehaviour:
   - {fileID: 4877176678123108152, guid: 0c471857f5f0a8645bbb5855c330c82e, type: 3}
   bullet: {fileID: 0}
   monster_prefabs:
-  - {fileID: 0}
+  - {fileID: 5328189666111882785, guid: 3de3d636fafa0af49a1e1c4995512200, type: 3}
   - {fileID: 7575798074386036415, guid: fdb30e1a13cedcb479fa1ad5b2bb28ca, type: 3}
+  - {fileID: 7575798074386036415, guid: fdb30e1a13cedcb479fa1ad5b2bb28ca, type: 3}
+  - {fileID: 7812157828964508902, guid: a7052001ea473f346ae9dafffd0b65c6, type: 3}
   - {fileID: 7812157828964508902, guid: a7052001ea473f346ae9dafffd0b65c6, type: 3}
   my_monster: {fileID: 0}
   hp: 100

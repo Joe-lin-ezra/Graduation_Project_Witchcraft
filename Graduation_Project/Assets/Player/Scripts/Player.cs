@@ -9,10 +9,18 @@ public class Player : NetworkBehaviour
 { 
     public GameObject vrCamera;
     public GameObject RightController;
+    public GameObject LeftController;
+
     public GameObject playerRightHandModle;
+    public GameObject playerLeftHandModle;
+    public GameObject playerLeftHandLaserPoint;
+    public GameObject pointer;
+    public float thickness = 0.02f;
+    public GameObject leftHandLaserHitObject = null;
+
     public GameObject teleport;
     public GameObject terrain;
-    //public GameObject magicBallObj;
+
     public GameObject[] MagicsOBJ;
     public GameObject bullet;
 
@@ -32,9 +40,10 @@ public class Player : NetworkBehaviour
     {
         vrCamera = GameObject.Find("Player/SteamVRObjects/VRCamera");
         RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
+        LeftController = GameObject.Find("Player/SteamVRObjects/LeftHand/Controller (left)");
         hp_vr_text = GameObject.Find("Player/Canvas/Panel/Text");
-        //playerRightHandModle = Instantiate(playerRightHandModle);
     }
+
     // Start is called before the first frame update
     public override void OnStartLocalPlayer()
     {
@@ -44,7 +53,8 @@ public class Player : NetworkBehaviour
         GameObject RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
         RightController.GetComponent<VRRightHand>().setTeleporting(t);
         Instantiate(terrain, transform.position - new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
-        
+
+        pointer.transform.localScale = new Vector3(thickness, thickness, 100f);//設定雷射預設大小
 
         hp = 100.0f;
         CmdSetUpPlayer(hp);//在連線上初始化玩家血量
@@ -61,6 +71,9 @@ public class Player : NetworkBehaviour
         playerRightHandModle.transform.position = RightController.transform.position;
         playerRightHandModle.transform.rotation = RightController.transform.rotation;
 
+        playerLeftHandModle.transform.position = LeftController.transform.position;
+        playerLeftHandModle.transform.rotation = LeftController.transform.rotation;
+
 
         if ( SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand))// 右手手把開搶鍵有bug ,會導致遊戲崩潰，請有空的隊友幫忙debug
         {
@@ -70,6 +83,41 @@ public class Player : NetworkBehaviour
             }
 
         }
+
+        if (SteamVR_Actions.default_GrabPinch.GetState(SteamVR_Input_Sources.LeftHand)) // 左手發射設線抓取敵人
+        {
+            LeftHanderLaserSwitch();
+        }
+        else{
+            pointer.transform.localScale = new Vector3(0 ,0 ,0);
+        }
+
+    }
+
+    void LeftHanderLaserSwitch()
+    {
+        float dist = 100f;
+
+        Ray raycast = new Ray(playerLeftHandLaserPoint.transform.position, playerLeftHandLaserPoint.transform.forward);
+        RaycastHit hit;
+        bool bHit = Physics.Raycast(raycast, out hit);
+        
+        if( !bHit)
+        {
+            leftHandLaserHitObject = null;
+        }
+        if(bHit && leftHandLaserHitObject != hit.transform.gameObject)
+        {
+            leftHandLaserHitObject = hit.transform.gameObject;
+            
+            print(leftHandLaserHitObject.name);
+        }
+        if (bHit && hit.distance < 100f)
+        {
+            dist = hit.distance;
+        }
+        pointer.transform.localScale = new Vector3(thickness * 5f, thickness * 5f, 20.0f *dist);
+        pointer.transform.localPosition = new Vector3(0f, 0f, dist * 20.0f / 2f);
 
     }
 
@@ -104,7 +152,6 @@ public class Player : NetworkBehaviour
         else if(g.tag == "Monster")
         {
             damage = g.GetComponent<Monster>().atk;
-            print("一待");
         }
         else
         {

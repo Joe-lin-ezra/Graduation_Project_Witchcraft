@@ -25,30 +25,19 @@ public class Pointer : MonoBehaviour
  
     public void OnTriggerStay(Collider other)
     {
-        
-        try
-        {
+            //element更換顏色狀態
             img = other.GetComponentInChildren<Image>();
-            img.color = Color.red;
-        }
-        catch
-        {
-            print("學長這裡也會出問題喔 By DanDanMa");
-        }
+            img.color = Color.red; 
+            
     }
     public void OnTriggerExit(Collider other)
     {
-        try { 
-            int a = other.GetComponent<Element>().selection;
-            setSelect(a, selection);
-            img.color = Color.blue;
-        }
-        catch
-        {
-            print("學長處理一下");
-        }
-
-
+            if(selection < 2)
+            {
+                int a = other.GetComponent<Element>().selection;
+                setSelect(a, selection);
+                img.color = Color.blue;
+            }
 
 
     }

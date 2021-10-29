@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
+using System;
 
 //relation with monster things
 public class Summon : MonoBehaviour
@@ -41,16 +42,14 @@ public class Summon : MonoBehaviour
     {
         try
         {
-
-        
-        if(pt.getSelection() == 2)
+            if(pt.getSelection() == 2)
+            {
+                Create(pt.getSelect(0),pt.getSelect(1));
+                pt.setSelection(0);
+            }
+        } catch(Exception e)
         {
-            Create(pt.getSelect(0),pt.getSelect(1));
-            pt.setSelection(0);
-        }
-        } catch
-        {
-            //print(e);
+            Debug.LogWarning(e);
         }
 
 
@@ -63,7 +62,7 @@ public class Summon : MonoBehaviour
         if (playerModel == null)
             playerModel = NetworkClient.localPlayer.gameObject;
 
-        playerModel.GetComponent<Player>().selectMonster( select);
+        playerModel.GetComponent<Player>().selectMonster(select);
 
         //my_monster = Instantiate(monsterList[select]);
         InitSelect();
@@ -71,7 +70,7 @@ public class Summon : MonoBehaviour
     public void Chnage()
     {
         int a = pt.setSelection(pt.getSelection() + 1);
-        pt.GetComponent<Image>().color = Color.red;
+        pt.GetComponent<Image>().color = a != 1 ? Color.green : Color.red;
     }
     public void InitSelect()
     {

@@ -83,3 +83,6 @@ crashlytics-build.properties
 *.vrmanifest
 *.asset
 *.meta
+*.asset
+*.meta
+*.asset

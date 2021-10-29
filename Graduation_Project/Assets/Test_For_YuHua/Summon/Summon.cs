@@ -39,19 +39,27 @@ public class Summon : MonoBehaviour
     }
     public void CheckMonster(Pointer pt)
     {
+        try
+        {
+
+        
         if(pt.getSelection() == 2)
         {
             Create(pt.getSelect(0),pt.getSelect(1));
             pt.setSelection(0);
         }
-        
+        } catch
+        {
+            //print(e);
+        }
+
+
     }
     public void Create(int a, int b)
     {
         int select = a + b;//somealgo
 
-        select = 1; //厩select = a+b Τ拜肈и或常琌箂
-
+        //select = 1; //厩select = a+b Τ拜肈и或常琌箂
         if (playerModel == null)
             playerModel = NetworkClient.localPlayer.gameObject;
 

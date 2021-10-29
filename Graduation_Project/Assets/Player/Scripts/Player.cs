@@ -109,8 +109,11 @@ public class Player : NetworkBehaviour
         if(bHit && leftHandLaserHitObject != hit.transform.gameObject)
         {
             leftHandLaserHitObject = hit.transform.gameObject;
-            
-            print(leftHandLaserHitObject.name);
+
+            if (leftHandLaserHitObject.tag.Equals("Player")) //是 Player
+            {
+                    this.GetComponent<MonsterManager>().SetEnemy(leftHandLaserHitObject);
+            }
         }
         if (bHit && hit.distance < 100f)
         {

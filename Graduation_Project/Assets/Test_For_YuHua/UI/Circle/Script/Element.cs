@@ -14,6 +14,7 @@ public class Element : MonoBehaviour
     {
         image = gameObject.GetComponent<Image>();
         rawImage = gameObject.GetComponent<RawImage>();
+        gameObject.tag  = "CircleElements";
         //image.sprite = bg;
         //rawImage.texture = comp;
     }

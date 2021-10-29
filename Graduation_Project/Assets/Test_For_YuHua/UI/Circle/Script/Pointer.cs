@@ -25,13 +25,17 @@ public class Pointer : MonoBehaviour
  
     public void OnTriggerStay(Collider other)
     {
-        try { 
-            //element§ó´«ÃC¦âª¬ºA
-            img = other.GetComponentInChildren<Image>();
-            img.color = Color.red;
+        try {
+            if (other.tag == "CircleElements")
+            {
+                //element§ó´«ÃC¦âª¬ºA
+                img = other.GetComponentInChildren<Image>();
+                img.color = Color.red;
+            }
         }
         catch
         {
+            print(other.name);
             print("¼K¼K");
         }
 
@@ -41,17 +45,20 @@ public class Pointer : MonoBehaviour
     {
         try
         {
-            if (selection < 2)
+            if(other.tag == "CircleElements")
             {
-                int a = other.GetComponent<Element>().selection;
-                setSelect(a, selection);
-                img.color = Color.blue;
+                if (selection < 2)
+                {
+                    int a = other.GetComponent<Element>().selection;
+                    setSelect(a, selection);
+                    img.color = Color.blue;
+                }
             }
-
 
         }
         catch
         {
+            print(other.name);
             print("§ì¨ìÅo~~");
         }
 

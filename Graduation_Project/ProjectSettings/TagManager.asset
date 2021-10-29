@@ -7,6 +7,9 @@ TagManager:
   - Monster
   - MagicBall
   - Pointer
+  - projectile
+  - FxTemporaire
+  - CircleElements
   layers:
   - Default
   - TransparentFX

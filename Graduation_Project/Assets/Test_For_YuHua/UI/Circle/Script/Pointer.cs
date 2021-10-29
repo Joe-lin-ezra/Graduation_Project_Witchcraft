@@ -25,9 +25,10 @@ public class Pointer : MonoBehaviour
  
     public void OnTriggerStay(Collider other)
     {
-        img = other.GetComponentInChildren<Image>();
+        
         try
         {
+            img = other.GetComponentInChildren<Image>();
             img.color = Color.red;
         }
         catch

@@ -165,7 +165,6 @@ public class Player : NetworkBehaviour
             damage = 0;
         }
         CMDchangeHp(damage);
-        print("Take damage");
     }
 
     [ClientRpc]

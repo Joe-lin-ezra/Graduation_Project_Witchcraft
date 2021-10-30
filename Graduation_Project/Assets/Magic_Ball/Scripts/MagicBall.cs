@@ -33,7 +33,6 @@ public class MagicBall : MonoBehaviour
 
     void OnTriggerEnter(Collider other) // instantiate explosion and set destory time
     {
-        print(other.name);
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
         if (other.tag == "Player"){
             other.gameObject.GetComponent<Player>().TakeDamage(gameObject);
@@ -46,6 +45,6 @@ public class MagicBall : MonoBehaviour
         }
         bulletEffect.SetActive(false);
         GameObject ex = Instantiate(explodeEffect, transform.position, transform.rotation, transform);
-        Destroy(gameObject, explosionDestoryTime);
+        Destroy(gameObject);//, explosionDestoryTime);
     }
 }

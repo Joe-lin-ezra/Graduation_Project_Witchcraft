@@ -29,7 +29,7 @@ public class RockManAnimationController : MonoBehaviour
     {
         animator.SetInteger("state", (int)state);
 
-        if (transform.parent.GetComponent<Monster>().hp <= 0)
+        if (gameObject.GetComponent<Monster>().hp <= 0)
         {
             state = RockManStateEnum.die;
             nma.SetDestination(transform.position);  // need 40 frame to play die-animation
@@ -38,7 +38,7 @@ public class RockManAnimationController : MonoBehaviour
         }
 
         // get enemy or idle in place
-        target = transform.parent.GetComponent<Monster>().enemy;
+        target = GetComponent<Monster>().enemy;
         if (target == null) 
         {
             state = RockManStateEnum.idle;

@@ -39,8 +39,10 @@ public class MagicBall : MonoBehaviour
             other.gameObject.GetComponent<Player>().TakeDamage(gameObject);
         }
         else if(other.tag == "Monster"){
-            print(other.gameObject.name);
-            other.gameObject.GetComponent<BeetleAttackedDetector>().TakeDamage(gameObject);
+            if(other.gameObject.name == "Mesh Collider")
+                other.gameObject.GetComponent<BeetleAttackedDetector>().TakeDamage(gameObject);
+            else if(other.gameObject.name == "Attacked Detector")
+                other.gameObject.GetComponent<RockManAttackedDetector>().TakeDamage(gameObject);
         }
         bulletEffect.SetActive(false);
         GameObject ex = Instantiate(explodeEffect, transform.position, transform.rotation, transform);

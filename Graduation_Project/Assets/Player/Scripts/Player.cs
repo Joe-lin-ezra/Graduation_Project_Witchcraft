@@ -240,6 +240,7 @@ public class Player : NetworkBehaviour
     [ClientRpc]void RpcCreatMonster(int monster_num)
     {
         my_monster = Instantiate(monster_prefabs[monster_num]);
+        my_monster.GetComponent<Monster>().SetEnemy(this.gameObject.GetComponent<MonsterManager>().enemyPlayer);
     }
 
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class Monster: MonoBehaviour
+public class Monster: NetworkBehaviour
 {
     public MonsterTypeEnum type;
     public int hp;
@@ -19,19 +19,9 @@ public class Monster: MonoBehaviour
          this.atk = 1;
     }
 
-    void Update() 
+    public void SetEnemy(GameObject me)
     {
-        if (enemy == null)
-        {
-            SetEnemy();
-        }
-    }
-
-    void SetEnemy()
-    {
-        if (playerModle == null)
-            playerModle = NetworkClient.localPlayer.gameObject;
-        this.enemy = playerModle.GetComponent<MonsterManager>().enemyPlayer;
+        this.enemy = me;
     }
 
     public void TakeDamage(GameObject g)

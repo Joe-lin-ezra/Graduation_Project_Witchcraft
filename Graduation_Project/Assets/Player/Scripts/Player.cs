@@ -79,9 +79,9 @@ public class Player : NetworkBehaviour
         {
             if (bullet != null)
             {
+                bullet.GetComponent<SphereCollider>().enabled = true;
                 CmdFly();
             }
-
         }
 
         if (SteamVR_Actions.default_GrabPinch.GetState(SteamVR_Input_Sources.LeftHand)) // 左手發射設線抓取敵人

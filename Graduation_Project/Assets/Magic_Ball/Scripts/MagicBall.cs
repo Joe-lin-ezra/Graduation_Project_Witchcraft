@@ -23,6 +23,7 @@ public class MagicBall : MonoBehaviour
         gameObject.tag = "MagicBall";
         destoryTime = 10.0f;
         bulletEffect = transform.GetChild(0).gameObject;
+        GetComponent<SphereCollider>().enabled = false;
     }
 
     public void magicBallDestory()

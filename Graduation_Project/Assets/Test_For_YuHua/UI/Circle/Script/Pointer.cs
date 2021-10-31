@@ -29,6 +29,7 @@ public class Pointer : MonoBehaviour
         try {
             if (other.tag == "CircleElements")
             {
+                
                 //element§ó´«ÃC¦âª¬ºA
                 img = other.GetComponentInChildren<Image>();
                 img.color = Color.red;
@@ -51,7 +52,10 @@ public class Pointer : MonoBehaviour
                 {
                     int a = other.GetComponent<Element>().selection;
                     setSelect(a, selection);
-                    img.color = Color.blue;
+                    Color tmpcol = Color.white;
+                    tmpcol.a = 0.0f;
+                    img.color = tmpcol;
+                    
                 }
             }
 

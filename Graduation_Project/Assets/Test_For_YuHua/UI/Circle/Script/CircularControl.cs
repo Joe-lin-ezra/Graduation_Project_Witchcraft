@@ -58,7 +58,7 @@ public class CircularControl : MonoBehaviour
             //Element setting
             Element tmp = a.GetComponent<Element>();
             tmp.selection = i;
-            tmp.GetComponentInChildren<RawImage>().texture = monsterTexture[0];
+            tmp.GetComponentInChildren<RawImage>().texture = monsterTexture[i];
         }
        
     }

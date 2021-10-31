@@ -227,6 +227,7 @@ public class Player : NetworkBehaviour
 
     public void selectMonster(int monster_num)
     {
+        Debug.Log(monster_num);
         if(monster_prefabs[monster_num] != null && monster_num != 0)
             CmdCreatMonster(monster_num);
     }

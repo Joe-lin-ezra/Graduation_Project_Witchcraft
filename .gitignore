@@ -80,3 +80,6 @@ crashlytics-build.properties
 [Uu]ser[Ss]ettings/
 *.asset
 *.vrmanifest
+*.meta
+*.asset
+*.asset

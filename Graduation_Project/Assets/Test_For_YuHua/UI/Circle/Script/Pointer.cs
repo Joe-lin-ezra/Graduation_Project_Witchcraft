@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Pointer : MonoBehaviour
 {
@@ -33,10 +34,9 @@ public class Pointer : MonoBehaviour
                 img.color = Color.red;
             }
         }
-        catch
+        catch(Exception e)
         {
-            print(other.name);
-            print("¼K¼K");
+            print(string.Format("stay {0}",e));
         }
 
 
@@ -58,8 +58,7 @@ public class Pointer : MonoBehaviour
         }
         catch
         {
-            print(other.name);
-            print("§ì¨ìÅo~~");
+
         }
 
      }
@@ -68,6 +67,10 @@ public class Pointer : MonoBehaviour
         select[s] = selection;
         Debug.Log(string.Format("Selection: {0} {1}", select[0], select[1]));
 
+    }
+    public void reCenter()
+    {
+        gameObject.transform.localPosition = new Vector3(0, 0, 0);
     }
     public int[] getSelect()
     {

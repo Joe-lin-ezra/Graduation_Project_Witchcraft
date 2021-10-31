@@ -9712,7 +9712,7 @@ MonoBehaviour:
   bulletEffect: {fileID: 6991810164267021685}
   magicName: bit
   atk: 20
-  speed: 300
+  speed: 340
   destoryTime: 15
 --- !u!1 &6991810164267021685
 GameObject:

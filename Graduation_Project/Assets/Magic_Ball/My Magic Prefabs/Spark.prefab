@@ -80,7 +80,7 @@ MonoBehaviour:
   bulletEffect: {fileID: 5671926052538134602}
   magicName: spark
   atk: 20
-  speed: 0.05
+  speed: 360
   destoryTime: 15
 --- !u!1 &5671926052538134602
 GameObject:
@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 5671926052538134602}
   m_LocalRotation: {x: 0.3968059, y: 0.28385267, z: 0.6957263, w: 0.5271981}
   m_LocalPosition: {x: -0.000038065355, y: -0.000057221616, z: 0.00005922422}
-  m_LocalScale: {x: 0.8146433, y: 0.8146436, z: 0.8146438}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 6060777480512234678}
   m_Father: {fileID: 153215320743844739}

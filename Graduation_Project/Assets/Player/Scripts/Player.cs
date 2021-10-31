@@ -75,7 +75,7 @@ public class Player : NetworkBehaviour
         playerLeftHandModle.transform.rotation = LeftController.transform.rotation;
 
 
-        if ( SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand))// 右手手把開搶鍵有bug ,會導致遊戲崩潰，請有空的隊友幫忙debug
+        if ( SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand))
         {
             if (bullet != null)
             {
@@ -206,8 +206,8 @@ public class Player : NetworkBehaviour
     void RpcCreatMagicBall(int ans)
     {
         bullet = Instantiate(MagicsOBJ[ans],
-                    playerRightHandModle.transform.position - 0.2f * Vector3.down + 0.2f * playerRightHandModle.transform.forward,
-                    playerRightHandModle.transform.rotation,
+                    RightController.transform.position - 0.2f * Vector3.down + 0.2f * playerRightHandModle.transform.forward,
+                    RightController.transform.rotation,
                     playerRightHandModle.transform);
 
     }

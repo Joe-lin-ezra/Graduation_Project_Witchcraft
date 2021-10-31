@@ -45,6 +45,7 @@ public class MagicBall : MonoBehaviour
         }
         bulletEffect.SetActive(false);
         GameObject ex = Instantiate(explodeEffect, transform.position, transform.rotation, transform);
-        Destroy(gameObject);//, explosionDestoryTime);
+        Destroy(ex, explosionDestoryTime);
+        gameObject.GetComponent<SphereCollider>().enabled = false;
     }
 }

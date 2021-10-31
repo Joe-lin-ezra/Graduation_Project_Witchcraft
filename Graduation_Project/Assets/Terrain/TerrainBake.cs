@@ -8,7 +8,6 @@ public class TerrainBake : MonoBehaviour
     private void Awake()
     {
         this.gameObject.GetComponent<NavMeshSurface>().BuildNavMesh();
-        print("AAA");
     }
     // Start is called before the first frame update
     void Start()

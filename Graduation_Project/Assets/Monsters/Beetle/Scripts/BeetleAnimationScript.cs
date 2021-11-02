@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class BeetleAnimationScript : MonoBehaviour
+public class BeetleAnimationScript : NetworkBehaviour
 {
     private Vector3 origin;//儲存導航網格代理的初始位置
     private UnityEngine.AI.NavMeshAgent nma;//儲存導航網格代理元件

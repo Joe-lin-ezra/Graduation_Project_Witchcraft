@@ -49,10 +49,15 @@ public class Player : NetworkBehaviour
     {
         transform.position = vrCamera.transform.position;
         transform.rotation = vrCamera.transform.rotation;
-        GameObject t = Instantiate(teleport, new Vector3(3, 0, 0), new Quaternion(0, 0, 0, 0));
+
+        CmdCreatTerrain();
+
+        //GameObject t = Instantiate(teleport, new Vector3(3, 0, 0), new Quaternion(0, 0, 0, 0));
+        //RightController.GetComponent<VRRightHand>().setTeleporting(t);
+
         GameObject RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
-        RightController.GetComponent<VRRightHand>().setTeleporting(t);
-        Instantiate(terrain, transform.position - new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
+        
+        //Instantiate(terrain, transform.position - new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
 
         pointer.transform.localScale = new Vector3(thickness, thickness, 100f);//設定雷射預設大小
 
@@ -240,6 +245,18 @@ public class Player : NetworkBehaviour
         monster_clone.GetComponent<Monster>().playerModle = this.gameObject;
         GameObject owner = this.gameObject;
         NetworkServer.Spawn(monster_clone , owner);
+    }
+
+    [Command]
+    void CmdCreatTerrain()
+    {
+        GameObject t = Instantiate(teleport, new Vector3(3, 0, 0), new Quaternion(0, 0, 0, 0));
+        RightController.GetComponent<VRRightHand>().setTeleporting(t);
+        NetworkServer.Spawn(t);
+
+        GameObject terrain_clone =Instantiate(terrain, transform.position - new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
+        
+        NetworkServer.Spawn(terrain_clone);
     }
 
 }

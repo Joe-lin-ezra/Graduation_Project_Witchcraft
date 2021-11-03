@@ -241,8 +241,11 @@ public class Player : NetworkBehaviour
 
     [Command] void CmdCreatMonster(int monster_num)
     {
-        RpcCreatMonster(monster_num);
+        monster_clone = Instantiate(monster_prefabs[monster_num]);
+        monster_clone.GetComponent<Monster>().SetEnemy(this.gameObject.GetComponent<MonsterManager>().enemyPlayer);
+        monster_clone.GetComponent<Monster>().playerModle = this.gameObject;
         GameObject owner = this.gameObject;
+        RpcCreatMonster(monster_num);
         NetworkServer.Spawn(monster_clone, monster_clone);// owner);
 
     }
@@ -253,7 +256,6 @@ public class Player : NetworkBehaviour
         monster_clone.GetComponent<Monster>().SetEnemy(this.gameObject.GetComponent<MonsterManager>().enemyPlayer);
         monster_clone.GetComponent<Monster>().playerModle = this.gameObject;
         GameObject owner = this.gameObject;
-        NetworkServer.Spawn(monster_clone , owner);
     }
 
     [Command]

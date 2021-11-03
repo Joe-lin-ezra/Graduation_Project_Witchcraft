@@ -5,15 +5,14 @@ using Mirror;
 
 public class PlayerRightHandModle : MonoBehaviour
 {
-    public GameObject bullet = null;//³Qµo®gª«
+    public GameObject bullet = null;
     public GameObject vrRightHand;
-    // Start is called before the first frame update
+
     void Start()
     {
-        vrRightHand = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");// RightRenderModel Slim(Clone)");
+        vrRightHand = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
     }
 
-    // Update is called once per frame
     void Update()
     {
         this.transform.position = vrRightHand.transform.position;

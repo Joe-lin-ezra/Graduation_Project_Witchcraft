@@ -13,7 +13,6 @@ public class MagicBall : MonoBehaviour
     public float speed;
     public float destoryTime;
 
-
     private int explosionDestoryTime = 2;
 
 
@@ -31,7 +30,8 @@ public class MagicBall : MonoBehaviour
         Destroy(gameObject, destoryTime);
     }
 
-    void OnTriggerEnter(Collider other) // instantiate explosion and set destory time
+    // instantiate explosion and set destory time
+    void OnTriggerEnter(Collider other) 
     {
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
         if (other.tag == "Player"){
@@ -44,8 +44,8 @@ public class MagicBall : MonoBehaviour
                 other.gameObject.GetComponent<RockManAttackedDetector>().TakeDamage(gameObject);
         }
         bulletEffect.SetActive(false);
+        gameObject.GetComponent<SphereCollider>().enabled = false;
         GameObject ex = Instantiate(explodeEffect, transform.position, transform.rotation, transform);
         Destroy(ex, explosionDestoryTime);
-        gameObject.GetComponent<SphereCollider>().enabled = false;
     }
 }

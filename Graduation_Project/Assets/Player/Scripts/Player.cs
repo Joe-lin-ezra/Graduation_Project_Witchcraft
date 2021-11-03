@@ -6,7 +6,7 @@ using Mirror;
 using UnityEngine.UI;
 
 public class Player : NetworkBehaviour
-{ 
+{
     public GameObject vrCamera;
     public GameObject RightController;
     public GameObject LeftController;
@@ -36,7 +36,7 @@ public class Player : NetworkBehaviour
     [SerializeField] public GameObject hp_bar;
     [SerializeField] public GameObject hp_vr_text;
 
-    
+
     private void Awake()
     {
         vrCamera = GameObject.Find("Player/SteamVRObjects/VRCamera");
@@ -51,15 +51,8 @@ public class Player : NetworkBehaviour
         transform.position = vrCamera.transform.position;
         transform.rotation = vrCamera.transform.rotation;
 
-        if(isServer)
+        if (isServer)
             CmdCreatTerrain();
-
-        //GameObject t = Instantiate(teleport, new Vector3(3, 0, 0), new Quaternion(0, 0, 0, 0));
-        //RightController.GetComponent<VRRightHand>().setTeleporting(t);
-
-        GameObject RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
-        
-        //Instantiate(terrain, transform.position - new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
 
         pointer.transform.localScale = new Vector3(thickness, thickness, 100f);//設定雷射預設大小
 
@@ -73,115 +66,54 @@ public class Player : NetworkBehaviour
         if (!isLocalPlayer)
             return;
         transform.position = vrCamera.transform.position;
-        transform.rotation = Quaternion.Euler( 0 , vrCamera.transform.rotation.y , 0);
-        
+        transform.rotation = Quaternion.Euler(0, vrCamera.transform.rotation.y, 0);
+
+        // player___HandModle: networking gameobject
+        // ___Controller: local gameobject
         playerRightHandModle.transform.position = RightController.transform.position;
         playerRightHandModle.transform.rotation = RightController.transform.rotation;
-
         playerLeftHandModle.transform.position = LeftController.transform.position;
         playerLeftHandModle.transform.rotation = LeftController.transform.rotation;
 
-
-        if ( SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand))
+        // shoot bullet, when right-hand-controller-grab-pinch is grabbed 
+        if (SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand))
         {
             if (bullet != null)
             {
                 bullet.GetComponent<SphereCollider>().enabled = true;
+                // notify server to run fly function
                 CmdFly();
             }
         }
 
-        if (SteamVR_Actions.default_GrabPinch.GetState(SteamVR_Input_Sources.LeftHand)) // 左手發射設線抓取敵人
+        // select enemy by grabbing right-hand-controller-grab-pinch
+        if (SteamVR_Actions.default_GrabPinch.GetState(SteamVR_Input_Sources.LeftHand))
         {
             CmdLeftHanderLaserSwitch();
         }
-        else{
-            pointer.transform.localScale = new Vector3(0 ,0 ,0);
-        }
-
-    }
-
-    [Command] void CmdLeftHanderLaserSwitch()
-    {
-        RpcLeftHanderLaserSwitch();
-    }
-    [ClientRpc] void RpcLeftHanderLaserSwitch()
-    {
-        float dist = 100f;
-
-        Ray raycast = new Ray(playerLeftHandLaserPoint.transform.position, playerLeftHandLaserPoint.transform.forward);
-        RaycastHit hit;
-        bool bHit = Physics.Raycast(raycast, out hit);
-        
-        if( !bHit)
+        else
         {
-            leftHandLaserHitObject = null;
+            pointer.transform.localScale = new Vector3(0, 0, 0);
         }
-        if(bHit && leftHandLaserHitObject != hit.transform.gameObject)
-        {
-            leftHandLaserHitObject = hit.transform.gameObject;
 
-            if (leftHandLaserHitObject.tag.Equals("Player")) //是 Player
-            {
-                    this.GetComponent<MonsterManager>().SetEnemy(leftHandLaserHitObject);
-            }
-        }
-        if (bHit && hit.distance < 100f)
-        {
-            dist = hit.distance;
-        }
-        pointer.transform.localScale = new Vector3(thickness * 5f, thickness * 5f, 20.0f *dist);
-        pointer.transform.localPosition = new Vector3(0f, 0f, dist * 20.0f / 2f);
-
-    }
-
-    [Command]
-    public void CmdSetUpPlayer(float _hp ){
-        hp = _hp;
     }
 
     void OnHpChange(float _Old, float _New)
     {
         hp = _New;
-        //hp_bar.transform.localScale = new Vector3((hp/max_hp) , 1, 1); //改頭上UI顯示寫廖
 
-        if(isLocalPlayer)
-            hp_vr_text.GetComponent<Text>().text = hp.ToString(); //改頭盔UI顯示寫廖
-    } 
-
-    [Command]
-    void CMDchangeHp(int damage){
-        RpcChangeHp(damage);
-        hp_bar.transform.localScale = new Vector3((hp / max_hp), 1, 1); //改頭上UI顯示寫廖
-        //hp_vr_text.GetComponent<Text>().text = hp.ToString(); //改頭盔UI顯示寫廖
+        if (isLocalPlayer)
+            // change vr-head UI hp text 
+            hp_vr_text.GetComponent<Text>().text = hp.ToString(); 
     }
-
-    public void TakeDamage(GameObject g)
+    
+    public void selectMonster(int monster_num)
     {
-        int damage;
-        if (g.tag == "MagicBall")
-        {
-            damage = g.GetComponent<MagicBall>().atk;
-        }
-        else if(g.tag == "Monster")
-        {
-            damage = g.GetComponent<Monster>().atk;
-        }
-        else
-        {
-            damage = 0;
-        }
-        CMDchangeHp(damage);
+        if (monster_prefabs[monster_num] != null && monster_num != 0)
+            CmdCreatMonster(monster_num);
     }
 
-    [ClientRpc]
-    void RpcChangeHp(int damage){
-        hp -= damage;
-        hp_bar.transform.localScale = new Vector3((hp / max_hp), 1, 1); //改頭上UI顯示寫廖
-
-        //hp_vr_text.GetComponent<Text>().text = hp.ToString(); //改頭盔UI顯示寫廖
-    }
-
+    // find the primary magic ball
     public void sellectMagicBall(string text)
     {
         int minIndex = text.Length;
@@ -200,13 +132,62 @@ public class Player : NetworkBehaviour
         CmdCreatMagicBall(ans);
     }
 
-            // this is called on the server
-    [Command]
-    public void CmdCreatMagicBall(int ans)
+    public void TakeDamage(GameObject g)
     {
-        if (bullet == null && MagicsOBJ[ans] != null){
-            RpcCreatMagicBall(ans);
+        int damage;
+        if (g.tag == "MagicBall")
+        {
+            damage = g.GetComponent<MagicBall>().atk;
         }
+        else if (g.tag == "Monster")
+        {
+            damage = g.GetComponent<Monster>().atk;
+        }
+        else
+        {
+            damage = 0;
+        }
+        CMDchangeHp(damage);
+    }
+
+    // ==================================          Client RPC         ==========================================
+
+    // change the player hp_bar
+    [ClientRpc]
+    void RpcChangeHp(int damage)
+    {
+        hp -= damage;
+        hp_bar.transform.localScale = new Vector3((hp / max_hp), 1, 1);
+    }
+    
+    [ClientRpc]
+    void RpcLeftHanderLaserSwitch()
+    {
+        float dist = 100f;
+
+        Ray raycast = new Ray(playerLeftHandLaserPoint.transform.position, playerLeftHandLaserPoint.transform.forward);
+        RaycastHit hit;
+        bool bHit = Physics.Raycast(raycast, out hit);
+
+        if (!bHit)
+        {
+            leftHandLaserHitObject = null;
+        }
+        if (bHit && leftHandLaserHitObject != hit.transform.gameObject)
+        {
+            leftHandLaserHitObject = hit.transform.gameObject;
+
+            if (leftHandLaserHitObject.tag.Equals("Player")) //是 Player
+            {
+                this.GetComponent<MonsterManager>().SetEnemy(leftHandLaserHitObject);
+            }
+        }
+        if (bHit && hit.distance < 100f)
+        {
+            dist = hit.distance;
+        }
+        pointer.transform.localScale = new Vector3(thickness * 5f, thickness * 5f, 20.0f * dist);
+        pointer.transform.localPosition = new Vector3(0f, 0f, dist * 20.0f / 2f);
     }
 
     [ClientRpc]
@@ -219,43 +200,64 @@ public class Player : NetworkBehaviour
 
     }
 
-    [Command]
-    public void CmdFly(){
-        RpcFly();
-    }
-
     [ClientRpc]
-    void RpcFly(){
-       bullet.GetComponent<Rigidbody>().velocity = playerRightHandModle.transform.forward * bullet.GetComponent<MagicBall>().speed * Time.deltaTime;
-       bullet.GetComponent<MagicBall>().magicBallDestory();
-       bullet.transform.SetParent(null);
-       bullet = null;
-    }
-
-    public void selectMonster(int monster_num)
+    void RpcFly()
     {
-        Debug.Log(monster_num);
-        if(monster_prefabs[monster_num] != null && monster_num != 0)
-            CmdCreatMonster(monster_num);
+        bullet.GetComponent<Rigidbody>().velocity = playerRightHandModle.transform.forward * bullet.GetComponent<MagicBall>().speed * Time.deltaTime;
+        bullet.GetComponent<MagicBall>().magicBallDestory();
+        bullet.transform.SetParent(null);
+        bullet = null;
     }
 
-    [Command] void CmdCreatMonster(int monster_num)
+
+
+
+    /* [ClientRpc] void RpcCreatMonster(int monster_num)
+     {
+         monster_clone = Instantiate(monster_prefabs[monster_num]);
+         monster_clone.GetComponent<Monster>().SetEnemy(this.gameObject.GetComponent<MonsterManager>().enemyPlayer);
+         monster_clone.GetComponent<Monster>().playerModle = this.gameObject;
+         GameObject owner = this.gameObject;
+     }*/
+
+
+    //  =================================       Command                ===================================
+    
+    
+    // change the relative player-model vr-head hp_bar
+    [Command]
+    void CMDchangeHp(int damage)
+    {
+        RpcChangeHp(damage);
+        hp_bar.transform.localScale = new Vector3((hp / max_hp), 1, 1);
+    }
+
+    // this is called on the server
+    [Command]
+    public void CmdCreatMagicBall(int ans)
+    {
+        if (bullet == null && MagicsOBJ[ans] != null)
+        {
+            RpcCreatMagicBall(ans);
+        }
+    }
+
+    [Command]
+    void CmdCreatMonster(int monster_num)
     {
         monster_clone = Instantiate(monster_prefabs[monster_num]);
         monster_clone.GetComponent<Monster>().SetEnemy(this.gameObject.GetComponent<MonsterManager>().enemyPlayer);
         monster_clone.GetComponent<Monster>().playerModle = this.gameObject;
         GameObject owner = this.gameObject;
         NetworkServer.Spawn(monster_clone, monster_clone);// owner);
-
     }
+    
 
-   /* [ClientRpc] void RpcCreatMonster(int monster_num)
+    [Command]
+    public void CmdSetUpPlayer(float _hp)
     {
-        monster_clone = Instantiate(monster_prefabs[monster_num]);
-        monster_clone.GetComponent<Monster>().SetEnemy(this.gameObject.GetComponent<MonsterManager>().enemyPlayer);
-        monster_clone.GetComponent<Monster>().playerModle = this.gameObject;
-        GameObject owner = this.gameObject;
-    }*/
+        hp = _hp;
+    }
 
     [Command]
     void CmdCreatTerrain()
@@ -264,9 +266,20 @@ public class Player : NetworkBehaviour
         RightController.GetComponent<VRRightHand>().setTeleporting(t);
         NetworkServer.Spawn(t);
 
-        GameObject terrain_clone =Instantiate(terrain, transform.position - new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
-        
+        GameObject terrain_clone = Instantiate(terrain, transform.position - new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
         NetworkServer.Spawn(terrain_clone);
     }
 
+    [Command]
+    public void CmdFly()
+    {
+        RpcFly();
+    }
+
+    [Command]
+    void CmdLeftHanderLaserSwitch()
+    {
+        // to notify all relative gameobject to do the laser
+        RpcLeftHanderLaserSwitch();
+    }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 using Mirror;
 public class MagicControl: MonoBehaviour
 {
-    // Start is called before the first frame update
     public  GameObject[] MagicsOBJ ;
 
     [Header("VR Controller")]
@@ -20,7 +19,6 @@ public class MagicControl: MonoBehaviour
     public void Start()
     {
         RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
-        Debug.Log(RightController);
     }
 
     private void magicInstantiate(GameObject magic)
@@ -57,7 +55,7 @@ public class MagicControl: MonoBehaviour
 
     public string keywordExtractionAndInstantiate(string text)
     {
-        int minIndex =text.Length;
+        int minIndex = text.Length;
         GameObject magic = null;
  
         foreach(GameObject m in MagicsOBJ)

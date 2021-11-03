@@ -19,11 +19,10 @@ public class SpeechRecognizer : MonoBehaviour
         dictationRecognizer.Stop();
     }
 
-    // Use this for initialization
+    // initialization
     void Start()
     {
         dictationRecognizer = new DictationRecognizer();
-
         dictationRecognizer.DictationResult += onDictationResult;
         dictationRecognizer.DictationHypothesis += onDictationHypothesis;
         dictationRecognizer.DictationComplete += onDictationComplete;
@@ -34,29 +33,25 @@ public class SpeechRecognizer : MonoBehaviour
 
     void onDictationResult(string text, ConfidenceLevel confidence)
     {
-        // write your logic here
         Debug.LogFormat("Dictation result: " + text);
-        magicController.GetComponent<MagicControl>().keywordExtractionAndInstantiate(text);
+        text = magicController.GetComponent<MagicControl>().keywordExtractionAndInstantiate(text);
         stopListening();
     }
 
     void onDictationHypothesis(string text)
     {
-        // write your logic here
         Debug.LogFormat("Dictation hypothesis: {0}", text);
         text = magicController.GetComponent<MagicControl>().keywordExtractionAndInstantiate(text);
     }
 
     void onDictationComplete(DictationCompletionCause cause)
     {
-        // write your logic here
         if (cause != DictationCompletionCause.Complete)
             Debug.LogWarningFormat("Dictation completed unsuccessfully: {0}.", cause);
     }
 
     void onDictationError(string error, int hresult)
     {
-        // write your logic here
         Debug.LogWarningFormat("Dictation error: {0}; HResult = {1}.", error, hresult);
         dictationRecognizer.Start();
     }

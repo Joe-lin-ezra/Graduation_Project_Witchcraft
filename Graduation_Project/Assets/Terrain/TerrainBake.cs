@@ -9,15 +9,4 @@ public class TerrainBake : MonoBehaviour
     {
         this.gameObject.GetComponent<NavMeshSurface>().BuildNavMesh();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

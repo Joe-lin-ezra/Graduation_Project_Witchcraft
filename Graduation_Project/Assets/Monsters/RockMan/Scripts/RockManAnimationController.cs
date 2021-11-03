@@ -76,5 +76,20 @@ public class RockManAnimationController : NetworkBehaviour
         state = RockManStateEnum.attack1;
         nma.SetDestination(transform.position);
         transform.parent.GetComponent<Monster>().Attack();
+
+        cmdSyncPlanePosition(transform.position, transform.rotation);
+    }
+
+    [Command]
+    private void cmdSyncPlanePosition(Vector3 currentPosition, Quaternion currentRotation)
+    {
+        ServerSyncPlayer(currentPosition, currentRotation);
+    }
+
+    [ClientRpc]
+    private void ServerSyncPlayer(Vector3 currentPosition, Quaternion currentRotation)
+    {
+        transform.position = currentPosition;
+        transform.rotation = currentRotation;
     }
 }

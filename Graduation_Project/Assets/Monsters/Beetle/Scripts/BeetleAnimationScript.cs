@@ -70,5 +70,19 @@ public class BeetleAnimationScript : NetworkBehaviour
         GetComponent<Animation>().Play("Stab Attack");
         nma.SetDestination(transform.position);
         gameObject.GetComponent<Monster>().Attack();
+
+        cmdSyncPlanePosition(transform.position, transform.rotation);
     }
+
+    [Command] private void cmdSyncPlanePosition(Vector3 currentPosition, Quaternion currentRotation)
+    {
+        ServerSyncPlayer(currentPosition, currentRotation);
+    }
+
+    [ClientRpc] private void ServerSyncPlayer(Vector3 currentPosition, Quaternion currentRotation)
+    {
+        transform.position = currentPosition;
+        transform.rotation = currentRotation;
+    }
+
 }

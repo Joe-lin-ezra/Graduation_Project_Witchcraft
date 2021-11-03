@@ -63,7 +63,7 @@ public class VRLeftHand : MonoBehaviour
             
             if(pt.isTrigered)
             {
-                Debug.Log("select");
+                
                 sumo.Chnage();
                 pt.reCenter();
             }

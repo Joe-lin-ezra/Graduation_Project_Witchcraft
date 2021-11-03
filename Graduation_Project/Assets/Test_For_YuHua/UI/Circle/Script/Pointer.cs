@@ -42,7 +42,6 @@ public class Pointer : MonoBehaviour
         }
         catch(Exception e)
         {
-            print(string.Format("stay {0}",e));
         }
 
 

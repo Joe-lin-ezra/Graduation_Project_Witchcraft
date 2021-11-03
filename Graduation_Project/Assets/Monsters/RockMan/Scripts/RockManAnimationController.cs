@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class RockManAnimationController : MonoBehaviour
+public class RockManAnimationController : NetworkBehaviour
 {
     private Vector3 origin;//儲存導航網格代理的初始位置
     private UnityEngine.AI.NavMeshAgent nma;//儲存導航網格代理元件
@@ -10,6 +11,8 @@ public class RockManAnimationController : MonoBehaviour
     private GameObject target = null;
     
     private Quaternion rotationRecord;
+
+    private bool workable = false;
 
     // finite state machine
     RockManStateEnum state = RockManStateEnum.idle;
@@ -21,12 +24,18 @@ public class RockManAnimationController : MonoBehaviour
         nma = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();   //取得導航網格代理元件
         origin = transform.position;     // 儲存一下這個指令碼所掛載遊戲物體的初始位置
         rotationRecord = transform.rotation;
-        animator = GetComponent<Animator>();;
+        animator = GetComponent<Animator>();
+
+        if (this.gameObject.GetComponent<Monster>().playerModle == NetworkClient.localPlayer.gameObject) //如果此怪物的傭有者是本地玩家則可以移動
+            workable = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!workable)
+            return;
+
         animator.SetInteger("state", (int)state);
 
         if (gameObject.GetComponent<Monster>().hp <= 0)

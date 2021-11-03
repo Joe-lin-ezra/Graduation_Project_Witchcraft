@@ -27,6 +27,7 @@ public class Player : NetworkBehaviour
     [Header("怪物")]
     public GameObject[] monster_prefabs;
     public GameObject my_monster;
+    GameObject monster_clone;
 
     [SyncVar(hook = nameof(OnHpChange))]
     public float hp;

@@ -550,6 +550,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4029732537076800253, guid: a6e45c1a3602aa946b9a5a09f788c6eb,
+        type: 3}
+      propertyPath: m_PlaneDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5688084953311077671, guid: a6e45c1a3602aa946b9a5a09f788c6eb,
         type: 3}
       propertyPath: speechRecognizer

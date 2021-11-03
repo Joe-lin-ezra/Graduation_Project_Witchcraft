@@ -568,10 +568,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 771450433642522638, guid: 2aa4811b2f7300f4aa7736909328e69d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 782910802097768067, guid: 2aa4811b2f7300f4aa7736909328e69d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5948167753824392753, guid: 2aa4811b2f7300f4aa7736909328e69d,
         type: 3}
       propertyPath: sceneId
       value: 2180321699
+      objectReference: {fileID: 0}
+    - target: {fileID: 5977842764271543371, guid: 2aa4811b2f7300f4aa7736909328e69d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7038921335447742224, guid: 2aa4811b2f7300f4aa7736909328e69d,
         type: 3}
@@ -633,10 +648,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIComponent
       objectReference: {fileID: 0}
+    - target: {fileID: 7038921335470406060, guid: 2aa4811b2f7300f4aa7736909328e69d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7038921335470406067, guid: 2aa4811b2f7300f4aa7736909328e69d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7038921336210854048, guid: 2aa4811b2f7300f4aa7736909328e69d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7038921336815017212, guid: 2aa4811b2f7300f4aa7736909328e69d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8383914110995286454, guid: 2aa4811b2f7300f4aa7736909328e69d,
         type: 3}
       propertyPath: sceneId
       value: 3095635912
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5977842764271543371, guid: 2aa4811b2f7300f4aa7736909328e69d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2aa4811b2f7300f4aa7736909328e69d, type: 3}

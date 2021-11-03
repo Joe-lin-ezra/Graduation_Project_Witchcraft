@@ -20,7 +20,7 @@ public class BeetleAnimationScript : NetworkBehaviour
         origin = transform.position;     // 儲存一下這個指令碼所掛載遊戲物體的初始位置
         rotationRecord = transform.rotation;
 
-        if (this.gameObject.GetComponent<Monster>().playerModle == NetworkClient.localPlayer.gameObject) //如果此怪物的傭有者是本地玩家則可以移動
+        if ( this.gameObject.GetComponent<Monster>().playerModle == NetworkClient.localPlayer.gameObject) //如果此怪物的傭有者是本地玩家則可以移動
             workable = true;
     }
 

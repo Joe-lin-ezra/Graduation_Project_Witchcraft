@@ -69,7 +69,7 @@ public class Pointer : MonoBehaviour
     public void setSelect(int selection, int s)
     {
         select[s] = selection;
-        Debug.Log(string.Format("Selection: {0} {1}", select[0], select[1]));
+        //Debug.Log(string.Format("Selection: {0} {1}", select[0], select[1]));
 
     }
     public void reCenter()

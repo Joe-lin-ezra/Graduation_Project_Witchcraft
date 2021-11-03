@@ -233,15 +233,20 @@ public class Player : NetworkBehaviour
 
     public void selectMonster(int monster_num)
     {
-        Debug.Log(monster_num);
-        if(monster_prefabs[monster_num] != null && monster_num != 0)
+        Debug.Log("select monster: " + monster_num);
+        if (monster_prefabs[monster_num] != null && monster_num != 0)
+        {
             CmdCreatMonster(monster_num);
+            Debug.Log("cmd create monster finished!!");
+        }
+
     }
 
     [Command] void CmdCreatMonster(int monster_num)
     {
         //RpcCreatMonster(monster_num);
         GameObject monster_clone = Instantiate(monster_prefabs[monster_num]);
+        Debug.Log(this.gameObject.GetComponent<MonsterManager>().enemyPlayer.name);
         monster_clone.GetComponent<Monster>().SetEnemy(this.gameObject.GetComponent<MonsterManager>().enemyPlayer);
         monster_clone.GetComponent<Monster>().playerModle = this.gameObject;
         GameObject owner = this.gameObject;

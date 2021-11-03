@@ -20,6 +20,7 @@ public class BeetleAttackedDetector : MonoBehaviour
     {
         if (other.tag == ("MagicBall")) 
         {
+            Debug.Log("beetle is attacked!!!");
             transform.parent.gameObject.GetComponent<Monster>().TakeDamage(other);
         }
     }

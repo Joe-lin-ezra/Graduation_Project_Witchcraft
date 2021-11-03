@@ -57,7 +57,7 @@ public class Summon : MonoBehaviour
     public void Create(int a, int b)
     {
         int select = a + b;//somealgo
-        Debug.Log(string.Format("a: {0},b: {1},sel: {2}", a, b, select));
+        // Debug.Log(string.Format("a: {0},b: {1},sel: {2}", a, b, select));
         //select = 1; //學長你select = a+b 有問題，我怎麼加都是零
         if (playerModel == null)
             playerModel = NetworkClient.localPlayer.gameObject;

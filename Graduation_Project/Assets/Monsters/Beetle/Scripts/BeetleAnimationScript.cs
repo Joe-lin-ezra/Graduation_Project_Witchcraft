@@ -58,6 +58,7 @@ public class BeetleAnimationScript : NetworkBehaviour
         if (distance > 1.8f)
         {
             GetComponent<Animation>().Play("Run Forward In Place");
+            cmdSyncPlanePosition(transform.position, transform.rotation);
             return;
         }
 
@@ -70,8 +71,6 @@ public class BeetleAnimationScript : NetworkBehaviour
         GetComponent<Animation>().Play("Stab Attack");
         nma.SetDestination(transform.position);
         gameObject.GetComponent<Monster>().Attack();
-
-        cmdSyncPlanePosition(transform.position, transform.rotation);
     }
 
     [Command] private void cmdSyncPlanePosition(Vector3 currentPosition, Quaternion currentRotation)

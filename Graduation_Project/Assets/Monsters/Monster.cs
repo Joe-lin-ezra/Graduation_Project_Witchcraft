@@ -35,7 +35,7 @@ public class Monster: NetworkBehaviour
     public void Attack() 
     {
         Instantiate(attackCollider, 
-        1.75f * transform.TransformDirection(Vector3.forward),
+        .75f * transform.forward,
         Quaternion.identity,
         transform);
     }

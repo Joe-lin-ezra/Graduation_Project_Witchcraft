@@ -243,7 +243,7 @@ public class Player : NetworkBehaviour
     {
         RpcCreatMonster(monster_num);
         GameObject owner = this.gameObject;
-        NetworkServer.Spawn(monster_clone , owner);
+        NetworkServer.Spawn(monster_clone, monster_clone);// owner);
 
     }
 

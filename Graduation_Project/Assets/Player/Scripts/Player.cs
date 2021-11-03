@@ -234,16 +234,18 @@ public class Player : NetworkBehaviour
 
     [Command] void CmdCreatMonster(int monster_num)
     {
-        RpcCreatMonster(monster_num);
-        /*GameObject monster_clone = Instantiate(monster_prefabs[monster_num]);
-        NetworkServer.Spawn(monster_clone);*/
+        //RpcCreatMonster(monster_num);
+        GameObject monster_clone = Instantiate(monster_prefabs[monster_num]);
+        monster_clone.GetComponent<Monster>().SetEnemy(this.gameObject.GetComponent<MonsterManager>().enemyPlayer);
+        monster_clone.GetComponent<Monster>().playerModle = this.gameObject;
+        NetworkServer.Spawn(monster_clone);
     }
 
-    [ClientRpc]void RpcCreatMonster(int monster_num)
+    /*[ClientRpc]void RpcCreatMonster(int monster_num)
     {
         my_monster = Instantiate(monster_prefabs[monster_num]);
         my_monster.GetComponent<Monster>().SetEnemy(this.gameObject.GetComponent<MonsterManager>().enemyPlayer);
         my_monster.GetComponent<Monster>().playerModle = this.gameObject;
-    }
+    }*/
 
 }

@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.graduation_project.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "D:\\UnityProjects\\WhichCarft\\Graduation_Project_Witchcraft\\Graduation_Project\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\B20_PC3\\Desktop\\DAN\\Graduation_Project_Witchcraft\\Graduation_Project\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "Graduation_Project [Testing]"

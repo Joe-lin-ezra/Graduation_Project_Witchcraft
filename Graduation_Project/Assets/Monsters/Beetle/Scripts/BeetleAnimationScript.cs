@@ -27,8 +27,8 @@ public class BeetleAnimationScript : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!workable)
-            return;
+        /*if (!workable)
+            return;*/
 
         if (gameObject.GetComponent<Monster>().hp <= 0) 
         {

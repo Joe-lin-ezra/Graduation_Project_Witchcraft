@@ -35,7 +35,7 @@ public class Player : NetworkBehaviour
     [SerializeField] public GameObject hp_bar;
     [SerializeField] public GameObject hp_vr_text;
 
-
+    
     private void Awake()
     {
         vrCamera = GameObject.Find("Player/SteamVRObjects/VRCamera");
@@ -50,7 +50,8 @@ public class Player : NetworkBehaviour
         transform.position = vrCamera.transform.position;
         transform.rotation = vrCamera.transform.rotation;
 
-        CmdCreatTerrain();
+        if(isServer)
+            CmdCreatTerrain();
 
         //GameObject t = Instantiate(teleport, new Vector3(3, 0, 0), new Quaternion(0, 0, 0, 0));
         //RightController.GetComponent<VRRightHand>().setTeleporting(t);

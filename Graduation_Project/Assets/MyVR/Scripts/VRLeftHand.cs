@@ -60,9 +60,14 @@ public class VRLeftHand : MonoBehaviour
         sumo.CheckMonster(pt);//另一格判斷
         if (SteamVR_Actions.default_PadOnTouch_Left.stateUp)
         {
-            //Debug.Log("select");
-            sumo.Chnage();
-            pt.reCenter();
+            
+            if(pt.isTrigered)
+            {
+                
+                sumo.Chnage();
+                pt.reCenter();
+            }
+            
         }
     }
 

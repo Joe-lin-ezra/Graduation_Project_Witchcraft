@@ -209,6 +209,13 @@ public class Player : NetworkBehaviour
         bullet = null;
     }
 
+    [ClientRpc]
+    void RpcSetEnemy(GameObject monster_clone)
+    {
+        monster_clone.GetComponent<Monster>().SetEnemy(this.gameObject.GetComponent<MonsterManager>().enemyPlayer);
+        monster_clone.GetComponent<Monster>().playerModle = this.gameObject;
+        //monster_clone.GetComponent<BeetleAnimationScript>().workable = this.gameObject.GetComponent<Monster>().playerModle == NetworkClient.localPlayer.gameObject;
+    }
 
 
 
@@ -222,8 +229,8 @@ public class Player : NetworkBehaviour
 
 
     //  =================================       Command                ===================================
-    
-    
+
+
     // change the relative player-model vr-head hp_bar
     [Command]
     void CMDchangeHp(int damage)
@@ -245,11 +252,10 @@ public class Player : NetworkBehaviour
     [Command]
     void CmdCreatMonster(int monster_num)
     {
-        monster_clone = Instantiate(monster_prefabs[monster_num]);
-        monster_clone.GetComponent<Monster>().SetEnemy(this.gameObject.GetComponent<MonsterManager>().enemyPlayer);
-        monster_clone.GetComponent<Monster>().playerModle = this.gameObject;
+        monster_clone = Instantiate(monster_prefabs[monster_num]);    
         GameObject owner = this.gameObject;
-        NetworkServer.Spawn(monster_clone, monster_clone);// owner);
+        NetworkServer.Spawn(monster_clone, owner);
+        RpcSetEnemy(monster_clone);
     }
     
 

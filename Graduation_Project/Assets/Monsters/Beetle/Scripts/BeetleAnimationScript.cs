@@ -11,7 +11,7 @@ public class BeetleAnimationScript : NetworkBehaviour
     private GameObject target = null;
     private Quaternion rotationRecord;
 
-    private bool workable = false;
+    public bool workable = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,16 +20,13 @@ public class BeetleAnimationScript : NetworkBehaviour
         origin = transform.position;     // 儲存一下這個指令碼所掛載遊戲物體的初始位置
         rotationRecord = transform.rotation;
 
-        if ( this.gameObject.GetComponent<Monster>().playerModle == NetworkClient.localPlayer.gameObject) //如果此怪物的傭有者是本地玩家則可以移動
+        if (this.gameObject.GetComponent<Monster>().playerModle == NetworkClient.localPlayer.gameObject) //如果此怪物的傭有者是本地玩家則可以移動
             workable = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!workable)
-            return;
-
         if (gameObject.GetComponent<Monster>().hp <= 0) 
         {
             GetComponent<Animation>().Play("Die");
@@ -43,6 +40,10 @@ public class BeetleAnimationScript : NetworkBehaviour
             GetComponent<Animation>().Play("Idle");
             return;   
         }
+        if (target != null && workable)
+        {
+            nma.SetDestination(target.transform.position);
+        }
 
         // calculate distance between enemy and object, to decide
         // walk toward enemy, or attack
@@ -50,10 +51,6 @@ public class BeetleAnimationScript : NetworkBehaviour
             new Vector2(transform.position.x, transform.position.z),
             new Vector2(target.transform.position.x, target.transform.position.z)
         );
-        if(target != null)
-        {
-            nma.SetDestination(target.transform.position);
-        }
 
         if (distance > 1.8f)
         {

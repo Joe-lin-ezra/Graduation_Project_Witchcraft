@@ -80,7 +80,7 @@ public class Player : NetworkBehaviour
         {
             if (bullet != null)
             {
-                bullet.GetComponent<SphereCollider>().enabled = true;
+                //bullet.GetComponent<SphereCollider>().enabled = true;
                 // notify server to run fly function
                 CmdFly();
             }
@@ -157,6 +157,7 @@ public class Player : NetworkBehaviour
     void RpcChangeHp(int damage)
     {
         hp -= damage;
+        print(hp);
         hp_bar.transform.localScale = new Vector3((hp / max_hp), 1, 1);
     }
     
@@ -203,6 +204,7 @@ public class Player : NetworkBehaviour
     [ClientRpc]
     void RpcFly()
     {
+        bullet.GetComponent<SphereCollider>().enabled = true;
         bullet.GetComponent<Rigidbody>().velocity = playerRightHandModle.transform.forward * bullet.GetComponent<MagicBall>().speed * Time.deltaTime;
         bullet.GetComponent<MagicBall>().magicBallDestory();
         bullet.transform.SetParent(null);

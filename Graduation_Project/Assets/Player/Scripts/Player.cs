@@ -36,6 +36,8 @@ public class Player : NetworkBehaviour
     [SerializeField] public GameObject hp_bar;
     [SerializeField] public GameObject hp_vr_text;
 
+    bool is_hand_move = false;
+
 
     private void Awake()
     {
@@ -75,6 +77,18 @@ public class Player : NetworkBehaviour
         playerLeftHandModle.transform.position = LeftController.transform.position;
         playerLeftHandModle.transform.rotation = LeftController.transform.rotation;
 
+        float hand_distant = TwoPointDistance3D(playerRightHandModle.transform.position, playerLeftHandModle.transform.position);
+        
+        if(hand_distant < 0.1)
+        {
+            is_hand_move = true;
+        }
+
+        if(is_hand_move== true)
+        {
+            //判斷手移動距離
+        }
+
         // shoot bullet, when right-hand-controller-grab-pinch is grabbed 
         if (SteamVR_Actions.default_GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand))
         {
@@ -98,13 +112,22 @@ public class Player : NetworkBehaviour
 
     }
 
+    private float TwoPointDistance3D(Vector3 p1, Vector3 p2)
+    {
+
+        float i = Mathf.Sqrt((p1.x - p2.x) * (p1.x - p2.x)
+                            + (p1.y - p2.y) * (p1.y - p2.y)
+                            + (p1.z - p2.z) * (p1.z - p2.z));
+
+        return i;
+    }
+
     void OnHpChange(float _Old, float _New)
     {
         hp = _New;
 
         if (isLocalPlayer)
-            // change vr-head UI hp text 
-            hp_vr_text.GetComponent<Text>().text = hp.ToString(); 
+            hp_vr_text.GetComponent<Text>().text = hp.ToString();             // change vr-head UI hp text 
     }
     
     public void selectMonster(int monster_num)

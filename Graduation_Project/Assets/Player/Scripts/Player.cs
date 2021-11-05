@@ -157,6 +157,7 @@ public class Player : NetworkBehaviour
     void RpcChangeHp(int damage)
     {
         hp -= damage;
+        print(hp);
         hp_bar.transform.localScale = new Vector3((hp / max_hp), 1, 1);
     }
     

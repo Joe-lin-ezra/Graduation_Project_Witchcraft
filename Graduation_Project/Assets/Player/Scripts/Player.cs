@@ -80,7 +80,7 @@ public class Player : NetworkBehaviour
         {
             if (bullet != null)
             {
-                bullet.GetComponent<SphereCollider>().enabled = true;
+                //bullet.GetComponent<SphereCollider>().enabled = true;
                 // notify server to run fly function
                 CmdFly();
             }
@@ -204,6 +204,7 @@ public class Player : NetworkBehaviour
     [ClientRpc]
     void RpcFly()
     {
+        bullet.GetComponent<SphereCollider>().enabled = true;
         bullet.GetComponent<Rigidbody>().velocity = playerRightHandModle.transform.forward * bullet.GetComponent<MagicBall>().speed * Time.deltaTime;
         bullet.GetComponent<MagicBall>().magicBallDestory();
         bullet.transform.SetParent(null);

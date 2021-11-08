@@ -20,13 +20,20 @@ public class BeetleAnimationScript : NetworkBehaviour
         origin = transform.position;     // 儲存一下這個指令碼所掛載遊戲物體的初始位置
         rotationRecord = transform.rotation;
 
-        if (this.gameObject.GetComponent<Monster>().playerModle == NetworkClient.localPlayer.gameObject) //如果此怪物的傭有者是本地玩家則可以移動
-            workable = true;
+
+        //Debug.LogWarning("beetle contruct:" + this.gameObject.GetComponent<Monster>().playerModle.name);
+        //Debug.LogWarning("beetle contruct:" + (string)this.gameObject.GetComponent<Monster>().playerModle.GetComponent<NetworkIdentity>().netId.ToString());
+        //Debug.LogWarning("beetle contruct:" + NetworkClient.localPlayer.gameObject.name);
+        //Debug.LogWarning("beetle contruct:" + (string)NetworkClient.localPlayer.gameObject.GetComponent<NetworkIdentity>().netId.ToString());
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GetComponent<Monster>().playerModle != null)
+        {
+            workable = true;
+        }
         if (gameObject.GetComponent<Monster>().hp <= 0) 
         {
             GetComponent<Animation>().Play("Die");
@@ -79,6 +86,12 @@ public class BeetleAnimationScript : NetworkBehaviour
     {
         transform.position = currentPosition;
         transform.rotation = currentRotation;
+    }
+
+    private void setWorkable()
+    {
+        if (this.gameObject.GetComponent<Monster>().playerModle == NetworkClient.localPlayer.gameObject) //如果此怪物的傭有者是本地玩家則可以移動
+            workable = true;
     }
 
 }

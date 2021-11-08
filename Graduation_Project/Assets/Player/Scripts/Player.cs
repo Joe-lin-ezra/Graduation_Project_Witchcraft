@@ -66,6 +66,8 @@ public class Player : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (invincibleTime > 0) invincibleTime -= Time.deltaTime;
+
         if (!isLocalPlayer)
             return;
         transform.position = vrCamera.transform.position;
@@ -91,7 +93,6 @@ public class Player : NetworkBehaviour
             {
                 print("AAAAA");
             }
-
         }
         else
         {
@@ -119,7 +120,7 @@ public class Player : NetworkBehaviour
             pointer.transform.localScale = new Vector3(0, 0, 0);
         }
 
-        if (invincibleTime < 0) invincibleTime -= Time.deltaTime;
+        
     }
 
     private float TwoPointDistance3D(Vector3 p1, Vector3 p2)

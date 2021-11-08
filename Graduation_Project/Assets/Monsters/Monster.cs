@@ -35,7 +35,7 @@ public class Monster: NetworkBehaviour
     public void Attack() 
     {
         Instantiate(attackCollider, 
-        .75f * transform.forward,
+        playerModle.transform.position,
         Quaternion.identity,
         transform);
     }

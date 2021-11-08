@@ -36,8 +36,7 @@ public class Player : NetworkBehaviour
     [SerializeField] public GameObject hp_bar;
     [SerializeField] public GameObject hp_vr_text;
 
-    bool is_hand_move = false;
-
+    public float hands_down_distance = 0.0f;
 
     private void Awake()
     {
@@ -78,15 +77,10 @@ public class Player : NetworkBehaviour
         playerLeftHandModle.transform.rotation = LeftController.transform.rotation;
 
         float hand_distant = TwoPointDistance3D(playerRightHandModle.transform.position, playerLeftHandModle.transform.position);
-        
-        if(hand_distant < 0.1)
-        {
-            is_hand_move = true;
-        }
 
-        if(is_hand_move== true)
+        if (hand_distant < 0.1)
         {
-            //判斷手移動距離
+
         }
 
         // shoot bullet, when right-hand-controller-grab-pinch is grabbed 

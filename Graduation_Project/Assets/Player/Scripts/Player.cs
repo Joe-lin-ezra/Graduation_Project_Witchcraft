@@ -36,7 +36,8 @@ public class Player : NetworkBehaviour
     [SerializeField] public GameObject hp_bar;
     [SerializeField] public GameObject hp_vr_text;
 
-    public float hands_down_distance = 0.0f;
+    public float hands_current_distance = 0.0f;
+    public float hands_first_point = 0;
 
     private void Awake()
     {
@@ -80,7 +81,20 @@ public class Player : NetworkBehaviour
 
         if (hand_distant < 0.1)
         {
+            hands_current_distance = playerRightHandModle.transform.position.y;
+            if (hands_first_point == 0.0f)
+            {
+                hands_first_point = playerRightHandModle.transform.position.y;
+            }
+            if(hands_first_point - hands_current_distance > 0.9f)
+            {
+                print("AAAAA");
+            }
 
+        }
+        else
+        {
+            hands_first_point = 0.0f;
         }
 
         // shoot bullet, when right-hand-controller-grab-pinch is grabbed 

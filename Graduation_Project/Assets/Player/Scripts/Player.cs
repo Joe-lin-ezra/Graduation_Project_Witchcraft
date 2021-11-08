@@ -39,6 +39,7 @@ public class Player : NetworkBehaviour
 
     public float hands_current_distance = 0.0f;
     public float hands_first_point = 0;
+    public GameObject tc;
 
     private void Awake()
     {
@@ -89,10 +90,18 @@ public class Player : NetworkBehaviour
             {
                 hands_first_point = playerRightHandModle.transform.position.y;
             }
-            if(hands_first_point - hands_current_distance > 0.9f)
+            if(hands_first_point - hands_current_distance > 0.6f)
             {
-                print("AAAAA");
-                hands_first_point = 0.0f;
+                if (tc == null)
+                    tc = GameObject.Find("Grass Terrain(Clone)");
+                if (tc != null)
+                {
+                    tc.GetComponent<TerrainController>().RiseTerrain(new Vector3(playerRightHandModle.transform.position.x , 0 , playerRightHandModle.transform.position.z));
+                    print("以呼叫");
+                }
+                    
+                
+                 hands_first_point = 0.0f;
             }
         }
         else

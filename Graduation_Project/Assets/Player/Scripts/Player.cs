@@ -92,6 +92,7 @@ public class Player : NetworkBehaviour
             if(hands_first_point - hands_current_distance > 0.9f)
             {
                 print("AAAAA");
+                hands_first_point = 0.0f;
             }
         }
         else

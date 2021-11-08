@@ -232,7 +232,7 @@ public class Player : NetworkBehaviour
     void RpcCreatMagicBall(int ans)
     {
         bullet = Instantiate(MagicsOBJ[ans],
-                    playerRightHandModle.transform.position - 0.2f * Vector3.down + 0.2f * playerRightHandModle.transform.forward,
+                    playerRightHandModle.transform.position + 0.25f * playerRightHandModle.transform.forward,
                     playerRightHandModle.transform.rotation,
                     playerRightHandModle.transform);
 

@@ -32,6 +32,7 @@ public class Player : NetworkBehaviour
     [SyncVar(hook = nameof(OnHpChange))]
     public float hp;
     public float max_hp = 100.0f;
+    public float invincibleTime = 0;
 
     [SerializeField] public GameObject hp_bar;
     [SerializeField] public GameObject hp_vr_text;
@@ -118,6 +119,7 @@ public class Player : NetworkBehaviour
             pointer.transform.localScale = new Vector3(0, 0, 0);
         }
 
+        if (invincibleTime < 0) invincibleTime -= Time.deltaTime;
     }
 
     private float TwoPointDistance3D(Vector3 p1, Vector3 p2)
@@ -166,13 +168,15 @@ public class Player : NetworkBehaviour
     public void TakeDamage(GameObject g)
     {
         int damage;
-        if (g.tag == "MagicBall")
+        if (g.tag == "MagicBall" && invincibleTime <= 0)
         {
             damage = g.GetComponent<MagicBall>().atk;
+            invincibleTime = 5.0f;
         }
-        else if (g.tag == "Monster")
+        else if (g.tag == "Monster" && invincibleTime <= 0)
         {
             damage = g.GetComponent<Monster>().atk;
+            invincibleTime = 5.0f;
         }
         else
         {

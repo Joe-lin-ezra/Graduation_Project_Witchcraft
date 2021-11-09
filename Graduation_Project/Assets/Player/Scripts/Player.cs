@@ -39,7 +39,14 @@ public class Player : NetworkBehaviour
 
     public float hands_current_distance = 0.0f;
     public float hands_first_point = 0;
+
+    [Header("地形控制")]
     public GameObject tc;
+    Terrain this_terrain;
+    int hm_width;
+    int hm_height;
+    int correct_HM_array_X;
+    int correct_HW_array_Y;
 
     private void Awake()
     {
@@ -62,6 +69,11 @@ public class Player : NetworkBehaviour
 
         hp = 100.0f;
         CmdSetUpPlayer(hp);//在連線上初始化玩家血量
+
+        //獲取地形相關資訊
+        this_terrain = Terrain.activeTerrain;
+        hm_width = this_terrain.terrainData.heightmapResolution;
+        hm_height = this_terrain.terrainData.heightmapResolution;
     }
 
     // Update is called once per frame
@@ -96,7 +108,7 @@ public class Player : NetworkBehaviour
                     tc = GameObject.Find("Grass Terrain(Clone)");
                 if (tc != null)
                 {
-                    tc.GetComponent<TerrainController>().RiseTerrain(new Vector3(playerRightHandModle.transform.position.x , 0 , playerRightHandModle.transform.position.z));
+                    CmdRiseTerrain(new Vector3(playerRightHandModle.transform.position.x , 0 , playerRightHandModle.transform.position.z));
                     print("以呼叫");
                 }
                     
@@ -265,6 +277,18 @@ public class Player : NetworkBehaviour
         //monster_clone.GetComponent<BeetleAnimationScript>().workable = this.gameObject.GetComponent<Monster>().playerModle == NetworkClient.localPlayer.gameObject;
     }
 
+    [ClientRpc]
+    public void RpcRiseTerrain(Vector3 target_position)
+    {
+        ConverPosition(target_position);
+
+        float[,] heights = this_terrain.terrainData.GetHeights(0, 0, hm_width, hm_height);
+
+        heights = makeRectangleHeights(heights, correct_HW_array_Y, correct_HM_array_X, 10, 10, 10.0f / 600);
+        this_terrain.terrainData.SetHeights(0, 0, heights);
+        print("END");
+    }
+
 
 
     /* [ClientRpc] void RpcCreatMonster(int monster_num)
@@ -336,4 +360,46 @@ public class Player : NetworkBehaviour
         // to notify all relative gameobject to do the laser
         RpcLeftHanderLaserSwitch();
     }
+
+    [Command]
+    void ConverPosition(Vector3 target_position)
+    {
+        Vector3 temp_position = (target_position - this.gameObject.transform.position);
+
+        Vector3 pos;
+
+        pos.x = temp_position.x / this_terrain.terrainData.size.x; // 除地圖大小寬
+        pos.y = temp_position.y / this_terrain.terrainData.size.y; // 除地圖大小高
+        pos.z = temp_position.z / this_terrain.terrainData.size.z; // 除地圖大小長
+
+        correct_HM_array_X = (int)(pos.x * hm_width);
+        correct_HW_array_Y = (int)(pos.z * hm_height);
+    }
+
+    float[,] makeRectangleHeights(float[,] heights, int startX, int startZ, int theLong, int width, float setHeight)
+    {
+        for (int z = startZ; z < startZ + width; z++)
+        {
+            for (int x = startX; x < startX + theLong; x++)
+            {
+                heights[x, z] = setHeight;
+            }
+        }
+        return heights;
+    }
+
+    [Command]
+    public void CmdRiseTerrain(Vector3 target_position)
+    {
+        //RpcRiseTerrain(target_position);
+        ConverPosition(target_position);
+
+        float[,] heights = this_terrain.terrainData.GetHeights(0, 0, hm_width, hm_height);
+
+        heights = makeRectangleHeights(heights, correct_HW_array_Y, correct_HM_array_X, 10, 10, 10.0f / 600);
+        this_terrain.terrainData.SetHeights(0, 0, heights);
+        print("Commamd END");
+
+    }
+
 }

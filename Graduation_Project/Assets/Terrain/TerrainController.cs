@@ -49,6 +49,14 @@ public class TerrainController : NetworkBehaviour
     [Command]
     public void RiseTerrain(Vector3 target_position)
     {
+        RpcRiseTerrain(target_position);
+        print("Commamd END");
+
+    }
+
+    [ClientRpc]
+    public void RpcRiseTerrain(Vector3 target_position)
+    {
         ConverPosition(target_position);
 
         float[,] heights = this_terrain.terrainData.GetHeights(0, 0, hm_width, hm_height);

@@ -30,9 +30,9 @@ public class VRRightHand: MonoBehaviour
     public float timer = 0.0f;
     public GameObject teleportUI;
 
-    //UI component
-    private TMP_Text teleportWord;
-    private Image cooldown_UI;
+    //UI component 有點懶惰想 先拉
+    public TMP_Text teleportWord;
+    public Image cooldown_UI;
 
     void Start()
     {
@@ -54,23 +54,36 @@ public class VRRightHand: MonoBehaviour
         // teleport
         if (teleportCharge > 0)
         {
+            
             if (teleporting != null && teleporting.GetComponent<TeleportArc>().GetArc())
             {
                 // hide the raser line
-
                 transform.GetChild(1).gameObject.SetActive(false);
-                teleportCharge -= 1;
-
             }
             else if (teleporting != null)
             {
                 // show the raser line
                 transform.GetChild(1).gameObject.SetActive(true);
+               
             }
+            
         }
+        // 0 ~ 1 會有bug
 
-        // Speech Recognizer listening setting
-        if (SteamVR_Actions.default_GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet == null) 
+        if (teleportCharge <= 0)
+        {
+            teleporting.SetActive(false);
+        }
+        else
+        {
+            teleporting.SetActive(true);
+        }
+        if (SteamVR_Actions.default_Teleport.GetStateDown(SteamVR_Input_Sources.RightHand))
+        {
+            if(teleportCharge != 0 )teleportCharge--;
+        }
+            // Speech Recognizer listening setting
+            if (SteamVR_Actions.default_GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet == null) 
         {
             speechRecognizer.GetComponent<SpeechRecognizer>().startListening();
         }
@@ -110,7 +123,7 @@ public class VRRightHand: MonoBehaviour
     {
         timer = 0;
         teleportCharge = teleportMaxCharge;
-        teleportWord = transform.GetChild(0).transform.GetChild(0).GetComponentInChildren<TMP_Text>();
+        teleportWord = teleportUI.transform.GetChild(0).transform.GetChild(0).GetComponentInChildren<TMP_Text>();
         cooldown_UI =  transform.GetChild(0).transform.GetChild(0).GetComponentsInChildren<Image>()[1];
 
     }

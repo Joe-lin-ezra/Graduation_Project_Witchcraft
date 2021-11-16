@@ -305,6 +305,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &943677314 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5951237068523183413, guid: 702743a98d9788c47ad4a9e0360250e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2027685169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1010879272
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +503,109 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd28f72f1ebdf9b49b2448af3cc1efca, type: 3}
+--- !u!1 &1764473596 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6244982297344899747, guid: 702743a98d9788c47ad4a9e0360250e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2027685169}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2027685169
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2043751309}
+    m_Modifications:
+    - target: {fileID: 2260999363153349425, guid: 702743a98d9788c47ad4a9e0360250e7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260999363153349425, guid: 702743a98d9788c47ad4a9e0360250e7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260999363153349425, guid: 702743a98d9788c47ad4a9e0360250e7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260999363153349425, guid: 702743a98d9788c47ad4a9e0360250e7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260999363153349425, guid: 702743a98d9788c47ad4a9e0360250e7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260999363153349425, guid: 702743a98d9788c47ad4a9e0360250e7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260999363153349425, guid: 702743a98d9788c47ad4a9e0360250e7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260999363153349425, guid: 702743a98d9788c47ad4a9e0360250e7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260999363153349425, guid: 702743a98d9788c47ad4a9e0360250e7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260999363153349425, guid: 702743a98d9788c47ad4a9e0360250e7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260999363153349425, guid: 702743a98d9788c47ad4a9e0360250e7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260999363153349425, guid: 702743a98d9788c47ad4a9e0360250e7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260999363153349425, guid: 702743a98d9788c47ad4a9e0360250e7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6244982297344899747, guid: 702743a98d9788c47ad4a9e0360250e7,
+        type: 3}
+      propertyPath: m_Name
+      value: Teleport cold
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 702743a98d9788c47ad4a9e0360250e7, type: 3}
+--- !u!4 &2043751309 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8876619256287841127, guid: b53d970780189e645bf7c227326f361d,
+    type: 3}
+  m_PrefabInstance: {fileID: 639904480983542718}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2085348733 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3678857816596473101, guid: 702743a98d9788c47ad4a9e0360250e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2027685169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &639904480983542718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -560,9 +675,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8213786134466979165, guid: b53d970780189e645bf7c227326f361d,
         type: 3}
+      propertyPath: teleportUI
+      value: 
+      objectReference: {fileID: 1764473596}
+    - target: {fileID: 8213786134466979165, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: cooldonTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213786134466979165, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: cooldown_UI
+      value: 
+      objectReference: {fileID: 943677314}
+    - target: {fileID: 8213786134466979165, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: teleportWord
+      value: 
+      objectReference: {fileID: 2085348733}
+    - target: {fileID: 8213786134466979165, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
       propertyPath: speechRecognizer
       value: 
       objectReference: {fileID: 96371781}
+    - target: {fileID: 8213786134466979165, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: teleportMaxCharge
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b53d970780189e645bf7c227326f361d, type: 3}
 --- !u!1001 &7038921335494914353

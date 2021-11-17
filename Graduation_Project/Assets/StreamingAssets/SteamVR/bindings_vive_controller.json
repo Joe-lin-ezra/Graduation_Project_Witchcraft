@@ -183,32 +183,6 @@
                   "overlap_pct" : "15",
                   "sub_mode" : "click"
                },
-               "path" : "/user/hand/left/input/trackpad"
-            },
-            {
-               "inputs" : {
-                  "center" : {
-                     "output" : "/actions/default/in/teleport"
-                  },
-                  "east" : {
-                     "output" : "/actions/default/in/snapturnright"
-                  },
-                  "north" : {
-                     "output" : "/actions/default/in/teleport"
-                  },
-                  "south" : {
-                     "output" : "/actions/default/in/teleport"
-                  },
-                  "west" : {
-                     "output" : "/actions/default/in/snapturnleft"
-                  }
-               },
-               "mode" : "dpad",
-               "parameters" : {
-                  "deadzone_pct" : "90",
-                  "overlap_pct" : "15",
-                  "sub_mode" : "click"
-               },
                "path" : "/user/hand/right/input/trackpad"
             },
             {
@@ -324,7 +298,7 @@
    },
    "category" : "steamvr_input",
    "controller_type" : "vive_controller",
-   "description" : "",
+   "description" : "disable righthand teleport\n",
    "name" : "為 Vive Controller 儲存的 Graduation_Project [Testing] 配置",
    "options" : {},
    "simulated_actions" : []

@@ -43,6 +43,10 @@ public class MagicBall : MonoBehaviour
             else if(other.gameObject.name == "Attacked Detector")
                 other.gameObject.GetComponent<RockManAttackedDetector>().TakeDamage(gameObject);
         }
+        else if(other.tag == "Wall")
+        {
+            other.gameObject.GetComponent<Wall>().TakeDamage();
+        }
         bulletEffect.SetActive(false);
         gameObject.GetComponent<SphereCollider>().enabled = false;
         GameObject ex = Instantiate(explodeEffect, transform.position, transform.rotation, transform);

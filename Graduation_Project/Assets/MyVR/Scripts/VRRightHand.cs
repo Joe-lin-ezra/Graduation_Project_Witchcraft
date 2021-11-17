@@ -76,7 +76,8 @@ public class VRRightHand: MonoBehaviour
         }
         else
         {
-            teleporting.SetActive(true);
+            if(teleporting!=null)
+                teleporting.SetActive(true);
         }
         if (SteamVR_Actions.default_Teleport.GetStateDown(SteamVR_Input_Sources.RightHand))
         {
@@ -123,8 +124,8 @@ public class VRRightHand: MonoBehaviour
     {
         timer = 0;
         teleportCharge = teleportMaxCharge;
-        teleportWord = teleportUI.transform.GetChild(0).transform.GetChild(0).GetComponentInChildren<TMP_Text>();
-        cooldown_UI =  transform.GetChild(0).transform.GetChild(0).GetComponentsInChildren<Image>()[1];
+        //teleportWord = teleportUI.transform.GetChild(0).transform.GetChild(0).GetComponentInChildren<TMP_Text>();
+        //cooldown_UI =  transform.GetChild(0).transform.GetChild(0).GetComponentsInChildren<Image>()[1];
 
     }
 }

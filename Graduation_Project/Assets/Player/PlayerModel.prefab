@@ -774,8 +774,14 @@ MonoBehaviour:
   my_monster: {fileID: 0}
   hp: 100
   max_hp: 100
+  invincibleTime: 0
   hp_bar: {fileID: 762441209577718053}
   hp_vr_text: {fileID: 0}
+  hands_current_distance: 0
+  hands_first_point: 0
+  tc: {fileID: 0}
+  wall_prefab: {fileID: 2838906140610267952, guid: 90c3e2469e0f34147a1880cb99340c39,
+    type: 3}
 --- !u!114 &9097583400636722040
 MonoBehaviour:
   m_ObjectHideFlags: 0

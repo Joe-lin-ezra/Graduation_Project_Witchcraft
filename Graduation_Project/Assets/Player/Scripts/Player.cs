@@ -47,6 +47,7 @@ public class Player : NetworkBehaviour
     int hm_height;
     int correct_HM_array_X;
     int correct_HW_array_Y;
+    public GameObject wall_prefab;
 
     private void Awake()
     {
@@ -84,7 +85,8 @@ public class Player : NetworkBehaviour
         if (!isLocalPlayer)
             return;
         transform.position = vrCamera.transform.position;
-        transform.rotation = Quaternion.Euler(0, vrCamera.transform.rotation.y, 0);
+       // transform.rotation = Quaternion.Euler(0, vrCamera.transform.rotation.y, 0);
+        transform.rotation = new Quaternion(transform.rotation.x, vrCamera.transform.rotation.y, transform.rotation.z, transform.rotation.w);
 
         // player___HandModle: networking gameobject
         // ___Controller: local gameobject
@@ -104,15 +106,8 @@ public class Player : NetworkBehaviour
             }
             if(hands_first_point - hands_current_distance > 0.6f)
             {
-                if (tc == null)
-                    tc = GameObject.Find("Grass Terrain(Clone)");
-                if (tc != null)
-                {
-                    CmdRiseTerrain(new Vector3(playerRightHandModle.transform.position.x , 0 , playerRightHandModle.transform.position.z));
-                    print("以呼叫");
-                }
-                    
-                
+                CmdWall();
+                Debug.Log("生成牆面");
                  hands_first_point = 0.0f;
             }
         }
@@ -249,6 +244,8 @@ public class Player : NetworkBehaviour
         pointer.transform.localPosition = new Vector3(0f, 0f, dist * 20.0f / 2f);
     }
 
+
+
     [ClientRpc]
     void RpcCreatMagicBall(int ans)
     {
@@ -302,6 +299,16 @@ public class Player : NetworkBehaviour
 
     //  =================================       Command                ===================================
 
+
+    [Command]
+    void CmdWall()
+    {
+        Vector3 pos = new Vector3 (this.transform.position.x+4.0f , this.transform.position.y , this.transform.position.z+2.0f);
+       
+        GameObject wall_clone = Instantiate(wall_prefab , pos, new Quaternion(wall_prefab.transform.rotation.x, this.transform.rotation.y*-1 , wall_prefab.transform.rotation.z, wall_prefab.transform.rotation.w));
+        GameObject owner = this.gameObject;
+        NetworkServer.Spawn(wall_clone, owner);
+    }
 
     // change the relative player-model vr-head hp_bar
     [Command]

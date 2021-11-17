@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class Wall : MonoBehaviour
+public class Wall : NetworkBehaviour
 {
     public void TakeDamage()
     {
-        Destroy(this.gameObject);
+        NetworkBehaviour.Destroy(this.gameObject);
     }
 }

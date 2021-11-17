@@ -768,9 +768,9 @@ MonoBehaviour:
   monster_prefabs:
   - {fileID: 5328189666111882785, guid: 3de3d636fafa0af49a1e1c4995512200, type: 3}
   - {fileID: 7575798074386036415, guid: fdb30e1a13cedcb479fa1ad5b2bb28ca, type: 3}
-  - {fileID: 7575798074386036415, guid: fdb30e1a13cedcb479fa1ad5b2bb28ca, type: 3}
   - {fileID: 7812157828964508902, guid: a7052001ea473f346ae9dafffd0b65c6, type: 3}
-  - {fileID: 7812157828964508902, guid: a7052001ea473f346ae9dafffd0b65c6, type: 3}
+  - {fileID: 7575798074386036415, guid: 0b0464101dde5de4dae69bab018fb9bf, type: 3}
+  - {fileID: 7575798074386036415, guid: 0b0464101dde5de4dae69bab018fb9bf, type: 3}
   my_monster: {fileID: 0}
   hp: 100
   max_hp: 100

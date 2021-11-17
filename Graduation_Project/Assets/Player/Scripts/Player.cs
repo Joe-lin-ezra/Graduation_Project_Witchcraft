@@ -331,7 +331,8 @@ public class Player : NetworkBehaviour
     [Command]
     void CmdCreatMonster(int monster_num)
     {
-        monster_clone = Instantiate(monster_prefabs[monster_num]);    
+        Vector3 pos = new Vector3(this.transform.position.x + 4.0f, this.transform.position.y, this.transform.position.z + 2.0f);
+        monster_clone = Instantiate(monster_prefabs[monster_num] , pos, this.transform.rotation);    
         GameObject owner = this.gameObject;
         NetworkServer.Spawn(monster_clone, owner);
         RpcSetEnemy(monster_clone);

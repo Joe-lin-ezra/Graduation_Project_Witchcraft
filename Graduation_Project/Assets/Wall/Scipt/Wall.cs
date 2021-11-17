@@ -5,8 +5,8 @@ using Mirror;
 
 public class Wall : NetworkBehaviour
 {
-    public void TakeDamage()
+    public void TakeDamage(GameObject rock)
     {
-        NetworkBehaviour.Destroy(this.gameObject);
+        NetworkBehaviour.Destroy(rock);
     }
 }

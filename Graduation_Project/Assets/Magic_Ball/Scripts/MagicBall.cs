@@ -45,7 +45,7 @@ public class MagicBall : MonoBehaviour
         }
         else if(other.tag == "Wall")
         {
-            other.gameObject.GetComponent<Wall>().TakeDamage();
+            other.gameObject.GetComponent<WallChild>().TakeDamage();
         }
         bulletEffect.SetActive(false);
         gameObject.GetComponent<SphereCollider>().enabled = false;

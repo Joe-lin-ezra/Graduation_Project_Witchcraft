@@ -7,8 +7,11 @@ public class Wall : NetworkBehaviour
 {
     public void TakeDamage(GameObject rock)
     {
-        if(rock != null) {
-            Destroy(rock);
-        }
+        rock.SetActive(false);
+        /*if(rock != null) {
+            print("AAA");
+            NetworkBehaviour.Destroy(rock);
+            
+        }*/
     }
 }

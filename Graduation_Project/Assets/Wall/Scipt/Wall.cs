@@ -7,6 +7,8 @@ public class Wall : NetworkBehaviour
 {
     public void TakeDamage(GameObject rock)
     {
-        NetworkBehaviour.Destroy(rock);
+        if(rock != null) {
+            Destroy(rock);
+        }
     }
 }

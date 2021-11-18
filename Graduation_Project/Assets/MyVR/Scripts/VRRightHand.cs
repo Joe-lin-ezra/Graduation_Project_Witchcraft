@@ -79,6 +79,12 @@ public class VRRightHand: MonoBehaviour
             if(teleporting!=null)
                 teleporting.SetActive(true);
         }
+
+        if (SteamVR_Actions.default_Teleport.GetStateDown(SteamVR_Input_Sources.RightHand))
+        {
+            if (teleportCharge != 0) teleportCharge--;
+        }
+
         if (SteamVR_Actions.default_Teleport.GetStateDown(SteamVR_Input_Sources.RightHand))
         {
             if(teleportCharge != 0 )teleportCharge--;

@@ -376,6 +376,8 @@ namespace Valve.VR.InteractionSystem
 					this.Teleported = true;
 					pointerLineRenderer.startColor = pointerValidColor;
 					pointerLineRenderer.endColor = pointerValidColor;
+
+					Telported = true;
 #endif
 					destinationReticleTransform.gameObject.SetActive( hitTeleportMarker.showReticle );
 				}

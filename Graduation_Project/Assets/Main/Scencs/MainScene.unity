@@ -683,7 +683,7 @@ PrefabInstance:
     - target: {fileID: 8213786134466979165, guid: b53d970780189e645bf7c227326f361d,
         type: 3}
       propertyPath: cooldonTime
-      value: 3
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8213786134466979165, guid: b53d970780189e645bf7c227326f361d,
         type: 3}

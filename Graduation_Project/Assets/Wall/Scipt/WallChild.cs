@@ -14,6 +14,6 @@ public class WallChild : MonoBehaviour
     public void TakeDamage()
     {
         if(this.gameObject != null)
-            parent.GetComponent<Wall>().TakeDamage(this.gameObject);
+            parent.GetComponent<Wall>().CmdTakeDamage(this.gameObject);
     }
 }

@@ -86,7 +86,7 @@ public class Player : NetworkBehaviour
             return;
         transform.position = vrCamera.transform.position;
        // transform.rotation = Quaternion.Euler(0, vrCamera.transform.rotation.y, 0);
-        transform.rotation = new Quaternion(0, vrCamera.transform.rotation.y, 0, vrCamera.transform.rotation.w);
+        transform.rotation = new Quaternion(transform.rotation.x, vrCamera.transform.rotation.y, transform.rotation.z, transform.rotation.w);
 
         // player___HandModle: networking gameobject
         // ___Controller: local gameobject
@@ -107,7 +107,8 @@ public class Player : NetworkBehaviour
             if(hands_first_point - hands_current_distance > 0.6f)
             {
                 CmdWall();
-                hands_first_point = 0.0f;
+                Debug.Log("生成牆面");
+                 hands_first_point = 0.0f;
             }
         }
         else
@@ -273,6 +274,17 @@ public class Player : NetworkBehaviour
         //monster_clone.GetComponent<BeetleAnimationScript>().workable = this.gameObject.GetComponent<Monster>().playerModle == NetworkClient.localPlayer.gameObject;
     }
 
+    [ClientRpc]
+    public void RpcRiseTerrain(Vector3 target_position)
+    {
+        ConverPosition(target_position);
+
+        float[,] heights = this_terrain.terrainData.GetHeights(0, 0, hm_width, hm_height);
+
+        heights = makeRectangleHeights(heights, correct_HW_array_Y, correct_HM_array_X, 10, 10, 10.0f / 600);
+        this_terrain.terrainData.SetHeights(0, 0, heights);
+        print("END");
+    }
 
 
 
@@ -291,9 +303,9 @@ public class Player : NetworkBehaviour
     [Command]
     void CmdWall()
     {
-        Vector3 pos = new Vector3 (this.transform.position.x+ this.gameObject.transform.forward.x*2 , this.transform.position.y , this.transform.position.z+ this.gameObject.transform.forward.z * 2);
+        Vector3 pos = new Vector3 (this.transform.position.x+4.0f , this.transform.position.y , this.transform.position.z+2.0f);
        
-        GameObject wall_clone = Instantiate(wall_prefab , pos, this.gameObject.transform.rotation);
+        GameObject wall_clone = Instantiate(wall_prefab , pos, new Quaternion(wall_prefab.transform.rotation.x, this.transform.rotation.y*-1 , wall_prefab.transform.rotation.z, wall_prefab.transform.rotation.w));
         GameObject owner = this.gameObject;
         NetworkServer.Spawn(wall_clone, owner);
     }
@@ -357,5 +369,45 @@ public class Player : NetworkBehaviour
         RpcLeftHanderLaserSwitch();
     }
 
+    [Command]
+    void ConverPosition(Vector3 target_position)
+    {
+        Vector3 temp_position = (target_position - this.gameObject.transform.position);
+
+        Vector3 pos;
+
+        pos.x = temp_position.x / this_terrain.terrainData.size.x; // 除地圖大小寬
+        pos.y = temp_position.y / this_terrain.terrainData.size.y; // 除地圖大小高
+        pos.z = temp_position.z / this_terrain.terrainData.size.z; // 除地圖大小長
+
+        correct_HM_array_X = (int)(pos.x * hm_width);
+        correct_HW_array_Y = (int)(pos.z * hm_height);
+    }
+
+    float[,] makeRectangleHeights(float[,] heights, int startX, int startZ, int theLong, int width, float setHeight)
+    {
+        for (int z = startZ; z < startZ + width; z++)
+        {
+            for (int x = startX; x < startX + theLong; x++)
+            {
+                heights[x, z] = setHeight;
+            }
+        }
+        return heights;
+    }
+
+    [Command]
+    public void CmdRiseTerrain(Vector3 target_position)
+    {
+        //RpcRiseTerrain(target_position);
+        ConverPosition(target_position);
+
+        float[,] heights = this_terrain.terrainData.GetHeights(0, 0, hm_width, hm_height);
+
+        heights = makeRectangleHeights(heights, correct_HW_array_Y, correct_HM_array_X, 10, 10, 10.0f / 600);
+        this_terrain.terrainData.SetHeights(0, 0, heights);
+        print("Commamd END");
+
+    }
 
 }

@@ -5,11 +5,13 @@ using Mirror;
 
 public class Wall : NetworkBehaviour
 {
-    [Command]
-    public void CmdTakeDamage(GameObject rock)
+    public void TakeDamage(GameObject rock)
     {
-        //rock.SetActive(false);
-        
+        rock.SetActive(false);
+        /*if(rock != null) {
+            print("AAA");
+            NetworkBehaviour.Destroy(rock);
+            
+        }*/
     }
-
 }

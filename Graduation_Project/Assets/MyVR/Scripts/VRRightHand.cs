@@ -15,6 +15,7 @@ public class VRRightHand: MonoBehaviour
     
     public GameObject bullet = null;
     public GameObject teleporting = null;
+    public Teleport tpobj = null;
 
     [Header("Mirror")]
     public GameObject playerModle;
@@ -37,6 +38,7 @@ public class VRRightHand: MonoBehaviour
     void Start()
     {
         speechRecognizer = GameObject.Find("SpeechRecognizer");
+        
         TeleportInit();
     }
 
@@ -57,14 +59,16 @@ public class VRRightHand: MonoBehaviour
             
             if (teleporting != null && teleporting.GetComponent<TeleportArc>().GetArc())
             {
+                tpobj = teleporting.GetComponent<Teleport>();
                 // hide the raser line
                 transform.GetChild(1).gameObject.SetActive(false);
             }
             else if (teleporting != null)
             {
+
                 // show the raser line
                 transform.GetChild(1).gameObject.SetActive(true);
-               
+                tpobj = teleporting.GetComponent<Teleport>();
             }
             
         }
@@ -79,15 +83,9 @@ public class VRRightHand: MonoBehaviour
             if(teleporting!=null)
                 teleporting.SetActive(true);
         }
-
-        if (SteamVR_Actions.default_Teleport.GetStateDown(SteamVR_Input_Sources.RightHand))
+        if (SteamVR_Actions.default_Teleport.GetStateUp(SteamVR_Input_Sources.RightHand))
         {
-            if (teleportCharge != 0) teleportCharge--;
-        }
-
-        if (SteamVR_Actions.default_Teleport.GetStateDown(SteamVR_Input_Sources.RightHand))
-        {
-            if(teleportCharge != 0 )teleportCharge--;
+            if (teleportCharge != 0 && tpobj.Teleported) teleportCharge--;
         }
             // Speech Recognizer listening setting
             if (SteamVR_Actions.default_GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet == null) 

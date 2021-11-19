@@ -1,4 +1,4 @@
-﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
+//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 //
 // Purpose: Handles all the teleport logic
 //
@@ -376,7 +376,6 @@ namespace Valve.VR.InteractionSystem
 					this.Teleported = true;
 					pointerLineRenderer.startColor = pointerValidColor;
 					pointerLineRenderer.endColor = pointerValidColor;
-
 #endif
 					destinationReticleTransform.gameObject.SetActive( hitTeleportMarker.showReticle );
 				}

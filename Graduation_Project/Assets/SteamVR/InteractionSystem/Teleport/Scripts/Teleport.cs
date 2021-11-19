@@ -113,7 +113,7 @@ namespace Valve.VR.InteractionSystem
 		SteamVR_Events.Action chaperoneInfoInitializedAction;
 
 		[Header("Self")]
-		bool Teleported = false;
+		public bool Teleported = false;
 
 		// Events
 
@@ -352,7 +352,7 @@ namespace Valve.VR.InteractionSystem
 
 			HighlightSelected( hitTeleportMarker );
 			
-			Teleported = false; // for not teleport
+			this.Teleported = false; // for not teleport
 			
 			if ( hitTeleportMarker != null ) //Hit a teleport marker
 			{
@@ -373,7 +373,7 @@ namespace Valve.VR.InteractionSystem
 #if (UNITY_5_4)
 					pointerLineRenderer.SetColors( pointerValidColor, pointerValidColor );
 #else
-					Telported = true;
+					this.Teleported = true;
 					pointerLineRenderer.startColor = pointerValidColor;
 					pointerLineRenderer.endColor = pointerValidColor;
 #endif

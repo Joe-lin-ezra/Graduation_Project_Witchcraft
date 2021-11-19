@@ -31,14 +31,11 @@ public class VRRightHand: MonoBehaviour
     public float timer = 0.0f;
     public GameObject teleportUI;
 
-    //UI component ¦³ÂIÃi´k·Q ¥ý©Ô
-    public TMP_Text teleportWord;
-    public Image cooldown_UI;
+    //UI component ï¿½ï¿½ï¿½Iï¿½iï¿½kï¿½Q ï¿½ï¿½ï¿½ï¿½
 
     void Start()
     {
         speechRecognizer = GameObject.Find("SpeechRecognizer");
-        
         TeleportInit();
     }
 
@@ -72,7 +69,7 @@ public class VRRightHand: MonoBehaviour
             }
             
         }
-        // 0 ~ 1 ·|¦³bug
+        // 0 ~ 1 ï¿½|ï¿½ï¿½bug
 
         if (teleportCharge <= 0)
         {
@@ -119,17 +116,12 @@ public class VRRightHand: MonoBehaviour
             }
         }
     }
-    public void UpdateColdownUI()
-    {
-        if (teleportWord != null) teleportWord.text = teleportCharge.ToString();
-        if (cooldown_UI != null) cooldown_UI.fillAmount = timer / cooldonTime;
-    }
+
     public void TeleportInit()
     {
         timer = 0;
         teleportCharge = teleportMaxCharge;
-        //teleportWord = teleportUI.transform.GetChild(0).transform.GetChild(0).GetComponentInChildren<TMP_Text>();
-        //cooldown_UI =  transform.GetChild(0).transform.GetChild(0).GetComponentsInChildren<Image>()[1];
-
+        
+        
     }
 }

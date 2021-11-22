@@ -108,7 +108,7 @@ public class Player : NetworkBehaviour
             {
                 CmdWall();
                 Debug.Log("生成牆面");
-                 hands_first_point = 0.0f;
+                hands_first_point = 0.0f;
             }
         }
         else
@@ -303,6 +303,7 @@ public class Player : NetworkBehaviour
     [Command]
     void CmdWall()
     {
+        // need to modify position, the position depends on the user VRhead direction, not x+4 or z+2
         Vector3 pos = new Vector3 (this.transform.position.x+4.0f , this.transform.position.y , this.transform.position.z+2.0f);
        
         GameObject wall_clone = Instantiate(wall_prefab , pos, new Quaternion(wall_prefab.transform.rotation.x, this.transform.rotation.y*-1 , wall_prefab.transform.rotation.z, wall_prefab.transform.rotation.w));

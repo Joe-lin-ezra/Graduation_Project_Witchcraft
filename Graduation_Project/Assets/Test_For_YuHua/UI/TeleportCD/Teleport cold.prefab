@@ -497,6 +497,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa62a5c2b1e949a4397c16f7fb2a0f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circle: {fileID: 502823044026892829}
+  text: {fileID: 3386475024377980816}
+  cooldown_UI: {fileID: 0}
+  Tpcharge: {fileID: 0}
 --- !u!1 &9190561542799337642
 GameObject:
   m_ObjectHideFlags: 0

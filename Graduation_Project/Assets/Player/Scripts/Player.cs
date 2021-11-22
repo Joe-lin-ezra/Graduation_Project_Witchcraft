@@ -153,9 +153,13 @@ public class Player : NetworkBehaviour
     void OnHpChange(float _Old, float _New)
     {
         hp = _New;
-
-        if (isLocalPlayer)
-            hp_vr_text.GetComponent<Text>().text = hp.ToString();             // change vr-head UI hp text 
+        print("hp changed!");
+        if (isLocalPlayer){
+            hp_vr_text.GetComponent<Text>().text = hp.ToString();             // change vr-head UI hp text
+            print("is local player");
+        }
+        print("is not local player");
+             
     }
     
     public void selectMonster(int monster_num)

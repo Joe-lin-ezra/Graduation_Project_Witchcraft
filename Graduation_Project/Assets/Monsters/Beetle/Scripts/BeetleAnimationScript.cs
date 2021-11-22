@@ -19,12 +19,6 @@ public class BeetleAnimationScript : NetworkBehaviour
         nma = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();   //取得導航網格代理元件
         origin = transform.position;     // 儲存一下這個指令碼所掛載遊戲物體的初始位置
         rotationRecord = transform.rotation;
-
-
-        //Debug.LogWarning("beetle contruct:" + this.gameObject.GetComponent<Monster>().playerModle.name);
-        //Debug.LogWarning("beetle contruct:" + (string)this.gameObject.GetComponent<Monster>().playerModle.GetComponent<NetworkIdentity>().netId.ToString());
-        //Debug.LogWarning("beetle contruct:" + NetworkClient.localPlayer.gameObject.name);
-        //Debug.LogWarning("beetle contruct:" + (string)NetworkClient.localPlayer.gameObject.GetComponent<NetworkIdentity>().netId.ToString());
     }
 
     // Update is called once per frame
@@ -34,6 +28,7 @@ public class BeetleAnimationScript : NetworkBehaviour
         {
             workable = true;
         }
+        // die animation and destroy
         if (gameObject.GetComponent<Monster>().hp <= 0) 
         {
             GetComponent<Animation>().Play("Die");

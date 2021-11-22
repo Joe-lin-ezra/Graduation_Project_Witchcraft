@@ -25,19 +25,19 @@ public class RockManAnimationController : NetworkBehaviour
         origin = transform.position;     // 儲存一下這個指令碼所掛載遊戲物體的初始位置
         rotationRecord = transform.rotation;
         animator = GetComponent<Animator>();
-
-        if (this.gameObject.GetComponent<Monster>().playerModle == NetworkClient.localPlayer.gameObject) //如果此怪物的傭有者是本地玩家則可以移動
-            workable = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!workable)
-            return;
+        if (GetComponent<Monster>().playerModle != null)
+        {
+            workable = true;
+        }
 
         animator.SetInteger("state", (int)state);
 
+        // die animation and destroy
         if (gameObject.GetComponent<Monster>().hp <= 0)
         {
             state = RockManStateEnum.die;
@@ -54,6 +54,18 @@ public class RockManAnimationController : NetworkBehaviour
             return;   
         }
 
+        // get enemy or idle in place
+        target = GetComponent<Monster>().enemy;
+        if (target == null)
+        {
+            GetComponent<Animation>().Play("Idle");
+            return;
+        }
+        if (target != null && workable)
+        {
+            nma.SetDestination(target.transform.position);
+        }
+
         // calculate distance between enemy and object, to decide
         // walk toward enemy, or attack
         double distance = Vector2.Distance(
@@ -64,6 +76,7 @@ public class RockManAnimationController : NetworkBehaviour
         {
             nma.SetDestination(target.transform.position);
             state = RockManStateEnum.walk;
+            cmdSyncPlanePosition(transform.position, transform.rotation);
             return;
         }
 
@@ -75,9 +88,7 @@ public class RockManAnimationController : NetworkBehaviour
         // spawn object to surpport
         state = RockManStateEnum.attack1;
         nma.SetDestination(transform.position);
-        transform.parent.GetComponent<Monster>().Attack();
-
-        cmdSyncPlanePosition(transform.position, transform.rotation);
+        GetComponent<Monster>().Attack();
     }
 
     [Command]

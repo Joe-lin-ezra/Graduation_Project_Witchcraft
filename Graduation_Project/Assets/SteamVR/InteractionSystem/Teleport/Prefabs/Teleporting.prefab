@@ -1176,6 +1176,7 @@ MonoBehaviour:
   offsetReticleTransform: {fileID: 457198}
   floorDebugSphere: {fileID: 2336214}
   floorDebugLine: {fileID: 12050142}
+  Teleported: 0
 --- !u!114 &11445956
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -112,16 +112,18 @@ public class VRRightHand: MonoBehaviour
             {
                 timer = 0;
                 teleportCharge += 1;
-                //updatecoldownui();
+                UpdateColdownUI();
             }
         }
     }
-
+    void UpdateColdownUI()
+    {
+        //teleportUI.Update_cooldown(timer)
+    }
     public void TeleportInit()
     {
         timer = 0;
         teleportCharge = teleportMaxCharge;
-        
-        
     }
 }
+//Mathf.Lerp(0, 1, timer / duration);

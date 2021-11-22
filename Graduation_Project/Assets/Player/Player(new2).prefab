@@ -22826,9 +22826,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speechRecognizer: {fileID: 0}
   bullet: {fileID: 0}
+  teleporting: {fileID: 153878, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
+  tpobj: {fileID: 0}
   playerModle: {fileID: 0}
   summon_control: {fileID: 5405025785442938722}
   monster_manager: {fileID: 0}
+  teleportCharge: 0
+  teleportMaxCharge: 0
+  cooldonTime: 0
+  timer: 0
+  teleportUI: {fileID: 0}
 --- !u!1 &8884908058188093887
 GameObject:
   m_ObjectHideFlags: 0

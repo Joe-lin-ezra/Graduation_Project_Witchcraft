@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class TeleportUI : MonoBehaviour
 {
@@ -12,18 +13,19 @@ public class TeleportUI : MonoBehaviour
     public TMP_Text Tpcharge;
     void Awake()
     {
+        
         cooldown_UI = circle.GetComponent<Image>();
         Tpcharge = text.GetComponent<TMP_Text>();
     }
 
-    void Update_cooldown(float persentage)
+    public void Update_cooldown(float persentage)
     {
-
+       cooldown_UI.fillAmount = persentage;
     }
 
-    void Update_Tpcharge(int nowCharge)
+    public void Update_Tpcharge(int nowCharge)
     {
-
+        Tpcharge.text = String.Format("{0}",nowCharge);
     }
     
 }

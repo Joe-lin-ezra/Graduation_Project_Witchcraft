@@ -104,17 +104,17 @@ public class VRRightHand: MonoBehaviour
         timer += Time.deltaTime;
     }
     public void ChargeTeleport()
-    { 
-        //if(teleportCharge != teleportMaxCharge)//when charge != not charge
-        //{
-        //    TimeRun();//timer add
-        //    if(timer >= cooldonTime)
-        //    {
-        //        timer = 0;
-        //        teleportCharge += 1;
-        //        UpdateColdownUI();
-        //    }
-        //}
+    {
+        if (teleportCharge != teleportMaxCharge)//when charge != not charge
+        {
+            TimeRun();//timer add
+            if (timer >= cooldonTime)
+            {
+                timer = 0;
+                teleportCharge += 1;
+                //updatecoldownui();
+            }
+        }
     }
 
     public void TeleportInit()

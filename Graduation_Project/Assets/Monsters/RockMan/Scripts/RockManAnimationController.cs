@@ -32,7 +32,7 @@ public class RockManAnimationController : NetworkBehaviour
     {
         if (GetComponent<Monster>().playerModle != null)
         {
-            workable = true;
+            setWorkable();
         }
 
         animator.SetInteger("state", (int)state);
@@ -102,5 +102,10 @@ public class RockManAnimationController : NetworkBehaviour
     {
         transform.position = currentPosition;
         transform.rotation = currentRotation;
+    }
+    private void setWorkable()
+    {
+        if (this.gameObject.GetComponent<Monster>().playerModle == NetworkClient.localPlayer.gameObject) //如果此怪物的傭有者是本地玩家則可以移動
+            workable = true;
     }
 }

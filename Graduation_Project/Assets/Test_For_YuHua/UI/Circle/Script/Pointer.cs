@@ -35,7 +35,7 @@ public class Pointer : MonoBehaviour
             if (other.tag == "CircleElements")
             {
                 
-                //element§ó´«ÃC¦âª¬ºA
+                //elementï¿½ï¿½ï¿½Cï¿½âª¬ï¿½A
                 img = other.GetComponentInChildren<Image>();
                 img.color = Color.red;
             }

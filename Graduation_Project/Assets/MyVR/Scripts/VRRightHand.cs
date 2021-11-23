@@ -16,6 +16,7 @@ public class VRRightHand: MonoBehaviour
     public GameObject bullet = null;
     public GameObject teleporting = null;
     public Teleport tpobj = null;
+    
 
     [Header("Mirror")]
     public GameObject playerModle;
@@ -30,6 +31,7 @@ public class VRRightHand: MonoBehaviour
     public float cooldonTime = 0.0f;
     public float timer = 0.0f;
     public GameObject teleportUI;
+    public TeleportUI tpUIobj = null;
 
     //UI component ���I�i�k�Q ����
 
@@ -82,7 +84,11 @@ public class VRRightHand: MonoBehaviour
         }
         if (SteamVR_Actions.default_Teleport.GetStateUp(SteamVR_Input_Sources.RightHand))
         {
-            if (teleportCharge != 0 && tpobj.Teleported) teleportCharge--;
+            if (teleportCharge != 0 && tpobj.Teleported) 
+            {
+                teleportCharge--;
+                tpUIobj.Update_Tpcharge(teleportCharge);
+            }
         }
             // Speech Recognizer listening setting
             if (SteamVR_Actions.default_GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand) && bullet == null) 
@@ -108,22 +114,21 @@ public class VRRightHand: MonoBehaviour
         if (teleportCharge != teleportMaxCharge)//when charge != not charge
         {
             TimeRun();//timer add
+            tpUIobj.Update_cooldown(Mathf.Lerp(0 , 1 , timer / cooldonTime));
             if (timer >= cooldonTime)
             {
                 timer = 0;
                 teleportCharge += 1;
-                UpdateColdownUI();
+                if(tpUIobj != null)tpUIobj.Update_Tpcharge(teleportCharge);
             }
         }
     }
-    void UpdateColdownUI()
-    {
-        //teleportUI.Update_cooldown(timer)
-    }
+   
     public void TeleportInit()
     {
         timer = 0;
         teleportCharge = teleportMaxCharge;
+        tpUIobj = teleportUI.GetComponent<TeleportUI>();
     }
 }
 //Mathf.Lerp(0, 1, timer / duration);

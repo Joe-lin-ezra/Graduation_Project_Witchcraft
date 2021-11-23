@@ -308,7 +308,7 @@ public class Player : NetworkBehaviour
     void CmdWall()
     {
         // need to modify position, the position depends on the user VRhead direction, not x+4 or z+2
-        Vector3 pos = new Vector3 (this.transform.position.x+4.0f , this.transform.position.y , this.transform.position.z+2.0f);
+        Vector3 pos = new Vector3 (this.transform.position.x + transform.forward.x * 4 , this.transform.position.y , this.transform.position.z + transform.forward.z * 2);
        
         GameObject wall_clone = Instantiate(wall_prefab , pos, new Quaternion(wall_prefab.transform.rotation.x, this.transform.rotation.y*-1 , wall_prefab.transform.rotation.z, wall_prefab.transform.rotation.w));
         GameObject owner = this.gameObject;
@@ -336,7 +336,7 @@ public class Player : NetworkBehaviour
     [Command]
     void CmdCreatMonster(int monster_num)
     {
-        Vector3 pos = new Vector3(this.transform.position.x + 4.0f, this.transform.position.y, this.transform.position.z + 2.0f);
+        Vector3 pos = new Vector3(this.transform.position.x + transform.forward.x * 4, this.transform.position.y, this.transform.position.z + transform.forward.z * 2);
         monster_clone = Instantiate(monster_prefabs[monster_num] , pos, this.transform.rotation);    
         GameObject owner = this.gameObject;
         NetworkServer.Spawn(monster_clone, owner);

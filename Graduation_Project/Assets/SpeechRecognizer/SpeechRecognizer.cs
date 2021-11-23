@@ -2,20 +2,27 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Windows.Speech;
+using UnityEngine.UI;
 
 public class SpeechRecognizer : MonoBehaviour
 {
     DictationRecognizer dictationRecognizer;
     public GameObject magicController;
 
+    //this is not good by i lazy to think:)
+    public GameObject microhoneUI;
+
     public void startListening()
     {
         Debug.Log("Speech recognizer starts.");
+        microhoneUI.SetActive(true);
         dictationRecognizer.Start();
+        
     }
     public void stopListening()
     {
         Debug.Log("Speech recognizer stops.");
+        microhoneUI.SetActive(false);
         dictationRecognizer.Stop();
     }
 
@@ -29,6 +36,9 @@ public class SpeechRecognizer : MonoBehaviour
         dictationRecognizer.DictationError += onDictationError;
 
         magicController = GameObject.Find("/Player/MagicController");
+
+        //for UI
+        microhoneUI.SetActive(false);
     }
 
     void onDictationResult(string text, ConfidenceLevel confidence)

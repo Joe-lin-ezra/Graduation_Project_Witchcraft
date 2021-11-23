@@ -33,6 +33,7 @@ public class VRRightHand: MonoBehaviour
     public GameObject teleportUI;
     public TeleportUI tpUIobj = null;
 
+    
     //UI component ���I�i�k�Q ����
 
     void Start()
@@ -60,13 +61,13 @@ public class VRRightHand: MonoBehaviour
             {
                 tpobj = teleporting.GetComponent<Teleport>();
                 // hide the raser line
-                transform.GetChild(1).gameObject.SetActive(false);
+                transform.GetChild(2).gameObject.SetActive(false);
             }
             else if (teleporting != null)
             {
 
                 // show the raser line
-                transform.GetChild(1).gameObject.SetActive(true);
+                transform.GetChild(2).gameObject.SetActive(true);
                 tpobj = teleporting.GetComponent<Teleport>();
             }
             

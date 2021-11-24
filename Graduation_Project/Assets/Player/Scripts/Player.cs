@@ -311,9 +311,10 @@ public class Player : NetworkBehaviour
     void CmdWall()
     {
         // need to modify position, the position depends on the user VRhead direction, not x+4 or z+2
-        Vector3 pos = new Vector3 (this.transform.position.x + transform.forward.x * 5 , this.transform.position.y-0.5f , this.transform.position.z + transform.forward.z * 5);
+        Vector3 pos = new Vector3 (this.transform.position.x - transform.forward.x * 5 , this.transform.position.y-0.5f, this.transform.position.z + transform.forward.z * 5);
+        //Vector3 pos = this.gameObject.transform.forward;
        
-        GameObject wall_clone = Instantiate(wall_prefab , pos, new Quaternion(wall_prefab.transform.rotation.x, this.transform.rotation.y*-1 , wall_prefab.transform.rotation.z, wall_prefab.transform.rotation.w));
+        GameObject wall_clone = Instantiate(wall_prefab , pos, this.transform.rotation);
         GameObject owner = this.gameObject;
         NetworkServer.Spawn(wall_clone, owner);
     }

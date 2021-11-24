@@ -61,7 +61,8 @@ public class Player : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         transform.position = vrCamera.transform.position;
-        transform.rotation = vrCamera.transform.rotation;
+        //transform.rotation = vrCamera.transform.rotation;
+        transform.rotation = new Quaternion(transform.rotation.x, vrCamera.transform.rotation.y, transform.rotation.z, transform.rotation.w);
 
         if (isServer)
             CmdCreatTerrain();

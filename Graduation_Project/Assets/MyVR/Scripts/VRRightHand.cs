@@ -59,7 +59,7 @@ public class VRRightHand: MonoBehaviour
             
             if (teleporting != null && teleporting.GetComponent<TeleportArc>().GetArc())
             {
-                tpobj = teleporting.GetComponent<Teleport>();
+                
                 // hide the raser line
                 transform.GetChild(3).gameObject.SetActive(false);
             }
@@ -68,7 +68,7 @@ public class VRRightHand: MonoBehaviour
 
                 // show the raser line
                 transform.GetChild(3).gameObject.SetActive(true);
-                tpobj = teleporting.GetComponent<Teleport>();
+               
             }
             
         }
@@ -85,8 +85,16 @@ public class VRRightHand: MonoBehaviour
         }
         if (SteamVR_Actions.default_Teleport.GetStateUp(SteamVR_Input_Sources.RightHand))
         {
+            if(tpobj == null){
+                teleporting = GameObject.Find("Teleporting(Clone)");
+                tpobj = teleporting.GetComponent<Teleport>();
+            }
+            Debug.LogWarning("state up");
+            Debug.LogWarningFormat("charge {0} tped {1}\n",teleportCharge,tpobj.Teleported);
+            
             if (teleportCharge != 0 && tpobj.Teleported) 
-            {
+            {   
+                Debug.LogWarningFormat("in");
                 teleportCharge--;
                 tpUIobj.Update_Tpcharge(teleportCharge);
             }
@@ -114,6 +122,7 @@ public class VRRightHand: MonoBehaviour
     {
         if (teleportCharge != teleportMaxCharge)//when charge != not charge
         {
+            Debug.LogWarning("charge");
             TimeRun();//timer add
             tpUIobj.Update_cooldown(Mathf.Lerp(0 , 1 , timer / cooldonTime));
             if (timer >= cooldonTime)

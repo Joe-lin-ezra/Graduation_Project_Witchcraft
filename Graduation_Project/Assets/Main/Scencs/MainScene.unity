@@ -1189,6 +1189,11 @@ PrefabInstance:
       objectReference: {fileID: 943677314}
     - target: {fileID: 8213786134466979165, guid: b53d970780189e645bf7c227326f361d,
         type: 3}
+      propertyPath: teleporting
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213786134466979165, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
       propertyPath: teleportWord
       value: 
       objectReference: {fileID: 2085348733}

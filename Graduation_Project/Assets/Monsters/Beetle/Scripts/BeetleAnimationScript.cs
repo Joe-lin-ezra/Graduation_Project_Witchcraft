@@ -26,7 +26,7 @@ public class BeetleAnimationScript : NetworkBehaviour
     {
         if (GetComponent<Monster>().playerModle != null)
         {
-            workable = true;
+            setWorkable();
         }
         // die animation and destroy
         if (gameObject.GetComponent<Monster>().hp <= 0) 

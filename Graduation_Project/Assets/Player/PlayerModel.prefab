@@ -776,7 +776,7 @@ MonoBehaviour:
   max_hp: 100
   invincibleTime: 0
   hp_bar: {fileID: 762441209577718053}
-  hp_vr_text: {fileID: 0}
+  hp_vr_bar: {fileID: 0}
   hands_current_distance: 0
   hands_first_point: 0
   tc: {fileID: 0}

@@ -217,7 +217,8 @@ public class Player : NetworkBehaviour
         hp -= damage;
         print(hp);
         hp_bar.transform.localScale = new Vector3((hp / max_hp), 1, 1);
-        hp_vr_bar.transform.localScale = hp_bar.transform.localScale;
+        if (isLocalPlayer)
+            hp_vr_bar.transform.localScale = hp_bar.transform.localScale;
     }
     
     [ClientRpc]
@@ -323,7 +324,8 @@ public class Player : NetworkBehaviour
     {
         RpcChangeHp(damage);
         hp_bar.transform.localScale = new Vector3((hp / max_hp), 1, 1);
-        hp_vr_bar.transform.localScale = hp_bar.transform.localScale;
+        if (isLocalPlayer)
+            hp_vr_bar.transform.localScale = hp_bar.transform.localScale;
     }
 
     // this is called on the server

@@ -61,13 +61,13 @@ public class VRRightHand: MonoBehaviour
             {
                 tpobj = teleporting.GetComponent<Teleport>();
                 // hide the raser line
-                transform.GetChild(2).gameObject.SetActive(false);
+                transform.GetChild(3).gameObject.SetActive(false);
             }
             else if (teleporting != null)
             {
 
                 // show the raser line
-                transform.GetChild(2).gameObject.SetActive(true);
+                transform.GetChild(3).gameObject.SetActive(true);
                 tpobj = teleporting.GetComponent<Teleport>();
             }
             

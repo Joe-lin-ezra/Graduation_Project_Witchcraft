@@ -1122,6 +1122,56 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7040800812433304440, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040800812433304440, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040800812433304440, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040800812433304440, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040800812433304440, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040800812433304440, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 493.704
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040800812433304440, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 48.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040800812433304440, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040800812433304440, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 507
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040800812433304440, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -500
+      objectReference: {fileID: 0}
     - target: {fileID: 8213786134466979165, guid: b53d970780189e645bf7c227326f361d,
         type: 3}
       propertyPath: teleportUI

@@ -35,7 +35,7 @@ public class Player : NetworkBehaviour
     public float invincibleTime = 0;
 
     [SerializeField] public GameObject hp_bar;
-    [SerializeField] public GameObject hp_vr_text;
+    [SerializeField] public GameObject hp_vr_bar;
 
     public float hands_current_distance = 0.0f;
     public float hands_first_point = 0;
@@ -54,7 +54,7 @@ public class Player : NetworkBehaviour
         vrCamera = GameObject.Find("Player/SteamVRObjects/VRCamera");
         RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
         LeftController = GameObject.Find("Player/SteamVRObjects/LeftHand/Controller (left)");
-        hp_vr_text = GameObject.Find("Player/Canvas/Panel/Text");
+        hp_vr_bar = GameObject.Find("Player/Canvas/Panel/HPBAR/Image");
     }
 
     // Start is called before the first frame update
@@ -155,10 +155,10 @@ public class Player : NetworkBehaviour
     {
         hp = _New;
         Debug.Log("hp changed!");
-        if (isLocalPlayer){
+        /*if (isLocalPlayer){
             hp_vr_text.GetComponent<Text>().text = hp.ToString();             // change vr-head UI hp text
             Debug.Log("is local player");
-        }
+        }*/
         Debug.Log("is not local player");
              
     }
@@ -217,6 +217,7 @@ public class Player : NetworkBehaviour
         hp -= damage;
         print(hp);
         hp_bar.transform.localScale = new Vector3((hp / max_hp), 1, 1);
+        hp_vr_bar.transform.localScale = hp_bar.transform.localScale;
     }
     
     [ClientRpc]
@@ -322,6 +323,7 @@ public class Player : NetworkBehaviour
     {
         RpcChangeHp(damage);
         hp_bar.transform.localScale = new Vector3((hp / max_hp), 1, 1);
+        hp_vr_bar.transform.localScale = hp_bar.transform.localScale;
     }
 
     // this is called on the server

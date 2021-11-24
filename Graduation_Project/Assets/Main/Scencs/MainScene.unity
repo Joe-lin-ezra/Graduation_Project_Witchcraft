@@ -1152,6 +1152,56 @@ PrefabInstance:
       propertyPath: teleportMaxCharge
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8981049211708397813, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981049211708397813, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981049211708397813, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981049211708397813, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981049211708397813, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981049211708397813, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 174.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981049211708397813, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 239.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981049211708397813, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981049211708397813, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981049211708397813, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b53d970780189e645bf7c227326f361d, type: 3}
 --- !u!1001 &7038921335494914353

@@ -19,9 +19,9 @@ public class MagicList : MonoBehaviour
         mgList = playerC.MagicsOBJ;// array
 
        
-        foreach (GameObject element in mgList)
+        for(int i = 0; i < mgList.Length;i+=3)
         {
-            text += string.Format("¡P {0} \n",element.name);
+            text += string.Format("¡P{0} ¡P{1} ¡P{2} \n", mgList[i].GetComponent<MagicBall>().magicName, mgList[i+1].GetComponent<MagicBall>().magicName,mgList[i+2].GetComponent<MagicBall>().magicName);
         }
         mgicText.text = text;
     }

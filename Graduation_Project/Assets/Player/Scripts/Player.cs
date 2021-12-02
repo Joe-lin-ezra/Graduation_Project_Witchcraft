@@ -49,6 +49,10 @@ public class Player : NetworkBehaviour
     int correct_HW_array_Y;
     public GameObject wall_prefab;
 
+    [Header("玩家臉部表情")]
+    public Material smile_face;
+    public Material hit_face;
+
     private void Awake()
     {
         vrCamera = GameObject.Find("Player/SteamVRObjects/VRCamera");
@@ -205,7 +209,15 @@ public class Player : NetworkBehaviour
         {
             damage = 0;
         }
+
+        this.gameObject.GetComponent<Renderer>().material = hit_face;
+        Invoke("changeFaceToDefaulct" , 3);
+
         CMDchangeHp(damage);
+    }
+
+    void changeFaceToDefaulct(){
+        this.gameObject.GetComponent<Renderer>().material = smile_face;
     }
 
     // ==================================          Client RPC         ==========================================

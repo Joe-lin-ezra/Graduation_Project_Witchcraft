@@ -701,7 +701,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a57c85e2dab02b947ae9a75be6759c32, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -782,6 +782,8 @@ MonoBehaviour:
   tc: {fileID: 0}
   wall_prefab: {fileID: 2838906140610267952, guid: 90c3e2469e0f34147a1880cb99340c39,
     type: 3}
+  smile_face: {fileID: 2100000, guid: a57c85e2dab02b947ae9a75be6759c32, type: 2}
+  hit_face: {fileID: 2100000, guid: c4927fa48a4ba2a4a8254cd386dc35d1, type: 2}
 --- !u!114 &9097583400636722040
 MonoBehaviour:
   m_ObjectHideFlags: 0

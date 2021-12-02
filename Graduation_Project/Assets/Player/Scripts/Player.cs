@@ -53,12 +53,21 @@ public class Player : NetworkBehaviour
     public Material smile_face;
     public Material hit_face;
 
+    [Header("勝負UI")]
+    public GameObject rePannel;
+
+
     private void Awake()
     {
         vrCamera = GameObject.Find("Player/SteamVRObjects/VRCamera");
         RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
         LeftController = GameObject.Find("Player/SteamVRObjects/LeftHand/Controller (left)");
         hp_vr_bar = GameObject.Find("Player/Canvas/Panel/HPBAR/Image");
+        rePannel = GameObject.Find("Player/Canvas/ResaultPannel");
+
+        rePannel.SetActive(false);
+
+
     }
 
     // Start is called before the first frame update
@@ -87,8 +96,15 @@ public class Player : NetworkBehaviour
     {
         if (invincibleTime > 0) invincibleTime -= Time.deltaTime;
 
-        if (!isLocalPlayer)
+        if (!isLocalPlayer )
             return;
+
+        if (isLocalPlayer && hp <= 0f)
+        {
+            rePannel.SetActive(true);
+            return;
+        }
+
         transform.position = vrCamera.transform.position;
        // transform.rotation = Quaternion.Euler(0, vrCamera.transform.rotation.y, 0);
         transform.rotation = new Quaternion(transform.rotation.x, vrCamera.transform.rotation.y, transform.rotation.z, transform.rotation.w);

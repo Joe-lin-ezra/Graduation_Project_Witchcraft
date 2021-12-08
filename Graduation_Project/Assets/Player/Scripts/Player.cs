@@ -63,9 +63,9 @@ public class Player : NetworkBehaviour
         RightController = GameObject.Find("Player/SteamVRObjects/RightHand/Controller (right)");
         LeftController = GameObject.Find("Player/SteamVRObjects/LeftHand/Controller (left)");
         hp_vr_bar = GameObject.Find("Player/Canvas/Panel/HPBAR/Image");
-        rePannel = GameObject.Find("Player/Canvas/ResaultPannel");
+        // rePannel = GameObject.Find("Player/Canvas/ResaultPannel");
 
-        rePannel.SetActive(false);
+        // rePannel.SetActive(false);
 
 
     }

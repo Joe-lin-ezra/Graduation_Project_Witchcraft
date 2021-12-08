@@ -34,10 +34,11 @@ public class Wall : NetworkBehaviour
         foreach (GameObject element in littel_rock)
         { 
             GameObject wall_clone = Instantiate(littel_rock[0], rock_position, this.transform.rotation);
-        wall_clone.AddComponent<Rigidbody>();
-        wall_clone.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-        wall_clone.GetComponent<Rigidbody>().AddForce(Random.Range(0, 5), Random.Range(0, 5), Random.Range(0, 5), ForceMode.Impulse);
-        GameObject owner = this.gameObject;
+            wall_clone.AddComponent<Rigidbody>();
+            wall_clone.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+            wall_clone.GetComponent<Rigidbody>().AddForce(Random.Range(0, 5), Random.Range(0, 5), Random.Range(0, 5), ForceMode.Impulse);
+            GameObject owner = this.gameObject;
+            NetworkServer.Spawn(wall_clone, owner);
         }
     }
 }

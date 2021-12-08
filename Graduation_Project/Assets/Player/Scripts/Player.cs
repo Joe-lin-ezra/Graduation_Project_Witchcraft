@@ -128,7 +128,6 @@ public class Player : NetworkBehaviour
             if(hands_first_point - hands_current_distance > 0.6f)
             {
                 CmdWall();
-                Debug.Log("生成牆面");
                 hands_first_point = 0.0f;
             }
         }
@@ -321,17 +320,6 @@ public class Player : NetworkBehaviour
         print("END");
     }
 
-
-
-    /* [ClientRpc] void RpcCreatMonster(int monster_num)
-     {
-         monster_clone = Instantiate(monster_prefabs[monster_num]);
-         monster_clone.GetComponent<Monster>().SetEnemy(this.gameObject.GetComponent<MonsterManager>().enemyPlayer);
-         monster_clone.GetComponent<Monster>().playerModle = this.gameObject;
-         GameObject owner = this.gameObject;
-     }*/
-
-
     //  =================================       Command                ===================================
 
 
@@ -340,7 +328,7 @@ public class Player : NetworkBehaviour
     {
         // need to modify position, the position depends on the user VRhead direction, not x+4 or z+2
         Vector3 pos = new Vector3 (this.transform.position.x - transform.forward.x * 5 , this.transform.position.y-0.5f, this.transform.position.z + transform.forward.z * 5);
-        //Vector3 pos = this.gameObject.transform.forward;
+
        
         GameObject wall_clone = Instantiate(wall_prefab , pos, this.transform.rotation);
         GameObject owner = this.gameObject;

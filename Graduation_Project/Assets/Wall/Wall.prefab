@@ -253,6 +253,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  littel_rock:
+  - {fileID: 6564594597847024599, guid: 3f46a3639e0a1514d9931ba763d74867, type: 3}
+  - {fileID: 4254171228679222371, guid: a8fc4a7c2105f9a48b342a805cded981, type: 3}
+  - {fileID: 4749965646196050631, guid: 8d7fdcf5d59c41e4ab7141570b4ab90f, type: 3}
+  - {fileID: 5183140553093377890, guid: b7dd009808c794b45beb1bddb55c7735, type: 3}
+  - {fileID: 4710130497314889060, guid: 41cdc0007a7dfbd42aee295958a66d71, type: 3}
 --- !u!114 &5220705731482184983
 MonoBehaviour:
   m_ObjectHideFlags: 0

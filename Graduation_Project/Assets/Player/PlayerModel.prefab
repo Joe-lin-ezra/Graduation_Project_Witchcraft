@@ -784,6 +784,9 @@ MonoBehaviour:
     type: 3}
   smile_face: {fileID: 2100000, guid: a57c85e2dab02b947ae9a75be6759c32, type: 2}
   hit_face: {fileID: 2100000, guid: c4927fa48a4ba2a4a8254cd386dc35d1, type: 2}
+  rePannel: {fileID: 0}
+  alchemyEffect: {fileID: 9103096805603719733, guid: a36efa43b9a735d4cba108ae1a21c8fb,
+    type: 3}
 --- !u!114 &9097583400636722040
 MonoBehaviour:
   m_ObjectHideFlags: 0

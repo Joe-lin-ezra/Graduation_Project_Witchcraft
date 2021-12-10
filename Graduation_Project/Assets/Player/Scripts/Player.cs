@@ -56,6 +56,10 @@ public class Player : NetworkBehaviour
     [Header("勝負UI")]
     public GameObject rePannel;
 
+    [Header("Alchemy Effect")]
+    public GameObject alchemyEffect;
+    public GameObject alchemyObject;
+
 
     private void Awake()
     {
@@ -120,6 +124,8 @@ public class Player : NetworkBehaviour
 
         if (hand_distant < 0.1)
         {
+            alchemyObject = (alchemyObject == null)? GameObject.Instantiate(alchemyEffect, (RightController.transform.position + LeftController.transform.position) / 2.0f, RightController.transform.rotation): alchemyObject;
+            alchemyObject.transform.position = (RightController.transform.position + LeftController.transform.position) / 2.0f;
             hands_current_distance = playerRightHandModle.transform.position.y;
             if (hands_first_point == 0.0f)
             {
@@ -133,6 +139,8 @@ public class Player : NetworkBehaviour
         }
         else
         {
+            Destroy(alchemyObject, 0);
+            alchemyObject = null;
             hands_first_point = 0.0f;
         }
 

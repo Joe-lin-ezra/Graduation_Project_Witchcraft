@@ -31,18 +31,30 @@ public class Pointer : MonoBehaviour
     }
     public void OnTriggerStay(Collider other)
     {
-        try {
+        try
+        {
             if (other.tag == "CircleElements")
             {
-                
-                //element���C�⪬�A
-                img = other.GetComponentInChildren<Image>();
-                img.color = Color.red;
+
+                if (selection < 2)
+                {
+
+                    int a = other.GetComponent<Element>().selection;
+                    Debug.LogWarning(string.Format("stay {0}", selection));
+                    setSelect(a, selection);
+                    Color tmpcol = Color.white;
+                    tmpcol.a = 0.0f;
+                    img.color = tmpcol;
+
+                }
             }
+
         }
-        catch(Exception e)
+        catch
         {
+
         }
+        if (other.tag == "CircleElements") isTrigered = false;
 
 
     }
@@ -52,9 +64,12 @@ public class Pointer : MonoBehaviour
         {
             if(other.tag == "CircleElements")
             {
+                
                 if (selection < 2)
                 {
+                  
                     int a = other.GetComponent<Element>().selection;
+                    Debug.LogWarning(string.Format("leave {0}", selection));
                     setSelect(a, selection);
                     Color tmpcol = Color.white;
                     tmpcol.a = 0.0f;
@@ -73,7 +88,7 @@ public class Pointer : MonoBehaviour
     public void setSelect(int selection, int s)
     {
         select[s] = selection;
-        //Debug.Log(string.Format("Selection: {0} {1}", select[0], select[1]));
+        Debug.Log(string.Format("Selection: {0} {1}", select[0], select[1]));
 
     }
     public void reCenter()

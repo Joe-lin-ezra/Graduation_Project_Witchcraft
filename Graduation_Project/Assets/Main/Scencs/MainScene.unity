@@ -1492,6 +1492,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4163240155249203531, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_TagString
+      value: CircleElements
+      objectReference: {fileID: 0}
     - target: {fileID: 5405025785442938722, guid: b53d970780189e645bf7c227326f361d,
         type: 3}
       propertyPath: m_IsActive
@@ -1501,6 +1506,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013883533899839514, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_TagString
+      value: CircleElements
       objectReference: {fileID: 0}
     - target: {fileID: 7040800812433304440, guid: b53d970780189e645bf7c227326f361d,
         type: 3}
@@ -1551,6 +1561,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658710357067148695, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: elements.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658710357067148695, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: elements.Array.data[0]
+      value: 
+      objectReference: {fileID: 639904480983542721}
+    - target: {fileID: 7658710357067148695, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: elements.Array.data[1]
+      value: 
+      objectReference: {fileID: 639904480983542720}
+    - target: {fileID: 7658710357067148695, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: elements.Array.data[2]
+      value: 
+      objectReference: {fileID: 639904480983542719}
+    - target: {fileID: 7910534190816521468, guid: b53d970780189e645bf7c227326f361d,
+        type: 3}
+      propertyPath: m_TagString
+      value: CircleElements
       objectReference: {fileID: 0}
     - target: {fileID: 8213786134466979165, guid: b53d970780189e645bf7c227326f361d,
         type: 3}
@@ -1644,6 +1679,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b53d970780189e645bf7c227326f361d, type: 3}
+--- !u!1 &639904480983542719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7910534190816521468, guid: b53d970780189e645bf7c227326f361d,
+    type: 3}
+  m_PrefabInstance: {fileID: 639904480983542718}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &639904480983542720 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4163240155249203531, guid: b53d970780189e645bf7c227326f361d,
+    type: 3}
+  m_PrefabInstance: {fileID: 639904480983542718}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &639904480983542721 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6013883533899839514, guid: b53d970780189e645bf7c227326f361d,
+    type: 3}
+  m_PrefabInstance: {fileID: 639904480983542718}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7038921335494914353
 PrefabInstance:
   m_ObjectHideFlags: 0

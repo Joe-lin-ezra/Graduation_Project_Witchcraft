@@ -20,6 +20,8 @@ public class CircularControl : MonoBehaviour
     public GameObject panel;
 
     public Texture[] monsterTexture;
+    public GameObject[] elements;
+ 
     void Start()
     {
         
@@ -31,38 +33,42 @@ public class CircularControl : MonoBehaviour
     {
         float trX = pointPos.x * (scalex + 0.2f);
         float trY = pointPos.y * (scaley + 0.2f);
-        pointer.transform.localPosition = new Vector3(trX, trY);
-        //Debug.Log(string.Format("Local: X {0:0.00} ,Y {0:0.00}  Globe: X {0:0.00} ,Y {0:0.00}", pointer.transform.localPosition.x, pointer.transform.localPosition.y));
-        //Debug.Log(selection);
+        pointer.transform.localPosition = new Vector3(trX, trY);//control point
+
+        
     }
     
     private void CreateIMG()
     {
-        float angle = 360/amount;
-        for (int i = 0; i < amount; i++)
+
+        for(int i = 0; i < amount; i++)
         {
-            Vector3 loc = RotateRound(new Vector3(0.2f,0,0), new Vector3(0,0),new Vector3(0f,1f,-0.3f),angle * i);
-            Quaternion qua = new Quaternion(0, 0, 90, 0);
-            GameObject a =  Instantiate(element, panel.transform.position + (loc * 0.4f), qua);           
-            //Create
-
-            a.transform.rotation = Quaternion.Euler(75, 0, 0);
-
-            //Rotate
-
-            a.transform.localScale = new Vector3(a.transform.localScale.x * scalex, a.transform.localScale.y * scaley, a.transform.localScale.z);
-
-            //Scle
-            a.transform.SetParent(Canvas_DrawElement.GetComponentInChildren<Transform>());
-
-            //Element setting
-            Element tmp = a.GetComponent<Element>();
+            GameObject el = elements[i];
+            Element tmp = el.GetComponent<Element>();
             tmp.selection = i;
             tmp.GetComponentInChildren<RawImage>().texture = monsterTexture[i];
+
         }
-       
+
+        /*
+         * float angle = 360/amount;
+        for (int i = 0; i < amount; i++)
+        {
+              Vector3 loc = RotateRound(new Vector3(0.2f, 0, 0), new Vector3(0, 0), new Vector3(0f, 1f, -0.3f), angle * i);
+        Quaternion qua = new Quaternion(0, 15, 75, 0);
+        GameObject a = Instantiate(element, panel.transform.position + (loc * 0.4f), qua);
+        a.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        a.transform.localScale = new Vector3(a.transform.localScale.x * scalex, a.transform.localScale.y * scaley, a.transform.localScale.z);
+
+        a.transform.SetParent(Canvas_DrawElement.GetComponentInChildren<Transform>());
+        Element tmp = a.GetComponent<Element>();
+        tmp.selection =i;
+        tmp.GetComponentInChildren<RawImage>().texture = monsterTexture[i];
+        }*/
+
     }
-    
+
     //round place elements
     public static Vector3 RotateRound(Vector3 position, Vector3 center, Vector3 axis, float angle)
     {

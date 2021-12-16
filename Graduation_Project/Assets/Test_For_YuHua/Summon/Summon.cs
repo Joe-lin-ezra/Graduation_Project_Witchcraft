@@ -44,8 +44,11 @@ public class Summon : MonoBehaviour
         {
             if(pt.getSelection() == 2)
             {
+                Debug.Log(string.Format("selection = {0} ,{1}", pt.getSelect(0), pt.getSelect(1)));
                 Create(pt.getSelect(0),pt.getSelect(1));
+                InitSelect();
                 pt.setSelection(0);
+                
             }
         } catch(Exception e)
         {

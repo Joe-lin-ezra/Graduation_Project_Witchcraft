@@ -44,15 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee85dfb85156fd4f992586d935483f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataArr: []
-  dataString: []
   pointPos: {x: 0, y: 0}
   pointer: {fileID: 2945118416831618037}
   selection: 0
   element: {fileID: 5803803522354158364, guid: 718c6eaba68079946a8ad69062b0e1f5, type: 3}
   amount: 0
-  Cnav: {fileID: 0}
-  canv: {fileID: 0}
+  Canvas_DrawElement: {fileID: 0}
+  panel: {fileID: 0}
+  monsterTexture: []
+  elements:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &2895038136248614908
 GameObject:
   m_ObjectHideFlags: 0
